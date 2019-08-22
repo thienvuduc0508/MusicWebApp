@@ -62,7 +62,7 @@
                                         Đổi Mật Khẩu
                                     </button>
                                     <a href="{{route('user.index',$user->id)}}">
-                                        <button class="btn btn-dark">
+                                        <button class="btn btn-dark" type="button">
                                             Hủy
                                         </button>
                                     </a>
