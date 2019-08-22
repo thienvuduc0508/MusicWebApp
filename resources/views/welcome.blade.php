@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    asdbjdas
+    <p style="text-align: center">Code web nhac o day</p>
 @endsection
