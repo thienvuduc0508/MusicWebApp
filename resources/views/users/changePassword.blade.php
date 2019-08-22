@@ -56,9 +56,6 @@
                                     <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
                                 </div>
                             </div>
-
-
-                        </form>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
@@ -71,7 +68,7 @@
                                     </a>
                                 </div>
                             </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
