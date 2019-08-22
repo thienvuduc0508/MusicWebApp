@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('/{id}', 'UserController@index')->name('user.index');
+    Route::get('update/{id}', 'UserController@editProfile')->name('user.edit');
+    Route::post('update/{id}', 'UserController@update')->name('user.update');
+});
