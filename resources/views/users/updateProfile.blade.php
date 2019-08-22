@@ -85,7 +85,7 @@
                                             </button>
 
                                             <a href="{{route('user.index',$user->id)}}">
-                                                <button type="button" class="btn btn-primary">
+                                                <button type="button" class="btn btn-dark">
                                                     Quay Lại
                                                 </button>
                                             </a>
