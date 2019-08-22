@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+            <div class="card" style="text-align: center">
+                <div class="card-header">Music</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                        Đăng nhập thành công!
+                        <br>
                         <br>
                         <a href="{{route("index")}}">
                             <button type="button" class="btn btn-primary">Home</button>
