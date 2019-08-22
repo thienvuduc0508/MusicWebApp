@@ -12,4 +12,16 @@ public function getModel()
     $model = User::class;
     return $model;
 }
+
+    public function changePassword($id)
+    {
+        // TODO: Implement changePassword() method.
+        return $this->model->findOrFail($id);
+    }
+
+    public function updatePasword($object)
+    {
+        // TODO: Implement updatePasword() method.
+        $object->save();
+    }
 }

@@ -23,4 +23,6 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('/{id}', 'UserController@index')->name('user.index');
     Route::get('update/{id}', 'UserController@editProfile')->name('user.edit');
     Route::post('update/{id}', 'UserController@update')->name('user.update');
+    Route::get('/changepassword/{id}', 'UserController@changePassword')->name('change.password');
+    Route::post('/updatepassword/{id}', 'UserController@updatePassword')->name('update.password');
 });
