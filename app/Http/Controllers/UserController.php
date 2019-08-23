@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Services\UserServiceInterface;
 use App\User;
@@ -40,7 +41,7 @@ class UserController extends Controller
         $user = $this->userService->findById($id);
         return view('users.changePassword', compact('user'));
     }
-    public function updatePassword(Request $request,$id){
+    public function updatePassword(ChangePasswordRequest $request,$id){
         $user = $this->userService->findById($id);
 
         if (!(Hash::check($request->get('current_password'), $user->password))) {
@@ -54,10 +55,9 @@ class UserController extends Controller
              của bạn
             . Vui lòng chọn một mật khẩu khác nhau.");
         }
-        if(strcmp($request->get('comfirm_new_password'), $request->get('new_password')) != 0){
-            return redirect()->back()->with("error","Xác nhận mật khẩu không đúng. Vui lòng thử lại!");
-        }
+
         $this->userService->updatePassword($request, $id);
-        return redirect()->route('user.index',$id);
+//        return redirect()->route('user.index',$id);
+        return redirect()->back()->with("success","Thay đổi mật khẩu thành công !");
     }
 }

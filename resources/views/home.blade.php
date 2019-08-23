@@ -13,11 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        Đăng nhập thành công!
+                        Đăng ký thành công!
                         <br>
                         <br>
                         <a href="{{route("index")}}">
-                            <button type="button" class="btn btn-primary">Home</button>
+                            <button type="button" class="btn btn-primary">Trang Chủ</button>
                         </a>
                 </div>
             </div>

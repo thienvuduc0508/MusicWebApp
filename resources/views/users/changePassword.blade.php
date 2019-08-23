@@ -25,12 +25,10 @@
                                 <label for="new-password" class="col-md-4 control-label">Mật Khẩu Cũ </label>
 
                                 <div class="col-md-6">
-                                    <input id="current-password" type="password" class="form-control" name="current_password" required>
+                                    <input id="current-password" type="password" class="form-control" name="current_password">
 
                                     @if ($errors->has('current_password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('current_password') }}</strong>
-                                    </span>
+                                        <strong class="text-danger">{{ $errors->first('current_password') }}</strong>
                                     @endif
                                 </div>
                             </div>
@@ -39,12 +37,10 @@
                                 <label for="new-password" class="col-md-4 control-label">Mật Khẩu Mới </label>
 
                                 <div class="col-md-6">
-                                    <input id="new-password" type="password" class="form-control" name="new_password" required>
+                                    <input id="new-password" type="password" class="form-control" name="new_password">
 
                                     @if ($errors->has('new_password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('new_password') }}</strong>
-                                    </span>
+                                        <strong class="text-danger">{{ $errors->first('new_password') }}</strong>
                                     @endif
                                 </div>
                             </div>
@@ -53,7 +49,7 @@
                                 <label for="new-password-confirm" class="col-md-4 control-label">Nhập Lại Mật Khẩu </label>
 
                                 <div class="col-md-6">
-                                    <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                                    <input id="new-password-confirm" type="password" class="form-control" name="new_password_confirmation">
                                 </div>
                             </div>
                             <div class="form-group">
