@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Change password</div>
+                    <div class="card-header">Thay Đổi Mật khẩu </div>
 
                     <div class="card-body">
                         @if (session('error'))
@@ -22,38 +22,34 @@
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('current_password') ? ' has-error' : '' }}">
-                                <label for="new-password" class="col-md-4 control-label">Current Password</label>
+                                <label for="new-password" class="col-md-4 control-label">Mật Khẩu Cũ </label>
 
                                 <div class="col-md-6">
-                                    <input id="current-password" type="password" class="form-control" name="current_password" required>
+                                    <input id="current-password" type="password" class="form-control" name="current_password">
 
                                     @if ($errors->has('current_password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('current_password') }}</strong>
-                                    </span>
+                                        <strong class="text-danger">{{ $errors->first('current_password') }}</strong>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group{{ $errors->has('new_password') ? ' has-error' : '' }}">
-                                <label for="new-password" class="col-md-4 control-label">New Password</label>
+                                <label for="new-password" class="col-md-4 control-label">Mật Khẩu Mới </label>
 
                                 <div class="col-md-6">
-                                    <input id="new-password" type="password" class="form-control" name="new_password" required>
+                                    <input id="new-password" type="password" class="form-control" name="new_password">
 
                                     @if ($errors->has('new_password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('new_password') }}</strong>
-                                    </span>
+                                        <strong class="text-danger">{{ $errors->first('new_password') }}</strong>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="new-password-confirm" class="col-md-4 control-label">Confirm New Password</label>
+                                <label for="new-password-confirm" class="col-md-4 control-label">Nhập Lại Mật Khẩu </label>
 
                                 <div class="col-md-6">
-                                    <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                                    <input id="new-password-confirm" type="password" class="form-control" name="new_password_confirmation">
                                 </div>
                             </div>
                             <div class="form-group">
