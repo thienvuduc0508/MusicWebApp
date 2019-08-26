@@ -4,53 +4,57 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Thông Tin Cá Nhân') }}</div>
+                    <div class="card-header text-md-center" style="font-size: 20px;font-weight: bold">{{ __('Thông Tin Cá Nhân') }}</div>
 
-                    <div class="card-body">
+                    <div class="card-body" style="font-style: italic">
                         <div class="row">
                             <div class="col-12 col-md-8">
                                 <div class="form-group row">
                                     <label for="name"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Họ và tên') }}</label>
+                                           class="col-md-4 col-form-label text-md-left">{{ __('Họ và tên') }}</label>
+                                    <label class="col-md-4 col-form-label text-md-left">: {{ $user->name }}</label>
 
-                                    <div class="col-md-6">
-                                        <input id="name" type="text"
-                                               class="form-control" name="name"
-                                               value="{{$user->name}}" autocomplete="name" autofocus readonly>
-                                    </div>
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <input id="name" type="text"--}}
+{{--                                               class="form-control" name="name"--}}
+{{--                                               value="{{$user->name}}" autocomplete="name" autofocus readonly>--}}
+{{--                                    <p>{{$user->name}}</p>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <div class="form-group row">
                                     <label for="email"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                                           class="col-md-4 col-form-label text-md-left">{{ __('Email') }}</label>
+                                    <label class="col-md-8 col-form-label text-md-left">: {{ $user->email }}</label>
 
-                                    <div class="col-md-6">
-                                        <input id="email" type="email"
-                                               class="form-control" name="email"
-                                               value="{{ $user->email }}" autocomplete="email" readonly>
-
-                                    </div>
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <input id="email" type="email"--}}
+{{--                                               class="form-control" name="email"--}}
+{{--                                               value="{{ $user->email }}" autocomplete="email" readonly>--}}
+{{--                                    <p>{{ $user->email }}</p>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <div class="form-group row">
                                     <label for="dob"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Ngày sinh') }}</label>
-
-                                    <div class="col-md-6">
-                                        <input id="dob" type="date"
-                                               class="form-control" name="dob"
-                                               value="{{ $user->dob}}" autocomplete="new-birthday" readonly>
-                                        <span class="invalid-feedback" role="alert">
-                                    </span>
-                                    </div>
+                                           class="col-md-4 col-form-label text-md-left">{{ __('Ngày sinh') }}</label>
+                                    <label class="col-md-4 col-form-label text-md-left">: {{ $user->dob }}</label>
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <input id="dob" type="date"--}}
+{{--                                               class="form-control" name="dob"--}}
+{{--                                               value="{{ $user->dob}}" autocomplete="new-birthday" readonly>--}}
+{{--                                        <span class="invalid-feedback" role="alert">--}}
+{{--                                    </span>--}}
+{{--                                    </div>--}}
                                 </div>
                                 <div class="form-group row">
                                     <label for="gender"
-                                           class="col-md-4 col-form-label text-md-right">{{__('Giới tính')}}</label>
+                                           class="col-md-4 col-form-label text-md-left">{{__('Giới tính')}}</label>
+                                    <label class="col-md-4 col-form-label text-md-left">: {{ $user->gender }}</label>
 
-                                    <div class="col-md-6" id="gender">
-                                        <input id="gender" type="text"
-                                               class="form-control" name="gender"
-                                               value="{{ $user->gender }}" readonly>
-                                    </div>
+                                    {{--                                    <div class="col-md-6" id="gender">--}}
+{{--                                        <input id="gender" type="text"--}}
+{{--                                               class="form-control" name="gender"--}}
+{{--                                               value="{{ $user->gender }}" readonly>--}}
+{{--                                    </div>--}}
                                 </div>
 
                                 <div class="form-group row">

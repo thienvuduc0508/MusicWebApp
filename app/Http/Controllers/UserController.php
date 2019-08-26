@@ -33,7 +33,8 @@ class UserController extends Controller
     public function update(UpdateProfileRequest $request, $id)
     {
         $this->userService->update($request, $id);
-        return redirect()->route('user.index', $id);
+        return redirect()->back()->with("success","Cập nhật thông tin thành công !");
+//        return redirect()->route('user.index', $id);
     }
 
     public function changePassword($id)
