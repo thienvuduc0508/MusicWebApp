@@ -4,11 +4,6 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
                 <div class="card">
                     <div class="card-header text-md-center" style="font-size: 20px;font-weight: bold">{{ __('Chỉnh Sửa Thông Tin Cá Nhân ') }}</div>
                     <div class="card-body">
