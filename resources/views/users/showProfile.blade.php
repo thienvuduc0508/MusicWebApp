@@ -72,7 +72,7 @@
                                     <div class="col-12">
 
                                             <img src="{{asset('storage/' . $user->image)}}"
-                                                 class="rounded-circle" width="200px">
+                                                 class="rounded-circle" width="200px" height="200px">
                                     </div>
                                 </div>
                             </div>

@@ -96,7 +96,7 @@
                                 <div class="col-12 col-md-4">
                                     <div class="form-group row">
                                         <div class="col-12">
-                                            <img src="{{ asset('storage/' . $user->image) }}" class="rounded-circle" width="200px" id="image">
+                                            <img src="{{ asset('storage/' . $user->image) }}" class="rounded-circle" width="200px" height="200 px" id="image">
                                         </div>
                                     </div>
                                 </div>
