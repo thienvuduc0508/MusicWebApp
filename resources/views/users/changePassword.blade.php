@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+            <div class="col-md-7">
+                <div class="card" >
                     <div class="card-header">Thay Đổi Mật khẩu </div>
 
                     <div class="card-body">
@@ -25,7 +25,7 @@
                                 <label for="new-password" class="col-md-4 control-label">Mật Khẩu Cũ </label>
 
                                 <div class="col-md-6">
-                                    <input id="current-password" type="password" class="form-control" name="current_password">
+                                    <input id="current-password" type="password" class="form-control" name="current_password" autofocus>
 
                                     @if ($errors->has('current_password'))
                                         <strong class="text-danger">{{ $errors->first('current_password') }}</strong>
