@@ -32,16 +32,12 @@ abstract class EloquentRepository implements RepositoryInterface{
 
     public function create($object)
     {
-        // TODO: Implement create() method.
         $object->save();
-
     }
 
     public function update($object)
     {
-        // TODO: Implement update() method.
-        $object->save();
-
+            $object->save();
     }
 
     public function destroy($object)
