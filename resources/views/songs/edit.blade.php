@@ -1,15 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="row container mt-5 row justify-content-center">
-        <form action="{{route('songs.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('songs.update',$song->id)}}" method="post" enctype="multipart/form-data">
             @csrf
-            <h1 class="text-center">Tạo Bài Nhạc Mới</h1>
-            <div class="form-group">
-                <input type="text" hidden name="user_id" value="{{$userId}}" class="form-control">
-            </div>
+            <h1 class="text-center">Chỉnh Sửa Bài Viết</h1>
+
             <div class="form-group">
                 <label class="form-group">Tên Bài Hát</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" value="{{$song->name}}">
                 {{--                @if($errors->has('name'))--}}
                 {{--                    <p class="alert-danger">--}}
                 {{--                        {{$errors->first('name')}}--}}
@@ -18,11 +16,11 @@
             </div>
             <div class="form-group">
                 <label class="form-group">Lời Bài Hát</label>
-                <textarea rows="4" cols="50" type="text" name="description" class="form-control"></textarea>
+                <textarea rows="4" cols="50" type="text" name="description" class="form-control" >{{$song->description}}</textarea>
             </div>
             <div class="form-group">
                 <label class="form-group">Ảnh</label>
-{{--                <input type="file" name="image" class="form-control-file">--}}
+                {{--                <input type="file" name="image" class="form-control-file">--}}
                 {{--                @if($errors->has('image'))--}}
                 {{--                    <p class="alert-danger">--}}
                 {{--                        {{$errors->first('image')}}--}}
@@ -37,7 +35,7 @@
                     >
                 </div>
                 <div class="form-group">
-                    <img src="{{asset("storage/images/logomusic.jpg")}}"  class="rounded-circle"
+                    <img src="{{asset("storage/".$song->image)}}"  class="rounded-circle"
                          width="100px" height="100 px" id="image">
                 </div>
 
@@ -61,20 +59,15 @@
                     >
                 </div>
                 <div>
-                    <audio src="" controls="controls" id="audio"></audio>
+                    <audio src="{{asset("storage/".$song->audio)}}" controls id="audio"></audio>
                 </div>
             </div>
             <div>
-                <input type="submit" class="btn btn-success" value="Tạo Mới">
+                <input type="submit" class="btn btn-success" value="Chỉnh Sửa">
                 <a href="{{route('songs.index')}}">
                     <input type="button" class="btn btn-secondary" value="Quay Lại">
                 </a>
             </div>
         </form>
     </div>
-
-
-
-
-
 @endsection

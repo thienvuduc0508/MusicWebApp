@@ -13,9 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+Route::get('/', 'GuestController@index')->name('index');
 
 Auth::routes();
 
@@ -35,5 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('update/{id}', 'SongController@edit')->name('songs.edit');
         Route::post('update/{id}', 'SongController@update')->name('songs.update');
         Route::get('delete/{id}', 'SongController@delete')->name('songs.delete');
+        Route::get('playsong/{id}', 'SongController@showSong')->name('songs.play');
     });
 });

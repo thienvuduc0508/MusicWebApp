@@ -17,7 +17,7 @@ class CreateSongsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('image');
+            $table->string('image')->default('images/logomusic.jpg');;
             $table->string('audio');
             $table->integer('view')->default(0);
             $table->timestamps();

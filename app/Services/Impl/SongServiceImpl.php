@@ -36,7 +36,23 @@ class SongServiceImpl extends ServiceImpl implements SongServiceInterface
             $song->audio = $path;
         }
         $this->repository->create($song);
-
-
     }
+    public function update($request, $id)
+    {
+        $song = $this->repository->findById($id);
+        $song->name = $request->name;
+        $song->description = $request->description;
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $path = $image->store('images','public');
+            $song->image = $path;
+        }
+        if($request->hasFile('audio')){
+            $audio = $request->file('audio');
+            $path = $audio->store('audios','public');
+            $song->audio = $path;
+        }
+        $this->repository->update($song);
+    }
+
 }
