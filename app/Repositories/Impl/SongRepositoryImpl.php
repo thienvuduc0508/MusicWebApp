@@ -20,5 +20,9 @@ public function listSong($userId)
     $list = $this->model->where('user_id', '=', $userId)->get();
     return $list;
 }
-
+public function searchSongByName($keyword)
+{
+    $songs = $this->model->where('name','like','%'.$keyword.'%')->get();
+    return $songs;
+}
 }
