@@ -54,5 +54,9 @@ class SongServiceImpl extends ServiceImpl implements SongServiceInterface
         }
         $this->repository->update($song);
     }
+    public function findByName($keyword)
+    {
+        return $this->repository->searchSongByName($keyword);
+    }
 
 }

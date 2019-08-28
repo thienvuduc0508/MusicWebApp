@@ -14,6 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'GuestController@index')->name('index');
+Route::get('/search', 'SongController@searchByName')->name('songs.searchByName');
 
 Auth::routes();
 
