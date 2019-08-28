@@ -10,7 +10,7 @@ class ServiceImpl implements ServiceInterface {
 
     public function getAll()
     {
-        return $this->repository->all();
+        return $this->repository->getAll();
         // TODO: Implement getAll() method.
     }
 
@@ -28,7 +28,6 @@ class ServiceImpl implements ServiceInterface {
 
     public function update($request, $id)
     {
-        // TODO: Implement update() method.
     }
 
     public function create($request)

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row container mt-5 row justify-content-center">
+    <div class="container justify-content-center col-md-10">
         <form action="{{route('songs.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <h1 class="text-center">Tạo Bài Nhạc Mới</h1>
