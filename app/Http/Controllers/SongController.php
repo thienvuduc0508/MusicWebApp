@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSongRequest;
+use App\Http\Requests\UpdateSongRequest;
 use App\Services\SongServiceInterface;
 use App\Song;
 use App\User;
@@ -25,7 +27,7 @@ class SongController extends Controller
         $userId = Auth::id();
         return view('songs.create', compact('userId'));
     }
-    public function store(Request $request){
+    public function store(CreateSongRequest $request){
 
         $this->songService->create($request);
 //        Session::flash('success','Tạo mới bài hát thành công');
@@ -43,10 +45,11 @@ class SongController extends Controller
         $song = $this->songService->findById($id);
         return view("songs.edit",compact('song'));
     }
-    public function update(Request $request,$id){
+    public function update(UpdateSongRequest $request,$id){
         $this->songService->update($request,$id);
 //        Session::flash('success', 'Cập nhật thông tin thành công');
         return redirect()->route('songs.index');
     }
+
 
 }
