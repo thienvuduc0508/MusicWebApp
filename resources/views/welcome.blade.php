@@ -13,8 +13,13 @@
             <div class="carousel-item active">
                 <div class="view">
                     <img class="d-inline-block w-100 h-25"
+<<<<<<< HEAD
+                         src="{{asset('storage/images/anh1.jpg')}}"
+                         alt="First slide">
+=======
                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
                          alt="First slide" onclick="">
+>>>>>>> c02c7fea3db124ee70565547c964d53008e376e6
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">
@@ -24,7 +29,7 @@
             </div>
             <div class="carousel-item">
                 <div class="view">
-                    <img class="d-inline-block w-100 h-25" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+                    <img class="d-inline-block w-100 h-25" src="{{asset('storage/images/anh2.jpg')}}"
                          alt="Second slide">
                     <div class="mask rgba-black-strong"></div>
                 </div>
@@ -35,7 +40,7 @@
             </div>
             <div class="carousel-item">
                 <div class="view">
-                    <img class="d-inline-block w-100 h-25" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg"
+                    <img class="d-inline-block w-100 h-25" src="{{asset('storage/images/anh3.jpg')}}"
                          alt="Third slide">
                     <div class="mask rgba-black-slight"></div>
                 </div>
@@ -63,113 +68,36 @@
     <div class="container">
         <h3>Có Thể Bạn Muốn Nghe</h3>
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
+        @foreach($songs as $song)
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                    <a href="{{route('songs.play',$song->id)}}">
+                    <div class="card card-inverse card-primary" style="border: 1px solid white">
+                        <img class="card-img-top" src="{{asset('storage/'.$song->image)}}"
+                             height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
+                        <blockquote class="card-blockquote p-3">
+                            <h5 style="text-align: center">{{$song->name}}</h5>
+                        </blockquote>
+                    </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <h3>Playlist Nghe Gần Đây></h3>
+
+        <h3>Bài Hát Mới Nhất</h3>
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
+            @foreach($newSongs as $newSong)
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                    <a href="{{route('songs.play',$newSong->id)}}">
+                        <div class="card card-inverse card-primary" style="border: 1px solid white">
+                            <img class="card-img-top" src="{{asset('storage/'.$newSong->image)}}"
+                                 height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
+                            <blockquote class="card-blockquote p-3">
+                                <h5 style="text-align: center">{{$newSong->name}}</h5>
+                            </blockquote>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
+            @endforeach
         </div>
         <h3>Nhạc Hay Gần Đây</h3>
         <div class="row">

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row container mt-5 row justify-content-center">
-        <main class="col-9 offset-2 " style="vertical-align: center">
+    <div class="container mt-5 row justify-content-center align-middle">
+        <main class="col-12">
+
             <h1>Danh sách bài hát của bạn</h1>
             <a href="{{route('songs.create')}}">
                 <button class="btn btn-success">Tạo Mới Bài Hát</button>
@@ -9,7 +10,7 @@
             @if(count($songs) == 0)
                 <div class="alert-danger" style="text-align: center">bạn chưa có bài nhạc nào</div>
             @else
-                <table class="table table-striped text-center mt-2">
+                <table class="table table-striped text-center mt-2 ">
                     <tr>
                         <th>#</th>
                         <th>Tên Bài Hát</th>

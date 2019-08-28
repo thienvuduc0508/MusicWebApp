@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Scripts -->
-{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,9 +20,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg" style="background-color: #f7f7f7;">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src='https://i1.sndcdn.com/artworks-000242801280-hpp38r-t500x500.jpg')}} height="50px" width="50px">
                     Music
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
