@@ -8,6 +8,7 @@ use App\Services\UserServiceInterface;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -33,7 +34,8 @@ class UserController extends Controller
     public function update(UpdateProfileRequest $request, $id)
     {
         $this->userService->update($request, $id);
-        return redirect()->route('user.index', $id);
+        Session::flash('success', 'Cập nhật thông tin thành công');
+       return redirect()->route('user.index', $id);
     }
 
     public function changePassword($id)
@@ -57,7 +59,8 @@ class UserController extends Controller
         }
 
         $this->userService->updatePassword($request, $id);
-//        return redirect()->route('user.index',$id);
-        return redirect()->back()->with("success","Thay đổi mật khẩu thành công !");
+        Session::flash('success', 'Thay đổi mật khẩu thành công !');
+        return redirect()->route('user.index',$id);
     }
+
 }

@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Repositories\Eloquent;
 
 use App\Repositories\RepositoryInterface;
 
-abstract class EloquentRepository implements RepositoryInterface{
+abstract class EloquentRepository implements RepositoryInterface
+{
     protected $model;
+
     abstract public function getModel();
 
 
@@ -12,6 +15,7 @@ abstract class EloquentRepository implements RepositoryInterface{
     {
         $this->model = app()->make($this->getModel());
     }
+
     public function __construct()
     {
         $this->setModel();
@@ -26,28 +30,21 @@ abstract class EloquentRepository implements RepositoryInterface{
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
         return $this->model->findOrFail($id);
     }
 
     public function create($object)
     {
-        // TODO: Implement create() method.
         $object->save();
-
     }
 
     public function update($object)
     {
-        // TODO: Implement update() method.
         $object->save();
-
     }
 
     public function destroy($object)
     {
-        // TODO: Implement destroy() method.
-        $object->save();
-
+        $object->delete();
     }
 }

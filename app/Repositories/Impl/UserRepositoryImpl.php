@@ -24,4 +24,9 @@ public function getModel()
         // TODO: Implement updatePasword() method.
         $object->save();
     }
+
+    public function updatePassword($object)
+    {
+        // TODO: Implement updatePassword() method.
+    }
 }

@@ -24,7 +24,6 @@ class ServiceImpl implements ServiceInterface {
     {
         $object = $this->repository->findById($id);
         $this->repository->destroy($object);
-        // TODO: Implement destroy() method.
     }
 
     public function update($request, $id)

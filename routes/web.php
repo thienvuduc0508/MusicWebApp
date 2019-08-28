@@ -11,18 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'GuestController@index')->name('index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['prefix' => 'profile'], function () {
-    Route::get('/{id}', 'UserController@index')->name('user.index');
-    Route::get('update/{id}', 'UserController@editProfile')->name('user.edit');
-    Route::post('update/{id}', 'UserController@update')->name('user.update');
-    Route::get('/changepassword/{id}', 'UserController@changePassword')->name('change.password');
-    Route::post('/updatepassword/{id}', 'UserController@updatePassword')->name('update.password');
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/{id}', 'UserController@index')->name('user.index');
+        Route::get('update/{id}', 'UserController@editProfile')->name('user.edit');
+        Route::post('update/{id}', 'UserController@update')->name('user.update');
+        Route::get('/changepassword/{id}', 'UserController@changePassword')->name('change.password');
+        Route::post('/updatepassword/{id}', 'UserController@updatePassword')->name('update.password');
+    });
+    Route::group(['prefix' => 'songs'], function () {
+        Route::get('/', 'SongController@index')->name('songs.index');
+        Route::get('create/', 'SongController@create')->name('songs.create');
+        Route::post('create/', 'SongController@store')->name('songs.store');
+        Route::get('update/{id}', 'SongController@edit')->name('songs.edit');
+        Route::post('update/{id}', 'SongController@update')->name('songs.update');
+        Route::get('delete/{id}', 'SongController@delete')->name('songs.delete');
+        Route::get('playsong/{id}', 'SongController@showSong')->name('songs.play');
+    });
 });
