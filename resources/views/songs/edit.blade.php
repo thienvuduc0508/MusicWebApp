@@ -8,11 +8,11 @@
             <div class="form-group">
                 <label class="form-group">Tên Bài Hát</label>
                 <input type="text" name="name" class="form-control" value="{{$song->name}}">
-                {{--                @if($errors->has('name'))--}}
-                {{--                    <p class="alert-danger">--}}
-                {{--                        {{$errors->first('name')}}--}}
-                {{--                    </p>--}}
-                {{--                @endif--}}
+                                @if($errors->has('name'))
+                                    <p class="alert-danger">
+                                        {{$errors->first('name')}}
+                                    </p>
+                                @endif
             </div>
             <div class="form-group">
                 <label class="form-group">Lời Bài Hát</label>
@@ -20,12 +20,11 @@
             </div>
             <div class="form-group">
                 <label class="form-group">Ảnh</label>
-                {{--                <input type="file" name="image" class="form-control-file">--}}
-                {{--                @if($errors->has('image'))--}}
-                {{--                    <p class="alert-danger">--}}
-                {{--                        {{$errors->first('image')}}--}}
-                {{--                    </p>--}}
-                {{--                @endif--}}
+                                 @if($errors->has('image'))
+                                    <p class="alert-danger">
+                                        {{$errors->first('image')}}
+                                    </p>
+                                @endif
                 <div class="form-group">
                     <input type="file"
                            onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"
@@ -44,12 +43,11 @@
             <div class="form-group">
 
                 <label class="form-group">File Nhạc</label>
-                {{--                <input type="file" name="audio" class="form-control-file">--}}
-                {{--                @if($errors->has('audio'))--}}
-                {{--                    <p class="alert-danger">--}}
-                {{--                        {{$errors->first('audio')}}--}}
-                {{--                    </p>--}}
-                {{--                @endif--}}
+                                @if($errors->has('audio'))
+                                    <p class="alert-danger">
+                                        {{$errors->first('audio')}}
+                                    </p>
+                                @endif
                 <div class="form-group">
                     <input type="file"
                            onchange="document.getElementById('audio').src = window.URL.createObjectURL(this.files[0])"

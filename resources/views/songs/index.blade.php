@@ -46,9 +46,5 @@
                 </table>
         </main>
     </div>
-
-
-
-
-
 @endsection
+

@@ -14,7 +14,7 @@
                 <div class="view">
                     <img class="d-inline-block w-100 h-25"
                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-                         alt="First slide">
+                         alt="First slide" onclick="">
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">
@@ -226,8 +226,7 @@
                 </div>
             </div>
         </div>
-
     </div>
     {{--end list song--}}
-
+    @include("layouts.play")
 @endsection
