@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-        <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +19,7 @@
             height: 32px;
             margin-top: 39px;
         }
-        }
+
 
         h2 { font-size: 87.5%; }
 

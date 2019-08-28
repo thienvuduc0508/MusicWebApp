@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-7">
+            <div class="col-md-10">
                 <div class="card" >
                     <div class="card-header text-md-center" style="font-size: 20px;font-weight: bold">Thay Đổi Mật khẩu </div>
 
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4" style="margin-left: 194px;">
+                                <div class="col-md-6 col-md-offset-4 " style="margin-left: 250px;" >
                                     <button type="submit" class="btn btn-primary">
                                         Đổi Mật Khẩu
                                     </button>
