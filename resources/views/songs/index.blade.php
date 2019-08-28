@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row container mt-5 row justify-content-center">
-        <main class="col-9 offset-2 " style="vertical-align: center">
+    <div class="row container mt-5   justify-content-center ">
+        <main class="col-md-12 offset-2 " style="vertical-align: center">
             <h1>Danh sách bài hát của bạn</h1>
             <a href="{{route('songs.create')}}">
                 <button class="btn btn-success">Tạo Mới Bài Hát</button>
@@ -46,9 +46,4 @@
                 </table>
         </main>
     </div>
-
-
-
-
-
 @endsection
