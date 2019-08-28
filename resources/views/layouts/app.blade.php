@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg" style="background-color: #f7f7f7;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Music
@@ -76,7 +76,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main style="width: 1000px;height:auto; margin: auto">
             @yield('content')
         </main>
     </div>
