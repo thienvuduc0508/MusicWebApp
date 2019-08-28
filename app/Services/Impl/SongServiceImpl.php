@@ -8,6 +8,7 @@ use App\Repositories\Impl\SongRepositoryImpl;
 use App\Repositories\SongRepositoryInterface;
 use App\Services\SongServiceInterface;
 use App\Song;
+use Illuminate\Support\Facades\Storage;
 
 class SongServiceImpl extends ServiceImpl implements SongServiceInterface
 {
@@ -43,11 +44,15 @@ class SongServiceImpl extends ServiceImpl implements SongServiceInterface
         $song->name = $request->name;
         $song->description = $request->description;
         if($request->hasFile('image')){
+            $oldImageSong = $song->image;
+            Storage::delete('/public/' . $oldImageSong);
             $image = $request->file('image');
             $path = $image->store('images','public');
             $song->image = $path;
         }
         if($request->hasFile('audio')){
+            $oldSong = $song->audio;
+            Storage::delete('/public/' . $oldSong);
             $audio = $request->file('audio');
             $path = $audio->store('audios','public');
             $song->audio = $path;
