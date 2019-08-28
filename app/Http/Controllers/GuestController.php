@@ -17,7 +17,8 @@ class GuestController extends Controller
     }
     public function index(){
         $songs = $this->guestService->getAll();
-        return view('welcome', compact('songs'));
+        $newSongs = $this->guestService->getNewSongs();
+        return view('welcome', compact('songs','newSongs'));
     }
 
 }

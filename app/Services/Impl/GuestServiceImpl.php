@@ -14,4 +14,8 @@ class GuestServiceImpl extends ServiceImpl implements GuestServiceInterface
         $this->repository = $guestRepository;
     }
 
+    public function getNewSongs()
+    {
+        return $this->repository->getNewSongs();
+    }
 }
