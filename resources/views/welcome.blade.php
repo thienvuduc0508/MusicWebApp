@@ -123,5 +123,4 @@
         </div>
     </div>
     {{--end list song--}}
-    @include("layouts.play")
 @endsection
