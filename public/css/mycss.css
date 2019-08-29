@@ -1,3 +1,6 @@
 .container .row .row {
     margin: 10px 0px !important;
 }
+.container h3 {
+    margin-left: 0px;
+}
