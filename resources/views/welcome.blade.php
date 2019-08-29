@@ -60,7 +60,6 @@
         {{--end slide--}}
 
         {{--list song--}}
-
         <div class="container">
             <hr>
             <h3 class="row" style="font-weight: bold">Có Thể Bạn Muốn Nghe</h3>
