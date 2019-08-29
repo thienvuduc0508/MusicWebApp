@@ -94,60 +94,21 @@
                 </div>
             @endforeach
         </div>
-        <h3>Nhạc Hay Gần Đây</h3>
+        <h3>Bài Hát Được Nghe Nhiều Nhất</h3>
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
+            @foreach($mostListenSongs as $mostListenSong)
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                    <a href="{{route('songs.play',$mostListenSong->id)}}">
+                        <div class="card card-inverse card-primary" style="border: 1px solid white">
+                            <img class="card-img-top" src="{{asset('storage/'.$mostListenSong->image)}}"
+                                 height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
+                            <blockquote class="card-blockquote p-3">
+                                <h5 style="text-align: center">{{$mostListenSong->name}}</h5>
+                            </blockquote>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     {{--end list song--}}

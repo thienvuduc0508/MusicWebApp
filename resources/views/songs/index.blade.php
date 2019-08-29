@@ -16,6 +16,7 @@
                         <th>Tên Bài Hát</th>
                         <th>Ảnh</th>
                         <th>Nghe</th>
+                        <th>Lượt Nghe</th>
                         <th>Chức Năng</th>
                     </tr>
 
@@ -29,6 +30,9 @@
                             </td>
                             <td>
                                 <audio src="{{asset("storage/".$song->audio)}}" controls></audio>
+                            </td>
+                            <td>
+                                <i class="fa fa-btn fa-headphones">{{$song->view}}</i>
                             </td>
                             <td>
                                 <a href="{{route('songs.edit',$song->id)}}"><button class="btn btn-outline-primary">

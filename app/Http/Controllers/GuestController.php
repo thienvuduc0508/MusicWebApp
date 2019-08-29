@@ -18,7 +18,8 @@ class GuestController extends Controller
     public function index(){
         $songs = $this->guestService->getAll();
         $newSongs = $this->guestService->getNewSongs();
-        return view('welcome', compact('songs','newSongs'));
+        $mostListenSongs = $this->guestService->getMostListenSongs();
+        return view('welcome', compact('songs','newSongs','mostListenSongs'));
     }
 
 }

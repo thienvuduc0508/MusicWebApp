@@ -487,6 +487,7 @@
         @keyframes spin {
             100% { transform: rotate(360deg) translate(-50%,-50%); }
         }
+
         </style>
 
 </head>
@@ -524,6 +525,7 @@
             <div class="arrow"></div>
         </button>
         <button class="repeat"></button>
+        <div class="fa fa-headphones" >{{$song->view}}</div>
     </div>
 
     <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>

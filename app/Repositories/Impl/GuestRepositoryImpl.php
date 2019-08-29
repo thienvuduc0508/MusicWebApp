@@ -18,4 +18,8 @@ class GuestRepositoryImpl extends EloquentRepository implements GuestRepositoryI
         $newSongs = $this->model->orderby('created_at', 'desc')->get();
         return $newSongs;
     }
+    public function getMostListenSongs(){
+        $newSongs = $this->model->orderby('view', 'desc')->get();
+        return $newSongs;
+    }
 }
