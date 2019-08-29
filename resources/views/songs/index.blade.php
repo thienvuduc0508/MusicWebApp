@@ -10,7 +10,7 @@
             @if(count($songs) == 0)
                 <div class="alert-danger" style="text-align: center">bạn chưa có bài nhạc nào</div>
             @else
-                <table class="table table-striped text-center mt-2 ">
+                <table class="table table-striped text-center mt-2">
                     <tr>
                         <th>#</th>
                         <th>Tên Bài Hát</th>
@@ -19,9 +19,8 @@
                         <th>Lượt Nghe</th>
                         <th>Chức Năng</th>
                     </tr>
-
                     @foreach($songs as $key=>$song)
-                        <tr>
+                        <tr style="font-size: 20px">
                             <td>{{++$key}}</td>
                             <td><a href="{{route("songs.play",$song->id)}}" style="text-decoration: none">{{$song->name}}</a></td>
                             <td>
@@ -32,7 +31,7 @@
                                 <audio src="{{asset("storage/".$song->audio)}}" controls></audio>
                             </td>
                             <td>
-                                <i class="fa fa-btn fa-headphones">{{$song->view}}</i>
+                                <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
                             </td>
                             <td>
                                 <a href="{{route('songs.edit',$song->id)}}"><button class="btn btn-outline-primary">

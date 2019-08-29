@@ -525,7 +525,7 @@
             <div class="arrow"></div>
         </button>
         <button class="repeat"></button>
-        <div class="fa fa-headphones" >{{$song->view}}</div>
+        <div class="fa fa-headphones" style="font-size: 20px">{{$song->view}}</div>
     </div>
 
     <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>
@@ -597,7 +597,7 @@
 
         if (self.hasClass('ff')) {
             player.addClass('ffing');
-            audio[0].playbackRate = 2;
+            audio[0].playbackRate = 10;
         }
 
         if (self.hasClass('rw')) {

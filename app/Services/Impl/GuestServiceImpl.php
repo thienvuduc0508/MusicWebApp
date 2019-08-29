@@ -21,5 +21,8 @@ class GuestServiceImpl extends ServiceImpl implements GuestServiceInterface
     public function getMostListenSongs()
     {
         return $this->repository->getMostListenSongs();
+    }public function getRandomSongs()
+    {
+        return $this->repository->getRandomSongs();
     }
 }

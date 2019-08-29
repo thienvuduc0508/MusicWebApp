@@ -3,33 +3,32 @@
     <h1 class="text-center text-capitalize">Kết Quả Tìm Kiếm</h1>
     @if(count($songs) == 0)
         <p class="alert alert-warning">Không tìm thấy bài hát trong hệ thống</p>
-    @endif
+    @else
+        <table class="table table-striped text-center mt-2">
+            <tr>
+                <th>#</th>
+                <th>Tên Bài Hát</th>
+                <th>Ảnh</th>
+                <th>Lượt Nghe</th>
+            </tr>
+            @foreach($songs as $key=>$song)
+                <tr style="font-size: 20px">
+                    <td>{{++$key}}</td>
+                    <td><a href="{{route("songs.play",$song->id)}}" style="text-decoration: none">{{$song->name}}</a>
+                    </td>
+                    <td>
+                        <img class="play-music" src="{{asset('storage/'.$song->image)}}"
+                             style="width: 50px;height: 50px; border-radius: 50px">
+                    </td>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 content_left">
-                <div class="row">
-                    @foreach($songs as $song)
-                        <div class="col-md-3 mb-5 text-center" id="song">
-                            <div class="container-img" data-songid="{{$song->id}}">
-                            </div>
-                            <div>
-                                <img
-                                    src="{{asset('storage/'. $song->image)}}"
-                                    class="img-thumbnail" id="song-img">
-                            </div>
-                            <div class="pt-2">
-                                <a href="">
-                                    <h5><strong>{{$song->name}}</strong></h5>
-                                </a>
-                            </div>
-                        </div>
-                </div>
-                @endforeach
-            </div>
+                    <td>
+                        <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
+                    </td>
+                </tr>
+            @endforeach
+            @endif
+        </table>
         </div>
-    </div>
-    </div>
 
 
 @endsection
