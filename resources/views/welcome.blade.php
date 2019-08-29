@@ -13,13 +13,8 @@
             <div class="carousel-item active">
                 <div class="view">
                     <img class="d-inline-block w-100 h-25"
-<<<<<<< HEAD
                          src="{{asset('storage/images/anh1.jpg')}}"
                          alt="First slide">
-=======
-                         src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-                         alt="First slide" onclick="">
->>>>>>> c02c7fea3db124ee70565547c964d53008e376e6
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">

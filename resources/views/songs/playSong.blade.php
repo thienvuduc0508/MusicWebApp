@@ -28,7 +28,7 @@
             width: auto;
             height: 270px;
             overflow: hidden;
-            background-color: #f0e7e19e;
+            background-image:{{asset("/images/".$song->image)}};
             border-radius: 0.5em;
             box-shadow:
                     0 1.5em 2em -1em rgba(0,0,0,0.8),
@@ -491,10 +491,10 @@
 
 </head>
 <body>
-<div class="player paused mt-2">
+<div class="player paused mt-5">
     <div class="album">
         <div class="cover">
-            <div><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/3rdburglar-cover-192.jpg" alt="3rdburglar by Wordburglar" /></div>
+            <div><img src="{{asset('storage/'.$song->image)}}" alt="3rdburglar by Wordburglar" /></div>
         </div>
     </div>
 
@@ -504,7 +504,7 @@
             <span class="progress"><span></span></span>
             <span class="duration">0:00</span>
         </div>
-        <h2>Cuộc vui cô đơn - Lê bảo Bình</h2>
+        <h2>{{$song->name}}</h2>
     </div>
 
     <div class="actions">
@@ -526,11 +526,11 @@
         <button class="repeat"></button>
     </div>
 
-    <audio prelaod src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38273/Wordburglar_Drawings_with_Words.mp3"></audio>
+    <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>
 </div>
 
 </body>
-<script language="javascript">
+<script>
     var player = $('.player'),
         audio = player.find('audio'),
         duration = $('.duration'),
