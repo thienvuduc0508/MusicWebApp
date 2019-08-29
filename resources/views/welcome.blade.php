@@ -64,15 +64,26 @@
         <h3>Có Thể Bạn Muốn Nghe</h3>
         <div class="row">
         @foreach($songs as $song)
-                <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                    <a href="{{route('songs.play',$song->id)}}">
-                    <div class="card card-inverse card-primary" style="border: 1px solid white">
-                        <img class="card-img-top" src="{{asset('storage/'.$song->image)}}"
-                             height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
-                        <blockquote class="card-blockquote p-3">
-                            <h5 style="text-align: center">{{$song->name}}</h5>
-                        </blockquote>
-                    </div>
+                <div class="row col-sm-6 col-md-4 col-lg-3 mt-4">
+{{--                    <div class="card card-inverse card-primary" style="border: 1px solid white">--}}
+{{--                        <img class="card-img-top" src="{{asset('storage/'.$song->image)}}"--}}
+{{--                             height="200px" width="80px" style="border: 1px solid black;border-radius: 5px">--}}
+{{--                        <blockquote class="card-blockquote p-3">--}}
+{{--                            <h5 style="text-align: center">{{$song->name}}</h5>--}}
+{{--                        </blockquote>--}}
+{{--                    </div>--}}
+                        <div class="box19 ">
+                            <img src="{{asset('storage/'.$song->image)}}"
+                                 height="200px" width="200px" style="border: 1px solid black;border-radius: 5px" alt="">
+                            <div class="box-content">
+                                <ul class="icon">
+                                    <li><a href="{{route('songs.play',$song->id)}}"><i class="fa fa-play"></i></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    <a href="{{route('songs.play',$song->id)}}" style="text-decoration: none;">
+                    <h5 class="mt-2" style="color: black;font-size: 18px;font-weight: bold;">{{$song->name}}</h5>
                     </a>
                 </div>
             @endforeach
@@ -82,10 +93,10 @@
         <div class="row">
             @foreach($newSongs as $newSong)
                 <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                    <a href="{{route('songs.play',$newSong->id)}}">
+                    <a href="{{route('songs.play',$newSong->id)}}" style="text-decoration: none">
                         <div class="card card-inverse card-primary" style="border: 1px solid white">
                             <img class="card-img-top" src="{{asset('storage/'.$newSong->image)}}"
-                                 height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
+                                 height="200px" width="80px" style="border: 1px solid black;border-radius: 5px">
                             <blockquote class="card-blockquote p-3">
                                 <h5 style="text-align: center">{{$newSong->name}}</h5>
                             </blockquote>
@@ -98,10 +109,10 @@
         <div class="row">
             @foreach($mostListenSongs as $mostListenSong)
                 <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                    <a href="{{route('songs.play',$mostListenSong->id)}}">
+                    <a href="{{route('songs.play',$mostListenSong->id)}}" style="text-decoration: none">
                         <div class="card card-inverse card-primary" style="border: 1px solid white">
                             <img class="card-img-top" src="{{asset('storage/'.$mostListenSong->image)}}"
-                                 height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
+                                 height="200px" width="80px" style="border: 1px solid black;: 5px">
                             <blockquote class="card-blockquote p-3">
                                 <h5 style="text-align: center">{{$mostListenSong->name}}</h5>
                             </blockquote>

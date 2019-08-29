@@ -1,0 +1,19 @@
+.box19{text-align:center;position:relative}
+.box19 .box-content{width:100%;height:100%;background:0 0;padding-top:25%;position:absolute;top:0;left:0;transition:all .3s ease 0s}
+.box19 .icon,.box19 .title{transition:all .2s ease 0s}
+.box19:hover .box-content{background:rgba(0,0,0,.5)}
+.box19 .title{font-size:24px;color:#fff;transform:scale(0)}
+.box19:hover .title{transform:scale(1)}
+.box19 .icon{list-style:none;padding:0;margin:0;opacity:0}
+.box19:hover .icon{opacity:1}
+.box19 .icon li{display:inline-block}
+.box19 .icon li:first-child a,.box19 .icon li:last-child a{display:block;width:50px;height:50px;line-height:50px;font-size:24px;color:#fff;border:1px solid #fff;position:relative}
+.box19 .icon li a{top:-150px}
+.box19:hover .icon li a{top:0}
+.box19:hover .icon li a:hover{background:#a46789;border-color:#a46789}
+.box19 .icon li:first-child a{transition:all .6s cubic-bezier(.175,.885,.32,1.275) 0s}
+.box19 .icon li:last-child a{transition:all .6s cubic-bezier(.175,.885,.32,1.275) .1s}
+@media only screen and (max-width:990px){.box19{margin-bottom:30px}
+}
+@media only screen and (max-width:360px){.box19 .box-content{padding-top:20%}
+}
