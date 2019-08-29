@@ -15,7 +15,6 @@
                     <img class="d-inline-block w-100 h-25"
                          src="{{asset('storage/images/anh1.jpg')}}"
                          alt="First slide">
-
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">
