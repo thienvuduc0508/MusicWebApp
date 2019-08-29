@@ -61,94 +61,67 @@
     {{--list song--}}
 
     <div class="container">
-        <h3>Có Thể Bạn Muốn Nghe</h3>
+        <hr>
+        <h3 class="row" style="font-weight: bold">Có Thể Bạn Muốn Nghe</h3>
         <div class="row">
-        @foreach($songs as $song)
-                <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                    <a href="{{route('songs.play',$song->id)}}">
-                    <div class="card card-inverse card-primary" style="border: 1px solid white">
-                        <img class="card-img-top" src="{{asset('storage/'.$song->image)}}"
-                             height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
-                        <blockquote class="card-blockquote p-3">
-                            <h5 style="text-align: center">{{$song->name}}</h5>
-                        </blockquote>
+            @foreach($songs as $song)
+                <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="box19 ">
+                        <img src="{{asset('storage/'.$song->image)}}"
+                             height="200px" width="200px" style="border: 1px solid black;border-radius: 5px" alt="">
+                        <div class="box-content">
+                            <ul class="icon">
+                                <li><a href="{{route('songs.play',$song->id)}}"><i class="fa fa-play"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
+                    <a href="{{route('songs.play',$song->id)}}" style="text-decoration: none;">
+                        <h5 class="mt-2" style="color: black;font-size: 18px;font-weight: bold;">{{$song->name}}</h5>
                     </a>
                 </div>
             @endforeach
         </div>
-
-        <h3>Bài Hát Mới Nhất</h3>
+        <hr>
+        <h3 class="row" style="font-weight: bold">Bài Hát Mới Nhất</h3>
         <div class="row">
             @foreach($newSongs as $newSong)
-                <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                    <a href="{{route('songs.play',$newSong->id)}}">
-                        <div class="card card-inverse card-primary" style="border: 1px solid white">
-                            <img class="card-img-top" src="{{asset('storage/'.$newSong->image)}}"
-                                 height="200px" width="80px" style="border: 1px solid black;border-radius: 50px">
-                            <blockquote class="card-blockquote p-3">
-                                <h5 style="text-align: center">{{$newSong->name}}</h5>
-                            </blockquote>
+                <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="box19 ">
+                        <img src="{{asset('storage/'.$newSong->image)}}"
+                             height="200px" width="200px" style="border: 1px solid black;border-radius: 5px" alt="">
+                        <div class="box-content">
+                            <ul class="icon">
+                                <li><a href="{{route('songs.play',$newSong->id)}}"><i class="fa fa-play"></i></a></li>
+                            </ul>
                         </div>
+                    </div>
+                    <a href="{{route('songs.play',$newSong->id)}}" style="text-decoration: none;">
+                        <h5 class="mt-2" style="color: black;font-size: 18px;font-weight: bold;">{{$newSong->name}}</h5>
                     </a>
                 </div>
             @endforeach
         </div>
-        <h3>Nhạc Hay Gần Đây</h3>
+        <hr>
+        <h3 class="row" style="font-weight: bold">Bài Hát Được Nghe Nhiều Nhất</h3>
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
+            @foreach($mostListenSongs as $mostListenSong)
+                <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="box19 ">
+                        <img src="{{asset('storage/'.$mostListenSong->image)}}"
+                             height="200px" width="200px" style="border: 1px solid black;border-radius: 5px" alt="">
+                        <div class="box-content">
+                            <ul class="icon">
+                                <li><a href="{{route('songs.play',$mostListenSong->id)}}"><i class="fa fa-play"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="{{route('songs.play',$mostListenSong->id)}}" style="text-decoration: none;">
+                        <h5 class="mt-2" style="color: black;font-size: 18px;font-weight: bold;">{{$mostListenSong->name}}</h5>
+                    </a>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-primary ">
-                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
-                    <blockquote class="card-blockquote p-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer>
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
+            @endforeach
         </div>
+        <hr>
     </div>
     {{--end list song--}}
 @endsection

@@ -34,7 +34,12 @@ class SongController extends Controller
         return redirect()->route('songs.index');
     }
     public function showSong($id){
-       $song = $this->songService->findById($id);
+        $songKey = 'post_' . $id;
+        if (!Session::has($songKey)) {
+            Song::where('id', $id)->increment('view');
+            Session::put($songKey, 1);
+        }
+        $song = $this->songService->findById($id);
         return view('songs.playSong',compact('song'));
     }
     public function delete($id){
