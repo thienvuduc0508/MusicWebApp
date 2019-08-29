@@ -26,7 +26,7 @@ class UpdateSongRequest extends FormRequest
         return [
             "name" => "required",
             'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
-            'audio' => 'required|mimes:mp3,mp4,mpga,wav,mpeg|max:10000'
+            'audio' => 'mimes:mp3,mp4,mpga,wav,mpeg|max:10000'
         ];
     }
     public function messages()
@@ -35,7 +35,6 @@ class UpdateSongRequest extends FormRequest
             'name.required' => 'Vui lòng nhập tên bài hát',
             'image.mimes' => 'Định dạng file ảnh không đúng',
             'image.max' => 'Dung lượng file ảnh nhỏ hơn 10Mb',
-            'audio.required' => 'Vui lòng chọn bài hát',
             'audio.mimes' => 'Định dạng file nhạc không đúng',
             'audio.max' => 'Dung lượng bài hát nhỏ hơn 10Mb'
 
