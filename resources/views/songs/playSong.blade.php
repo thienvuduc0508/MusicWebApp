@@ -532,7 +532,10 @@
 
     <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>
 </div>
-
+<div style="font-size: 20px" class="mt-3">
+    <label style="font-weight: bold">Lời Bài Hát</label>
+        {!!$song->description!!}
+</div>
 </body>
 <script>
     var player = $('.player'),
