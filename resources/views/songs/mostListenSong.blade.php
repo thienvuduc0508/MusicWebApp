@@ -4,7 +4,7 @@
     @if(count($mostListenSongs ) == 0)
         <p class="alert alert-warning">Không có bài hát trong hệ thống</p>
     @else
-        <table class="table table-striped text-center mt-2">
+        <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
                 <th>Tên Bài Hát</th>

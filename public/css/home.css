@@ -20,4 +20,10 @@
 img{
     object-fit: cover;
 }
+table tr:hover{
+    background-color: #1d68a7;
+}
+body a{
+    caret-color: #1d68a7;
+}
 

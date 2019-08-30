@@ -33,8 +33,8 @@
                 <div class="dropdown" >
                     <a class="dropdown navbar-brand" style="color: white">Bài Hát</a>
                     <div class="dropdown-content dropdown-menu dropdown-menu-lg-left">
-                        <a href="#" style="text-decoration: none" class="dropdown-item">Bài Hát Mới Nhất</a>
-                        <a href="#" style="text-decoration: none" class="dropdown-item">Bài Hát Được Nghe Nhiều Nhất</a>
+                        <a href="{{route('Guest.getAllNewSongs')}}" style="text-decoration: none" class="dropdown-item">Bài Hát Mới Nhất</a>
+                        <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none" class="dropdown-item">Bài Hát Được Nghe Nhiều Nhất</a>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -20,7 +20,6 @@
                     </div>
                     <div class="carousel-caption">
                         <h3 class="h3-responsive">Light mask</h3>
-                        <p>First text</p>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -30,8 +29,8 @@
                         <div class="mask rgba-black-strong"></div>
                     </div>
                     <div class="carousel-caption">
-                        <h3 class="h3-responsive">Strong mask</h3>
-                        <p>Secondary text</p>
+                        <h3 class="h3-responsive">3pMusic</h3>
+
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -42,7 +41,7 @@
                     </div>
                     <div class="carousel-caption">
                         <h3 class="h3-responsive">Slight mask</h3>
-                        <p>Third text</p>
+
                     </div>
                 </div>
             </div>
@@ -83,7 +82,7 @@
                 @endforeach
             </div>
             <hr>
-            <a href="{{route('Guest.getAllNewSongs')}}" style="text-decoration: none;color: black"><h3 class="row" style="font-weight: bold">Bài Hát Mới Nhất ></h3></a>
+            <h3 class="row" style="font-weight: bold"><a href="{{route('Guest.getAllNewSongs')}}"  class="gradient-text" style="text-decoration: none;color: black">Bài Hát Mới Nhất ></a></h3>
             <div class="row">
                 @foreach($newSongs as $newSong)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
@@ -105,7 +104,7 @@
                 @endforeach
             </div>
             <hr>
-            <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none;color: black"><h3 class="row" style="font-weight: bold">Bài Hát Được Nghe Nhiều Nhất ></h3></a>
+            <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none;color: black"><h3 class="row" style="font-weight: bold;">Bài Hát Được Nghe Nhiều Nhất ></h3></a>
             <div class="row">
                 @foreach($mostListenSongs as $mostListenSong)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">

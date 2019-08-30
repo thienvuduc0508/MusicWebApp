@@ -534,7 +534,8 @@
 </div>
 <div style="font-size: 20px" class="mt-3">
     <label style="font-weight: bold">Lời Bài Hát</label>
-        {!!$song->description!!}
+    <br>
+    {!!$song->description!!}
 </div>
 </body>
 <script>
