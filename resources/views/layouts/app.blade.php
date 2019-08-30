@@ -65,7 +65,7 @@
                                     <a class="dropdown-item" href="{{ route('songs.index', Auth::user()->id) }}"><i style="margin-right: 5px" class="fa fa-btn fa-music"></i>Nhạc Cá Nhân</a>
                                     <a href="{{route('change.password',Auth::user()->id)}}" class="dropdown-item"><i class="fa fa-lock" style="margin-right: 5px"></i>Đổi Mật Khẩu</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                       onclick=" event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         <i class="fa fa-sign-out" style="margin-right: 5px"></i>Đăng Xuất
                                     </a>
@@ -84,7 +84,150 @@
         <main style="width: 1000px;height:auto; margin: auto;">
             @yield('content')
         </main>
-    </div>
+        <!-- Footer -->
+        <footer name="footer" class="page-footer font-small stylish-color-dark pt-4">
 
+            <!-- Footer Links -->
+            <div class="container text-center text-md-left">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 mx-auto " id="footercenter">
+
+                        <!-- Content -->
+                        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
+                        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipisicing elit.</p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 mx-auto">
+
+                        <!-- Links -->
+                        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 4</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 mx-auto">
+
+                        <!-- Links -->
+                        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 4</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none">
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 mx-auto">
+
+                        <!-- Links -->
+                        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 4</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+            <!-- Footer Links -->
+
+            <hr>
+
+            <!-- Call to action -->
+            <ul class="list-unstyled list-inline text-center py-2">
+                <li class="list-inline-item">
+                    <h5 class="mb-1">Register for free</h5>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a>
+                </li>
+            </ul>
+            <!-- Call to action -->
+
+            <hr>
+
+            <!-- Social buttons -->
+            <div class="container" id="footersocial">
+                <div class="row " >
+                    <div>
+                        <ul class="social-network social-circle">
+                            <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Social buttons -->
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+    </div>
 </body>
+
 </html>
