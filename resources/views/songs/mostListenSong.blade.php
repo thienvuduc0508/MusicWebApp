@@ -1,6 +1,6 @@
 @extends("layouts.app")
 @section("content")
-    <h1 class="text-center text-capitalize">Bài Hát Mới Nhất</h1>
+    <h1 class="text-center text-capitalize">Bài Hát Được Nghe Nhiều Nhất</h1>
     @if(count($mostListenSongs ) == 0)
         <p class="alert alert-warning">Không có bài hát trong hệ thống</p>
     @else
