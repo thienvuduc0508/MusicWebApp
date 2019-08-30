@@ -17,3 +17,6 @@
 }
 @media only screen and (max-width:360px){.box19 .box-content{padding-top:20%}
 }
+img{
+    object-fit: cover;
+}
