@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mycss.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dropbutton.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -23,16 +24,19 @@
 </head>
 <body>
     <div id="app" style="background-color: #f3f3f3">
-        <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top" >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src='https://i1.sndcdn.com/artworks-000242801280-hpp38r-t500x500.jpg')}} height="50px" width="50px">
-                    Music
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
+                <div class="dropdown" >
+                    <a class="dropdown navbar-brand" style="color: white">Bài Hát</a>
+                    <div class="dropdown-content dropdown-menu dropdown-menu-lg-left">
+                        <a href="#" style="text-decoration: none" class="dropdown-item">Bài Hát Mới Nhất</a>
+                        <a href="#" style="text-decoration: none" class="dropdown-item">Bài Hát Được Nghe Nhiều Nhất</a>
+                    </div>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -81,11 +85,11 @@
             </div>
         </nav>
 
-        <main style="width: 1000px;height:auto; margin: auto;">
+        <main style="width: 1000px;height:auto; margin: auto;margin-top: 75px;margin-bottom: 100px">
             @yield('content')
         </main>
         <!-- Footer -->
-        <footer name="footer" class="page-footer font-small stylish-color-dark pt-4">
+        <footer name="footer" class="page-footer font-small stylish-color-dark pt-4" style="background-color: #212529">
 
             <!-- Footer Links -->
             <div class="container text-center text-md-left">
@@ -94,13 +98,12 @@
                 <div class="row">
 
                     <!-- Grid column -->
-                    <div class="col-md-4 mx-auto " id="footercenter">
+                    <div class="col-md-4 mx-auto " id="footercenter" style="color: white">
 
                         <!-- Content -->
                         <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-                        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                            consectetur
-                            adipisicing elit.</p>
+                        <p>Design by 3qMusic Team</p>
+                       <p> Contact : 19001009</p>
 
                     </div>
                     <!-- Grid column -->
@@ -187,10 +190,6 @@
                 <!-- Grid row -->
 
             </div>
-            <!-- Footer Links -->
-
-            <hr>
-
             <!-- Social buttons -->
             <div class="container" id="footersocial">
                 <div class="row " >
@@ -208,15 +207,13 @@
             <!-- Social buttons -->
 
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <div class="footer-copyright text-center py-3" style="color: white">© 2019 Copyright:
                 <a href="#"> 3qMusic</a>
             </div>
             <!-- Copyright -->
 
         </footer>
     </div>
-
-
 </body>
 
 </html>

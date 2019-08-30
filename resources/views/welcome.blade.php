@@ -2,7 +2,7 @@
 @section('content')
     {{--slide--}}
     <div style="background-color: white;border: 1px solid lightgray">
-        <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+        <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel" >
 
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-2" data-slide-to="0" class="active">1</li>
