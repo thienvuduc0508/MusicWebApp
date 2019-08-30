@@ -525,7 +525,9 @@
             <div class="arrow"></div>
         </button>
         <button class="repeat"></button>
-        <div class="fa fa-headphones" style="font-size: 20px">{{$song->view}}</div>
+        &nbsp
+        &nbsp
+        <div class="fa fa-headphones" id="headphones" style="font-size: 20px">{{$song->view}}</div>
     </div>
 
     <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>

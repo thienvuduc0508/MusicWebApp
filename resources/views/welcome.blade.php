@@ -62,7 +62,7 @@
         {{--list song--}}
         <div class="container">
             <hr>
-            <h3 class="row" style="font-weight: bold">Có Thể Bạn Muốn Nghe</h3>
+            <h3 class="row" style="font-weight: bold">Có Thể Bạn Muốn Nghe ></h3>
             <div class="row">
                 @foreach($songs as $song)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
@@ -83,7 +83,7 @@
                 @endforeach
             </div>
             <hr>
-            <h3 class="row" style="font-weight: bold">Bài Hát Mới Nhất</h3>
+            <a href="{{route('Guest.getAllNewSongs')}}" style="text-decoration: none;color: black"><h3 class="row" style="font-weight: bold">Bài Hát Mới Nhất ></h3></a>
             <div class="row">
                 @foreach($newSongs as $newSong)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
@@ -105,7 +105,7 @@
                 @endforeach
             </div>
             <hr>
-            <h3 class="row" style="font-weight: bold">Bài Hát Được Nghe Nhiều Nhất</h3>
+            <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none;color: black"><h3 class="row" style="font-weight: bold">Bài Hát Được Nghe Nhiều Nhất ></h3></a>
             <div class="row">
                 @foreach($mostListenSongs as $mostListenSong)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
