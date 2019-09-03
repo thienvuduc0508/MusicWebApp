@@ -527,7 +527,7 @@
         <button class="repeat"></button>
         &nbsp
         &nbsp
-        <div class="fa fa-headphones" id="headphones" style="font-size: 20px">{{$song->view}}</div>
+        <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i> {{$song->view}}</div>
     </div>
 
     <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>
