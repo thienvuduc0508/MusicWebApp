@@ -2,27 +2,30 @@
 @section('content')
     {{--slide--}}
     <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
-
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-2" data-slide-to="0" class="active">1</li>
             <li data-target="#carousel-example-2" data-slide-to="1">2</li>
             <li data-target="#carousel-example-2" data-slide-to="2">3</li>
         </ol>
-
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox" style="width: 1000px; height: 335px">
             <div class="carousel-item active">
+                <a href="{{route('songs.play',4)}}">
                 <div class="view">
                     <img class="d-inline-block w-100 h-25"
                          src="{{asset('storage/images/anh1.jpg')}}"
-                         alt="First slide">
+                         alt="First slide"
+                    >
+
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">
                     <h3 class="h3-responsive">Light mask</h3>
                     <p>First text</p>
                 </div>
+                </a>
             </div>
             <div class="carousel-item">
+                <a href="{{route('songs.play', 5)}}">
                 <div class="view">
                     <img class="d-inline-block w-100 h-25" src="{{asset('storage/images/anh2.jpg')}}"
                          alt="Second slide">
@@ -32,10 +35,12 @@
                     <h3 class="h3-responsive">Strong mask</h3>
                     <p>Secondary text</p>
                 </div>
+                </a>
             </div>
             <div class="carousel-item">
+                <a href="{{route('songs.play', 1)}}">
                 <div class="view">
-                    <img class="d-inline-block w-100 h-25" src="{{asset('storage/images/anh3.jpg')}}"
+                    <img class="d-inline-block w-100 h-25" src="{{asset('storage/images/anh4.jpg')}}"
                          alt="Third slide">
                     <div class="mask rgba-black-slight"></div>
                 </div>
@@ -43,6 +48,7 @@
                     <h3 class="h3-responsive">Slight mask</h3>
                     <p>Third text</p>
                 </div>
+                </a>
             </div>
         </div>
         <!--Controls-->
