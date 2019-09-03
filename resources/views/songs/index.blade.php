@@ -7,6 +7,11 @@
             <a href="{{route('songs.create')}}">
                 <button class="btn btn-success">Tạo Mới Bài Hát</button>
             </a>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             @if(count($songs) == 0)
                 <div class="alert-danger" style="text-align: center">bạn chưa có bài nhạc nào</div>
             @else

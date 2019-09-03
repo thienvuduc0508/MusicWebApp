@@ -44,6 +44,7 @@ class SongController extends Controller
     }
     public function delete($id){
         $this->songService->destroy($id);
+        Session::flash('success', 'Xóa bài hát thành công');
         return redirect()->route('songs.index');
     }
     public function edit($id){
@@ -63,7 +64,7 @@ class SongController extends Controller
             return redirect()->back();
         }
         $songs = $this->songService->findByName($keyword);
-        return view('songs.search', compact('songs'));
+        return view('songs.search', compact('songs','keyword'));
     }
 
 
