@@ -530,7 +530,7 @@
         <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i> {{$song->view}}</div>
     </div>
 
-    <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>
+    <audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>
 </div>
 <div style="font-size: 20px" class="mt-3">
     <label style="font-weight: bold">Lời Bài Hát</label>
@@ -585,7 +585,6 @@
 
     $('button').on('click', function() {
         var self = $(this);
-
         if (self.hasClass('play-pause') && player.hasClass('paused')) {
             player.removeClass('paused').addClass('playing');
             audio[0].play();
@@ -600,7 +599,6 @@
         }
     }).on('mousedown', function() {
         var self = $(this);
-
         if (self.hasClass('ff')) {
             player.addClass('ffing');
             audio[0].playbackRate = 10;
