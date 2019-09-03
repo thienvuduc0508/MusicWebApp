@@ -61,7 +61,7 @@
         {{--list song--}}
         <div class="container">
             <hr>
-            <h3 class="row" style="font-weight: bold">Có Thể Bạn Muốn Nghe ></h3>
+            <h3 class="row wrap gradient-text" style="font-weight: bold">Có Thể Bạn Muốn Nghe ></h3>
             <div class="row">
                 @foreach($songs as $song)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
@@ -75,14 +75,14 @@
                             </div>
                         </div>
                         <a href="{{route('songs.play',$song->id)}}" style="text-decoration: none;">
-                            <h5 class="mt-2"
-                                style="color: black;font-size: 18px;font-weight: bold;">{{$song->name}}</h5>
+                            <h5 class="mt-2 wrap gradient-text"
+                                style="font-size: 16px !important;font-weight: bold;">{{$song->name}}</h5>
                         </a>
                     </div>
                 @endforeach
             </div>
             <hr>
-            <h3 class="row" style="font-weight: bold"><a href="{{route('Guest.getAllNewSongs')}}"  class="gradient-text" style="text-decoration: none;color: black">Bài Hát Mới Nhất ></a></h3>
+            <a href="{{route('Guest.getAllNewSongs')}}"  class="" style="text-decoration: none;color: black"><h3 class="row wrap gradient-text" style="font-weight: bold">Bài Hát Mới Nhất ></h3></a>
             <div class="row">
                 @foreach($newSongs as $newSong)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
@@ -97,14 +97,14 @@
                             </div>
                         </div>
                         <a href="{{route('songs.play',$newSong->id)}}" style="text-decoration: none;">
-                            <h5 class="mt-2"
-                                style="color: black;font-size: 18px;font-weight: bold;">{{$newSong->name}}</h5>
+                            <h5 class="mt-2 wrap gradient-text"
+                                style="font-size: 16px !important;font-weight: bold;">{{$newSong->name}}</h5>
                         </a>
                     </div>
                 @endforeach
             </div>
             <hr>
-            <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none;color: black"><h3 class="row" style="font-weight: bold;">Bài Hát Được Nghe Nhiều Nhất ></h3></a>
+            <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none;color: black"><h3 class="row wrap gradient-text" style="font-weight: bold;">Bài Hát Được Nghe Nhiều Nhất ></h3></a>
             <div class="row">
                 @foreach($mostListenSongs as $mostListenSong)
                     <div class="row col-sm-6 col-md-4 col-lg-3 mt-3">
@@ -119,8 +119,8 @@
                             </div>
                         </div>
                         <a href="{{route('songs.play',$mostListenSong->id)}}" style="text-decoration: none;">
-                            <h5 class="mt-2"
-                                style="color: black;font-size: 18px;font-weight: bold;">{{$mostListenSong->name}}</h5>
+                            <h5 class="mt-2 wrap gradient-text"
+                                style="font-size: 16px !important;font-weight: bold;">{{$mostListenSong->name}}</h5>
                         </a>
                     </div>
                 @endforeach
