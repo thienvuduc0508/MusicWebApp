@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     {{--slide--}}
-<<<<<<< HEAD
     <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-2" data-slide-to="0" class="active">1</li>
@@ -15,7 +14,6 @@
                          src="{{asset('storage/images/anh1.jpg')}}"
                          alt="First slide"
                     >
-
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">
@@ -57,41 +55,7 @@
         </a>
         <!--/.Controls-->
     </div>
-    {{--end slide--}}
-=======
-    <div style="background-color: white;border: 1px solid lightgray">
-        <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel" >
 
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-2" data-slide-to="0" class="active">1</li>
-                <li data-target="#carousel-example-2" data-slide-to="1">2</li>
-                <li data-target="#carousel-example-2" data-slide-to="2">3</li>
-            </ol>
-
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="view">
-                        <img class="d-inline-block w-100 h-25"
-                             src="{{asset('storage/images/anh1.jpg')}}"
-                             alt="First slide">
-                        <div class="mask rgba-black-light"></div>
-                    </div>
-                    <div class="carousel-caption">
-                        <h3 class="h3-responsive">Light mask</h3>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="view">
-                        <img class="d-inline-block w-100 h-25" src="{{asset('storage/images/anh2.jpg')}}"
-                             alt="Second slide">
-                        <div class="mask rgba-black-strong"></div>
-                    </div>
-                    <div class="carousel-caption">
-                        <h3 class="h3-responsive">3pMusic</h3>
->>>>>>> b2943b1df9fdcf9ea1143d1c525118b4dcbee0b1
-
-                    </div>
-                </div>
                 <div class="carousel-item">
                     <div class="view">
                         <img class="d-inline-block w-100 h-25" src="{{asset('storage/images/anh3.jpg')}}"
@@ -103,8 +67,7 @@
 
                     </div>
                 </div>
-            </div>
-            <!--Controls-->
+                       <!--Controls-->
             <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -114,7 +77,6 @@
                 <span class="sr-only">Next</span>
             </a>
             <!--/.Controls-->
-        </div>
         {{--end slide--}}
 
         {{--list song--}}
@@ -186,6 +148,5 @@
             </div>
             <hr>
         </div>
-    </div>
     {{--end list song--}}
 @endsection
