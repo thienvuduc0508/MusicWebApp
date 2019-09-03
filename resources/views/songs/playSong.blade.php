@@ -487,6 +487,7 @@
         @keyframes spin {
             100% { transform: rotate(360deg) translate(-50%,-50%); }
         }
+
         </style>
 
 </head>
@@ -524,11 +525,18 @@
             <div class="arrow"></div>
         </button>
         <button class="repeat"></button>
+        &nbsp
+        &nbsp
+        <div class="fa fa-headphones" id="headphones" style="font-size: 20px">{{$song->view}}</div>
     </div>
 
     <audio preload src="{{asset('storage/'.$song->audio)}}"></audio>
 </div>
-
+<div style="font-size: 20px" class="mt-3">
+    <label style="font-weight: bold">Lời Bài Hát</label>
+    <br>
+    {!!$song->description!!}
+</div>
 </body>
 <script>
     var player = $('.player'),
@@ -595,7 +603,7 @@
 
         if (self.hasClass('ff')) {
             player.addClass('ffing');
-            audio[0].playbackRate = 2;
+            audio[0].playbackRate = 10;
         }
 
         if (self.hasClass('rw')) {

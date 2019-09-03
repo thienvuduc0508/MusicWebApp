@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label class="form-group">Lời Bài Hát</label>
-                <textarea rows="4" cols="50" type="text" name="description" class="form-control" >{{$song->description}}</textarea>
+                <textarea id="ckeditor" rows="4" cols="50" name="description" class="form-control" >{{$song->description}}</textarea>
             </div>
             <div class="form-group">
                 <label class="form-group">Ảnh</label>
