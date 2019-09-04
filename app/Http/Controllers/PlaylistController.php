@@ -46,11 +46,11 @@ class PlaylistController extends Controller
     }
 
 
-    public function show($id)
+    public function showDetailPlaylist($id)
     {
         $playlist = $this->playlistService->findById($id);
         $songs = $this->songService->getSongsInPlaylist($playlist);
-        return view('playlists.detail', compact('playlist','songs'));
+        return view('playlists.detailPlaylist', compact('playlist','songs'));
     }
 
 

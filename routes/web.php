@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'PlaylistController@index')->name('playlists.showPlaylists');
         Route::get('create/', 'PlaylistController@create')->name('playlists.create');
         Route::post('create/', 'PlaylistController@store')->name('playlists.store');
-        Route::get('detail/{id}', 'PlaylistController@show')->name('playlists.detail');
+        Route::get('detail/{id}', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
         Route::get('edit/{id}', 'PlaylistController@edit')->name('playlists.edit');
         Route::post('update/{id}', 'PlaylistController@update')->name('playlists.update');
     });
