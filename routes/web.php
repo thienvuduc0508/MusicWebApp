@@ -37,4 +37,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('update/{id}', 'SongController@update')->name('songs.update');
         Route::get('delete/{id}', 'SongController@delete')->name('songs.delete');
     });
+    Route::group(['prefix' => 'playlists'], function () {
+        Route::get('/', 'PlaylistController@index')->name('playlists.showPlaylists');
+        Route::get('create/', 'PlaylistController@create')->name('playlists.create');
+        Route::post('create/', 'PlaylistController@store')->name('playlists.store');
+        Route::post('detail/', 'PlaylistController@show')->name('playlists.detail');
+        Route::get('edit/{id}', 'PlaylistController@edit')->name('playlists.edit');
+        Route::post('update/{id}', 'PlaylistController@update')->name('playlists.update');
+    });
 });

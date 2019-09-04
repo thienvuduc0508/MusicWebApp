@@ -7,6 +7,7 @@ namespace App\Repositories\Impl;
 use App\Playlist;
 use App\Repositories\Eloquent\EloquentRepository;
 use App\Repositories\PlaylistRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepositoryInterface
 {
@@ -20,5 +21,10 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
     {
         $playlist = $this->model->findOrFail($playlistId);
         $playlist->songs->attach($songId);
+    }
+    public function playlists($userId)
+    {
+        $playlists = $this->model->where('user_id','=',$userId)->get();
+        return $playlists;
     }
 }
