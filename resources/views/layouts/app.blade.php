@@ -67,6 +67,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/profile/'.Auth::user()->id) }}"><i style="margin-right: 5px" class="fa fa-btn fa-user"></i>Hồ Sơ</a>
                                     <a class="dropdown-item" href="{{ route('songs.index', Auth::user()->id) }}"><i style="margin-right: 5px" class="fa fa-btn fa-music"></i>Nhạc Cá Nhân</a>
+                                    <a class="dropdown-item" href="{{ route('playlists.showPlaylists', Auth::user()->id) }}"><i style="margin-right: 5px" class="fa fa-toggle-right"></i>Playlist Cá Nhân</a>
                                     <a href="{{route('change.password',Auth::user()->id)}}" class="dropdown-item"><i class="fa fa-lock" style="margin-right: 5px"></i>Đổi Mật Khẩu</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick=" event.preventDefault();
