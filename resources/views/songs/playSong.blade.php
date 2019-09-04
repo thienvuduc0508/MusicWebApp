@@ -491,9 +491,6 @@
                     transform: rotate(360deg) translate(-50%, -50%);
                 }
             }
-            .sqs-audio-player {
-
-            }
         </style>
 
     </head>

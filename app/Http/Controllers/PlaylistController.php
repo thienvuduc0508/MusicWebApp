@@ -46,10 +46,10 @@ class PlaylistController extends Controller
     }
 
 
-    public function show($id)
+    public function showDetailPlaylist($id)
     {
         $playlist = $this->playlistService->findById($id);
-        return view('playlists.detail', compact('playlist'));
+        return view('playlists.detailPlaylist', compact('playlist'));
     }
 
 
@@ -70,6 +70,13 @@ class PlaylistController extends Controller
 
     public function destroy($id)
     {
-
+        $this->playlistService->destroy($id);
+        Session::flash('success', 'Xóa playlist thành công');
+        return redirect()->route('playlists.showPlaylists');
+    }
+    public function getAllNewPlaylists()
+    {
+        $newPlaylists = $this->playlistService->getAllNewPlaylists();
+        return view('playlists.newPlaylists', compact('newPlaylists'));
     }
 }
