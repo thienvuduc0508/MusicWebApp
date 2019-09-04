@@ -35,7 +35,4 @@ class ServiceImpl implements ServiceInterface {
     {
         // TODO: Implement create() method.
     }
-    public function playlists($user){
-
-    }
 }

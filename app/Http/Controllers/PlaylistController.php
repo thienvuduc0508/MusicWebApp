@@ -55,7 +55,7 @@ class PlaylistController extends Controller
     public function edit($playlistId)
     {
         $playlist = $this->playlistService->findById($playlistId);
-        return view('playlists.update',compact('playlist'));
+        return view('playlists.update', compact('playlist'));
     }
 
 
@@ -69,6 +69,8 @@ class PlaylistController extends Controller
 
     public function destroy($id)
     {
-
+        $this->playlistService->destroy($id);
+        Session::flash('success', 'Xóa playlist thành công');
+        return redirect()->route('playlists.showPlaylists');
     }
 }
