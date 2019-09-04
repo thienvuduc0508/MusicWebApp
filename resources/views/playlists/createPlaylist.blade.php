@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row container offset-3">
+    <div class="container offset-0 col-10">
         <form action="{{route('playlists.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <h1 class="text-center">Tạo Playlist Mới</h1>
@@ -21,6 +21,7 @@
                     <label class="form-group">Mô tả</label>
                     <textarea type="text" name="description" class="form-control"></textarea>
                 </div>
+                <br>
                <div>
                    <input type="submit" class="btn btn-success" value="Tạo Mới">
                    <a href="{{route('playlists.showPlaylists')}}">

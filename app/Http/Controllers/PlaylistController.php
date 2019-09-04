@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePlaylistRequest;
+use App\Http\Requests\UpdatePlaylistRequest;
 use App\Services\PlaylistServiceInterface;
 use App\Services\SongServiceInterface;
 use Illuminate\Http\Request;
@@ -55,14 +56,14 @@ class PlaylistController extends Controller
     public function edit($playlistId)
     {
         $playlist = $this->playlistService->findById($playlistId);
-        return view('playlists.update', compact('playlist'));
+        return view('playlists.updatePlaylist',compact('playlist'));
     }
 
 
-    public function update(Request $request, $playlistId)
+    public function update(UpdatePlaylistRequest $request, $playlistId)
     {
         $this->playlistService->update($request, $playlistId);
-        Session::flash('message', "Cập nhật thành công playlist");
+        Session::flash('success', "Cập nhật thành công playlist");
         return redirect()->route('playlists.showPlaylists');
     }
 
