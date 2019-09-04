@@ -27,4 +27,9 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
         $playlists = $this->model->where('user_id','=',$userId)->get();
         return $playlists;
     }
+    public function getAllNewPlaylists()
+    {
+        $newPlaylits = $this->model->orderby('created_at', 'desc')->get();
+        return $newPlaylits;
+    }
 }

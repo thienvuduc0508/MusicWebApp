@@ -37,6 +37,13 @@
                         <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none" class="dropdown-item">Bài Hát Được Nghe Nhiều Nhất</a>
                     </div>
                 </div>
+                <div class="dropdown" >
+                    <a class="dropdown navbar-brand" style="color: white">Playlist</a>
+                    <div class="dropdown-content dropdown-menu dropdown-menu-lg-left">
+                        <a href="{{route('playlist.getAllNewPlaylists')}}" style="text-decoration: none" class="dropdown-item">Playlist Mới Nhất</a>
+                        <a href="#" style="text-decoration: none" class="dropdown-item">Playlist Được Nghe Nhiều Nhất</a>
+                    </div>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">

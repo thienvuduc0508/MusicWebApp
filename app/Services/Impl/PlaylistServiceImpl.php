@@ -31,6 +31,7 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
         $playlist->name = $request->name;
         $playlist->user_id = $request->user_id;
         $playlist->description = $request->description;
+        $playlist->status = $request->status;
         $this->repository->create($playlist);
 
     }
@@ -39,6 +40,7 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
         $playlist = $this->repository->findById($id);
         $playlist->name = $request->name;
         $playlist->description = $request->description;
+        $playlist->status = $request->status;
         $this->repository->update($playlist);
 
     }
@@ -54,5 +56,9 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
     {
         $playlists = $this->repository->playlists($userId);
         return $playlists;
+    }
+    public function getAllNewPlaylists()
+    {
+        return $this->repository->getAllNewPlaylists();
     }
 }

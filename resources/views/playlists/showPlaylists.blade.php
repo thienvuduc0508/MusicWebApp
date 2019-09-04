@@ -13,19 +13,18 @@
             <a href="{{route('playlists.create')}}">
                 <button class="btn btn-success">Tạo Mới Playlist</button>
             </a>
-
-            <table class="table table-striped mt-2">
+            @if(count($playlists)==0)
+                    <p class="alert alert-warning">Bạn chưa có playlist</p>
+            @else
+            <table class="table table-striped mt-2 ">
                 <tr>
                     <th>#</th>
                     <th>Tên</th>
                     <th>Mô tả</th>
+                    <th>Trạng thái</th>
                     <th>Chức năng</th>
                 </tr>
-                @if(count($playlists)==0)
-                    <tr>
-                        <td class="alert alert-warning">Bạn chưa có playlist</td>
-                    </tr>
-                @else
+
                     @foreach($playlists as $key=>$playlist)
                         <tr>
                             <td>{{++$key}}</td>
@@ -36,13 +35,16 @@
                                 {{$playlist->description}}
                             </td>
                             <td>
+                                {{$playlist->status}}
+                            </td>
+                            <td>
                                 <a href="{{route('playlists.detail',$playlist->id)}}">
                                     <button class="btn btn-outline-info"><i class="fa fa-info-circle"></i></button>
                                 </a>
                                 <a href="{{route('playlists.edit',$playlist->id)}}">
                                     <button class="btn btn-outline-warning"> <i class="fa fa-btn fa-edit"></i></button>
                                 </a>
-                                <a href="">
+                                <a href="{{route('playlists.destroy',$playlist->id)}}">
                                     <button class="btn btn-outline-danger"
                                             onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
                                         <i class="fa fa-btn fa-ban" ></i>
