@@ -28,10 +28,14 @@ class ServiceImpl implements ServiceInterface {
 
     public function update($request, $id)
     {
+
     }
 
     public function create($request)
     {
         // TODO: Implement create() method.
+    }
+    public function playlists($user){
+
     }
 }
