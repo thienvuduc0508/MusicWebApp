@@ -21,6 +21,7 @@
                     <th>#</th>
                     <th>Tên</th>
                     <th>Mô tả</th>
+                    <th>Trạng thái</th>
                     <th>Chức năng</th>
                 </tr>
 
@@ -32,6 +33,9 @@
                             </td>
                             <td>
                                 {{$playlist->description}}
+                            </td>
+                            <td>
+                                {{$playlist->status}}
                             </td>
                             <td>
                                 <a href="{{route('playlists.detail',$playlist->id)}}">

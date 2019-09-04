@@ -18,6 +18,8 @@ Route::get('/newSong','GuestController@getAllNewSongs')->name('Guest.getAllNewSo
 Route::get('/mostListenSong','GuestController@getAllMostListenSongs')->name('Guest.getAllMostListenSongs');
 Route::get('/search', 'SongController@searchByName')->name('songs.searchByName');
 Route::get('playsong/{id}', 'SongController@showSong')->name('songs.play');
+Route::get('/newplaylists','PlaylistController@getAllNewPlaylists')->name('playlist.getAllNewPlaylists');
+
 
 
 Auth::routes();
@@ -43,7 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'PlaylistController@index')->name('playlists.showPlaylists');
         Route::get('create/', 'PlaylistController@create')->name('playlists.create');
         Route::post('create/', 'PlaylistController@store')->name('playlists.store');
-        Route::get('detail/', 'PlaylistController@show')->name('playlists.detail');
+        Route::get('detail/{id}', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
         Route::get('edit/{id}', 'PlaylistController@edit')->name('playlists.edit');
         Route::post('update/{id}', 'PlaylistController@update')->name('playlists.update');
         Route::get('delete/{id}', 'PlaylistController@destroy')->name('playlists.destroy');

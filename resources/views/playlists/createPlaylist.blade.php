@@ -21,6 +21,25 @@
                     <label class="form-group">Mô tả</label>
                     <textarea type="text" name="description" class="form-control"></textarea>
                 </div>
+                <fieldset class="form-group">
+                    <label class="form-group">Trạng thái</label>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="gridRadios1" value="public" checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                    Công khai
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="private">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Riêng tư
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
                 <br>
                <div>
                    <input type="submit" class="btn btn-success" value="Tạo Mới">
