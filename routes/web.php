@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'GuestController@index')->name('index');
 Route::get('/newSong','GuestController@getAllNewSongs')->name('Guest.getAllNewSongs');
 Route::get('/mostListenSong','GuestController@getAllMostListenSongs')->name('Guest.getAllMostListenSongs');
-Route::get('/search', 'SongController@searchByName')->name('songs.searchByName');
+//Route::get('/search', 'SongController@searchByName')->name('songs.searchByName');
 Route::get('playsong/{id}', 'SongController@showSong')->name('songs.play');
 Route::get('/newplaylists','PlaylistController@getAllNewPlaylists')->name('playlist.getAllNewPlaylists');
+Route::get('/search','GuestController@search')->name('search');
 
 
 

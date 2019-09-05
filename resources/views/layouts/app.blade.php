@@ -50,7 +50,7 @@
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <form class="form-inline" style="margin-right: 20px"  action="{{route('songs.searchByName')}} ">
+                        <form class="form-inline" style="margin-right: 20px"  action="{{route('search')}} ">
                             @csrf
                             <input class="form-control mr-sm-2" type="search" placeholder="Tìm Kiếm " aria-label="Search" name="keyword">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>

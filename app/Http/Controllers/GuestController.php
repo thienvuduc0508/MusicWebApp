@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Playlist;
 use App\Services\GuestServiceInterface;
 use App\Services\SongServiceInterface;
 use App\Song;
@@ -35,6 +36,17 @@ class GuestController extends Controller
     {
         $mostListenSongs = $this->guestService->getAllMostListenSongs();
         return view('songs.mostListenSong', compact('mostListenSongs'));
+    }
+    public function search(Request $request){
+        $keyword = $request->input('keyword');
+        if (!$keyword) {
+            return redirect()->back();
+        }
+        $songs = Song::where('name', 'LIKE', '%' . $keyword . '%')
+            ->get();
+        $playlists = Playlist::where('name', 'LIKE', '%' . $keyword . '%')
+            ->where('status', 'LIKE', '%' . 'public' . '%')->get();
+        return view('search', compact('songs', 'playlists','keyword'));
     }
 
 }

@@ -29,7 +29,9 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>
-                                {{$playlist->name}}
+                                <a href="{{route('playlists.detail',$playlist->id)}}" style="text-decoration: none">
+                                    {{$playlist->name}}
+                                </a>
                             </td>
                             <td>
                                 {{$playlist->description}}
@@ -38,9 +40,6 @@
                                 {{$playlist->status}}
                             </td>
                             <td>
-                                <a href="{{route('playlists.detail',$playlist->id)}}">
-                                    <button class="btn btn-outline-info"><i class="fa fa-info-circle"></i></button>
-                                </a>
                                 <a href="{{route('playlists.edit',$playlist->id)}}">
                                     <button class="btn btn-outline-warning"> <i class="fa fa-btn fa-edit"></i></button>
                                 </a>
