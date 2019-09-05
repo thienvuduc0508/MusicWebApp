@@ -32,4 +32,9 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
         $newPlaylits = $this->model->orderby('created_at', 'desc')->get();
         return $newPlaylits;
     }
+    public function deleteSongInPlaylist($playlistId,$songId)
+    {
+        $playlist = $this->model->findOrFail($playlistId);
+        $playlist->songs()->detach($songId);
+    }
 }

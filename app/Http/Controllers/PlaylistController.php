@@ -86,19 +86,25 @@ class PlaylistController extends Controller
     public function showAddSongToPlaylist($songId){
 
         $userId = Auth::id();
-        $songId = Song::findOrFail($songId)->id;
+        $songId = $this->songService->findById($songId);
         $playlists = $this->playlistService->playlists($userId);
         return view('playlists.addSongToPlayList',compact('playlists','songId'));
     }
     public function addSong($playlistId, $songId){
         $this->playlistService->addSong($playlistId, $songId);
-        Session::flash('success', "Thêm mới thành công playlist");
+        Session::flash('success', "Thêm bài hát vào playlist thành công");
         return redirect()->route('playlists.getSong',$playlistId);
     }
     public function getSongsInPlaylist($playlistId){
         $playlist = $this->playlistService->findById($playlistId);
         $songs = $playlist->songs;
-        return view('playlists.detailPlaylist',compact('songs'));
+        return view('playlists.detailPlaylist',compact('songs','playlist'));
+    }
+    public function deleteSongsInPlaylist($playlistId, $songId){
+    
+        $this->playlistService->deleteSongInPlaylist($playlistId,$songId);
+        Session::flash("success","Đã xóa bài hát khỏi playlist");
+        return redirect()->route('playlists.detail',$playlistId);
     }
 
 }

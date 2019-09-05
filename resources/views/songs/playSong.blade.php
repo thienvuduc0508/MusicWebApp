@@ -532,12 +532,11 @@
             &nbsp
             <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i> {{$song->view}}</div>
         </div>
-
         <audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>
     </div>
     <div class="mt-2">
         <a href="{{route('playlists.showAddSong',$song->id)}}">
-            <button type="button">Add to playlist</button>
+            <button type="button" class="btn btn-success">Thêm vào playlist</button>
         </a>
     </div>
     <div style="font-size: 20px" class="mt-3">
@@ -608,12 +607,12 @@
                 audio[0].pause();
             }
 
+
             if (self.hasClass('shuffle') || self.hasClass('repeat')) {
                 self.toggleClass('active');
             }
         }).on('mousedown', function () {
             var self = $(this);
-
             if (self.hasClass('ff')) {
                 player.addClass('ffing');
                 audio[0].playbackRate = 10;

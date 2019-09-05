@@ -8,10 +8,6 @@
                     {{ session('success') }}
                 </div>
             @endif
-
-            <a href="{{route('playlists.create')}}">
-                <button class="btn btn-success">Tạo Mới Playlist</button>
-            </a>
             @if(count($playlists)==0)
                 <p class="alert alert-warning">Bạn chưa có playlist</p>
             @else
@@ -21,7 +17,7 @@
                         <th>Tên</th>
                         <th>Mô tả</th>
                         <th>Trạng thái</th>
-                        <th>Add</th>
+                        <th>Thêm</th>
                     </tr>
 
                     @foreach($playlists as $key=>$playlist)
