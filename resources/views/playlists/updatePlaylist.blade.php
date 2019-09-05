@@ -38,7 +38,7 @@
                 </div>
             </fieldset>
                 <div>
-                    <button type="submit" class="btn btn-success">Cap nhat</button>
+                    <button type="submit" class="btn btn-success">Cập nhật</button>
                     <a href="{{route('playlists.showPlaylists')}}">
                         <button type="button" class="btn btn-dark">
                             Quay Lại
