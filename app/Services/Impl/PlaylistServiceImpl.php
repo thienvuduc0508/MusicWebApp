@@ -49,8 +49,6 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
     {
         $playlist = $this->repository->findById($playlistId);
         $this->repository->addSong($playlistId, $songId);
-        Session::flash('success', "Bạn đã thêm thành công vào playlist $playlist->name");
-
     }
     public function playlists($userId)
     {

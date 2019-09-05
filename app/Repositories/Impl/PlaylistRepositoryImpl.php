@@ -20,7 +20,7 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
     public function addSong($playlistId, $songId)
     {
         $playlist = $this->model->findOrFail($playlistId);
-        $playlist->songs->attach($songId);
+        $playlist->songs()->attach($songId);
     }
     public function playlists($userId)
     {

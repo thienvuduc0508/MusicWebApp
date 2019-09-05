@@ -38,9 +38,9 @@
                 </div>
             </fieldset>
                 <div>
-                    <input type="submit" class="btn btn-success" value="Cập nhật">
+                    <button type="submit" class="btn btn-success">Cap nhat</button>
                     <a href="{{route('playlists.showPlaylists')}}">
-                        <button class="btn btn-dark">
+                        <button type="button" class="btn btn-dark">
                             Quay Lại
                         </button>
                     </a>

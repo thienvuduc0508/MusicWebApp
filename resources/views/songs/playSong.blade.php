@@ -535,6 +535,11 @@
 
         <audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>
     </div>
+    <div class="mt-2">
+        <a href="{{route('playlists.showAddSong',$song->id)}}">
+            <button type="button">Add to playlist</button>
+        </a>
+    </div>
     <div style="font-size: 20px" class="mt-3">
         <label style="font-weight: bold">Lời Bài Hát</label>
         <br>

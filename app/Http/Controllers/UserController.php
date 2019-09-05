@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProfileRequest;
 use App\Services\UserServiceInterface;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -19,32 +20,32 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
-    public function editProfile($id)
+    public function editProfile()
     {
-        $user = $this->userService->findById($id);
+        $user = $this->userService->findById(Auth::id());
         return view('users.updateProfile', compact('user'));
     }
 
-    public function index($id)
+    public function index()
     {
-        $user = $this->userService->findById($id);
+        $user = $this->userService->findById(Auth::id());
         return view('users.showProfile', compact('user'));
     }
 
-    public function update(UpdateProfileRequest $request, $id)
+    public function update(UpdateProfileRequest $request)
     {
-        $this->userService->update($request, $id);
+        $this->userService->update($request, Auth::id());
         Session::flash('success', 'Cập nhật thông tin thành công');
-       return redirect()->route('user.index', $id);
+       return redirect()->route('user.index');
     }
 
-    public function changePassword($id)
+    public function changePassword()
     {
-        $user = $this->userService->findById($id);
+        $user = $this->userService->findById(Auth::id());
         return view('users.changePassword', compact('user'));
     }
-    public function updatePassword(ChangePasswordRequest $request,$id){
-        $user = $this->userService->findById($id);
+    public function updatePassword(ChangePasswordRequest $request){
+        $user = $this->userService->findById(Auth::id());
 
         if (!(Hash::check($request->get('current_password'), $user->password))) {
 
@@ -58,9 +59,9 @@ class UserController extends Controller
             . Vui lòng chọn một mật khẩu khác nhau.");
         }
 
-        $this->userService->updatePassword($request, $id);
+        $this->userService->updatePassword($request, Auth::id());
         Session::flash('success', 'Thay đổi mật khẩu thành công !');
-        return redirect()->route('user.index',$id);
+        return redirect()->route('user.index');
     }
 
 }
