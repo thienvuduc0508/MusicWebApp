@@ -25,4 +25,9 @@ public function searchSongByName($keyword)
     $songs = $this->model->where('name','like','%'.$keyword.'%')->get();
     return $songs;
 }
+    public function getSongsInPlaylist($playlist)
+    {
+        return $playlist->songs()->paginate(4);
+    }
+
 }

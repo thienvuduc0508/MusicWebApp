@@ -4,6 +4,7 @@
     @if(count($songs) == 0)
         <p class="alert alert-warning">Không tìm thấy bài hát trong hệ thống</p>
     @else
+        <p style="font-weight: bold;color: blue;font-size: 20px">Tìm được {{count($songs)}} bài hát với từ khóa: <span style="color:red">{{$keyword}}</span></p>
         <table class="table table-striped text-center mt-2">
             <tr>
                 <th>#</th>

@@ -9,4 +9,7 @@ class Song extends Model
     public function user(){
      return $this->belongsTo('App\User');
     }
+    public function playlists(){
+        return $this->belongsToMany('App\Playlist');
+    }
 }

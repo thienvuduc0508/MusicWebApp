@@ -10,4 +10,5 @@ interface GuestServiceInterface extends ServiceInterface
     public function getRandomSongs();
     public function getAllNewSongs();
     public function getAllMostListenSongs();
+
 }

@@ -37,13 +37,20 @@
                         <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none" class="dropdown-item">Bài Hát Được Nghe Nhiều Nhất</a>
                     </div>
                 </div>
+                <div class="dropdown" >
+                    <a class="dropdown navbar-brand" style="color: white">Playlist</a>
+                    <div class="dropdown-content dropdown-menu dropdown-menu-lg-left">
+                        <a href="{{route('playlist.getAllNewPlaylists')}}" style="text-decoration: none" class="dropdown-item">Playlist Mới Nhất</a>
+                        <a href="#" style="text-decoration: none" class="dropdown-item">Playlist Được Nghe Nhiều Nhất</a>
+                    </div>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <form class="form-inline" style="margin-right: 20px"  action="{{route('songs.searchByName')}} ">
+                        <form class="form-inline" style="margin-right: 20px"  action="{{route('search')}} ">
                             @csrf
                             <input class="form-control mr-sm-2" type="search" placeholder="Tìm Kiếm " aria-label="Search" name="keyword">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
@@ -65,9 +72,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/profile/'.Auth::user()->id) }}"><i style="margin-right: 5px" class="fa fa-btn fa-user"></i>Hồ Sơ</a>
-                                    <a class="dropdown-item" href="{{ route('songs.index', Auth::user()->id) }}"><i style="margin-right: 5px" class="fa fa-btn fa-music"></i>Nhạc Cá Nhân</a>
-                                    <a href="{{route('change.password',Auth::user()->id)}}" class="dropdown-item"><i class="fa fa-lock" style="margin-right: 5px"></i>Đổi Mật Khẩu</a>
+                                    <a class="dropdown-item" href="{{ route('user.index') }}"><i style="margin-right: 5px" class="fa fa-btn fa-user"></i>Hồ Sơ</a>
+                                    <a class="dropdown-item" href="{{ route('songs.index') }}"><i style="margin-right: 5px" class="fa fa-btn fa-music"></i>Nhạc Cá Nhân</a>
+                                    <a class="dropdown-item" href="{{ route('playlists.showPlaylists') }}"><i style="margin-right: 5px" class="fa fa-toggle-right"></i>Playlist Cá Nhân</a>
+                                    <a href="{{route('change.password')}}" class="dropdown-item"><i class="fa fa-lock" style="margin-right: 5px"></i>Đổi Mật Khẩu</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick=" event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

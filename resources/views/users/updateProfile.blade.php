@@ -3,11 +3,11 @@
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header text-md-center" style="font-size: 20px;font-weight: bold">{{ __('Chỉnh Sửa Thông Tin Cá Nhân ') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.update', ['id' => $user->id]) }}"
+                        <form method="POST" action="{{ route('user.update') }}"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -84,7 +84,7 @@
                                                 {{ __('Cập Nhật') }}
                                             </button>
 
-                                            <a href="{{route('user.index',$user->id)}}">
+                                            <a href="{{route('user.index')}}">
                                                 <button type="button" class="btn btn-dark">
                                                     Quay Lại
                                                 </button>

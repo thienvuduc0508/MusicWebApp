@@ -57,7 +57,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         Đổi Mật Khẩu
                                     </button>
-                                    <a href="{{route('user.index',$user->id)}}">
+                                    <a href="{{route('user.index')}}">
                                         <button class="btn btn-dark" type="button">
                                             Hủy
                                         </button>
