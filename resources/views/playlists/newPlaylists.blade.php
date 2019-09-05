@@ -14,7 +14,6 @@
                         <th>#</th>
                         <th>Tên</th>
                         <th>Mô tả</th>
-                        <th>Chức năng</th>
                     </tr>
 
                     @foreach($newPlaylists as $key=>$newPlaylist)
@@ -22,16 +21,14 @@
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>
-                                    {{$newPlaylist->name}}
+                                    <a href="{{route('playlists.detail',$newPlaylist->id)}}" style="text-decoration: none">
+                                        {{$newPlaylist->name}}
+                                    </a>
                                 </td>
                                 <td>
                                     {{$newPlaylist->description}}
                                 </td>
-                                <td>
-                                    <a href="{{route('playlists.detail',$newPlaylist->id)}}">
-                                        <button class="btn btn-outline-info"><i class="fa fa-info-circle"></i></button>
-                                    </a>
-                                </td>
+
                             </tr>
                         @endif
                     @endforeach
