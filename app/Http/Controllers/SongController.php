@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateSongRequest;
 use App\Http\Requests\UpdateSongRequest;
+use App\Playlist;
 use App\Services\SongServiceInterface;
 use App\Song;
 use App\User;

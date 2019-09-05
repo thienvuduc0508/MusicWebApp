@@ -38,7 +38,7 @@
                                     <label for="update"
                                            class="col-md-4 col-form-label text-md-right">{{__('')}}</label>
                                     <div class="col-md-6">
-                                        <a href="{{route('user.edit',$user->id)}}">
+                                        <a href="{{route('user.edit')}}">
                                             <button type="button" class="btn btn-primary">
                                                 Cập Nhật Thông Tin Cá Nhân
                                             </button>
