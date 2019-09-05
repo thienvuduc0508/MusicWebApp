@@ -17,7 +17,7 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
     protected $userRepository;
     protected $songRepository;
 
-    public function __construct(PlaylistRepositoryInterface $playlistRepository ,
+    public function __construct(PlaylistRepositoryInterface $playlistRepository,
                                 UserRepositoryInterface $userRepository,
                                 SongRepositoryInterface $songRepository)
     {
@@ -25,6 +25,7 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
         $this->userRepository = $userRepository;
         $this->songRepository = $songRepository;
     }
+
     public function create($request)
     {
         $playlist = new Playlist();
@@ -35,6 +36,7 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
         $this->repository->create($playlist);
 
     }
+
     public function update($request, $id)
     {
         $playlist = $this->repository->findById($id);
@@ -47,18 +49,35 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
 
     public function addSong($playlistId, $songId)
     {
-        $playlist = $this->repository->findById($playlistId);
-        $this->repository->addSong($playlistId, $songId);
+        $playlistSongIds = $this->getSongIdsPlaylist($playlistId,$songId);
+        if (!in_array($songId, $playlistSongIds)) {
+            $playlist = $this->repository->findById($playlistId);
+            $this->repository->addSong($playlistId, $songId);
+
+            return true;
+        }
+
+        return false;
     }
+
+    public function getSongIdsPlaylist($playlistId,$songId)
+    {
+
+        $playlistIds = $this->repository->getSongIdsInPlaylist($playlistId,$songId);
+        return $playlistIds;
+    }
+
     public function playlists($userId)
     {
         $playlists = $this->repository->playlists($userId);
         return $playlists;
     }
+
     public function getAllNewPlaylists()
     {
         return $this->repository->getAllNewPlaylists();
     }
+
     public function deleteSongInPlaylist($playlistId, $songId)
     {
         $playlist = $this->repository->findById($playlistId);

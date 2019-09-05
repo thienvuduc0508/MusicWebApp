@@ -9,6 +9,16 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session('done'))
+            <div class="alert alert-success">
+                {{ session('done') }}
+            </div>
+        @endif
+        @if (session('failed'))
+            <div class="alert alert-success">
+                {{ session('failed') }}
+            </div>
+        @endif
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
