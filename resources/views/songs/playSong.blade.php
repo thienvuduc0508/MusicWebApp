@@ -536,7 +536,7 @@
     </div>
     <div class="mt-2">
         <a href="{{route('playlists.showAddSong',$song->id)}}">
-            <button type="button">Add to playlist</button>
+            <button type="button" class="btn btn-success">Thêm vào playlist</button>
         </a>
     </div>
     <div style="font-size: 20px" class="mt-3">
