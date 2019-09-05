@@ -31,7 +31,7 @@ class SongController extends Controller
     public function store(CreateSongRequest $request){
 
         $this->songService->create($request);
-//        Session::flash('success','Tạo mới bài hát thành công');
+        Session::flash('success','Tạo mới bài hát thành công');
         return redirect()->route('songs.index');
     }
     public function showSong($id){
@@ -54,7 +54,7 @@ class SongController extends Controller
     }
     public function update(UpdateSongRequest $request,$id){
         $this->songService->update($request,$id);
-//        Session::flash('success', 'Cập nhật thông tin thành công');
+        Session::flash('success', 'Cập nhật thông tin thành công');
         return redirect()->route('songs.index');
     }
     public function searchByName(Request $request)
