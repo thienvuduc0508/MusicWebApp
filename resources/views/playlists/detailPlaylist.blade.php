@@ -8,6 +8,10 @@
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
+        @elseif(session('errors'))
+            <div class="alert alert-danger">
+                {{ session('errors') }}
+            </div>
         @endif
         @if (session('done'))
             <div class="alert alert-success">
@@ -19,6 +23,10 @@
                 {{ session('failed') }}
             </div>
         @endif
+        <audio controls id="playmusicPlay" autoplay>
+            <source id="audioSource" src="" type="audio/ogg">
+
+        </audio>
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
@@ -32,7 +40,8 @@
                 @foreach($songs as $key=>$song)
                     <tr style="font-size: 20px">
                         <td>{{++$key}}</td>
-                        <td><a href="{{route("songs.play",$song->id)}}" style="text-decoration: none">{{$song->name}}</a>
+                        <td><a href="{{route("songs.play",$song->id)}}"
+                               style="text-decoration: none">{{$song->name}}</a>
                         </td>
                         <td>
                             <img class="play-music" src="{{asset('storage/'.$song->image)}}"
@@ -46,7 +55,7 @@
                             <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
                                 <button class="btn btn-outline-danger"
                                         onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
-                                    <i class="fa fa-btn fa-ban" ></i>
+                                    <i class="fa fa-btn fa-ban"></i>
                                 </button>
                             </a>
                         </td>
@@ -58,34 +67,17 @@
         </table>
         </div>
 
-        <audio controls id="playmusicPlay" autoplay>
-            <source id="audioSource" src="" type="audio/ogg">
-            Your browser does not support the audio element.
-        </audio>
-
-
         <script>
             var playList = `<?php echo json_encode($arr); ?>`;
-            // let playList = [
-            //     "audios/m6gBff3U7anTQOeZmHRSPA7pM57VQPbmP4jjuLTk.mpga",
-            //     "audios/bAwNDFvqYXXFRJCPYpwRCT0Tg16kzZTyHryity4F.mpga",
-            //     "audios/BGYH3r716pdOfaoXlmzddCMyhZKBTN07nfBXpFhD.mpga"
-            // ];
-
             var playList1 = JSON.parse(playList);
-
             let audio = document.getElementById('playmusicPlay');
             var source = document.getElementById('audioSource');
 
             source.src = "http://localhost:8000/storage/" + playList1[0];
-           audio.load();
-           audio.play();
+            audio.load();
+            audio.play();
+            let i = 0;
 
-
-             let i = 0;
-           // // audio.src = 'storage/' + playList[0].audio;
-           //  audioPromise = audio.play();
-           //  // var src = '';
             audio.addEventListener('ended', function () {
                 console.log(playList1);
                 i = ++i < playList1.length ? i : 0;
@@ -96,16 +88,6 @@
                 audio.load();
                 audio.play();
             });
-           //
-           //
-           //  if (audioPromise !== 'undefined') {
-           //      audioPromise.then(function () {
-           //          audio.play()
-           //      }).catch(function () {
-           //      })
-           //  }
-
         </script>
-
 @endsection
 

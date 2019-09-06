@@ -546,7 +546,10 @@
     @endif
     <div class="mt-2">
         <a href="{{route('playlists.showAddSong',$song->id)}}">
-            <button type="button" class="btn btn-success">Thêm vào playlist</button>
+            <button type="button" class="btn btn-info" style="font-size: 20px">
+                <img src="{{asset('https://image.flaticon.com/icons/svg/865/865922.svg')}}" alt="" height="25px">
+                Thêm vào playlist
+            </button>
         </a>
     </div>
     <div style="font-size: 20px" class="mt-3">

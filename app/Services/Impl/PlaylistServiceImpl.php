@@ -51,7 +51,7 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
     {
         $playlistSongIds = $this->getSongIdsPlaylist($playlistId,$songId);
         if (!in_array($songId, $playlistSongIds)) {
-            $playlist = $this->repository->findById($playlistId);
+//            $playlist = $this->repository->findById($playlistId);
             $this->repository->addSong($playlistId, $songId);
 
             return true;
