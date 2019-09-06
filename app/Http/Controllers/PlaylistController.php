@@ -52,16 +52,13 @@ class PlaylistController extends Controller
     public function showDetailPlaylist($id)
     {
         $playlist = $this->playlistService->findById($id);
-        $songs = $this->songService->getSongsInPlaylist($playlist);
         $data = $playlist->songs;
-
-
         $arr = [];
         foreach ($data as $song) {
             array_push($arr, $song->audio);
         }
 
-        return view('playlists.detailPlaylist', compact('playlist','songs', 'arr'));
+        return view('playlists.detailPlaylist', compact('playlist','data', 'arr'));
       }
 
 

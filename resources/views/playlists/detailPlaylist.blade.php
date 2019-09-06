@@ -1,33 +1,10 @@
 @extends('layouts.app')
 @section('content')
     <h1 class="text-center text-capitalize">Danh sách bài hát trong playlist</h1>
-    @if(count($songs)==0)
+    @if(count($data)==0)
         <p class="alert alert-warning">Chưa có bài hát nào</p>
     @else
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @elseif(session('errors'))
-            <div class="alert alert-danger">
-                {{ session('errors') }}
-            </div>
-        @endif
-        @if (session('done'))
-            <div class="alert alert-success">
-                {{ session('done') }}
-            </div>
-        @endif
-        @if (session('failed'))
-            <div class="alert alert-success">
-                {{ session('failed') }}
-            </div>
-        @endif
-        <audio controls id="playmusicPlay" autoplay>
-            <source id="audioSource" src="" type="audio/ogg">
-
-        </audio>
-        <table class="table table-striped text-center mt-2  ">
+        <table class="table table-striped text-center mt-4  ">
             <tr>
                 <th>#</th>
                 <th>Tên Bài Hát</th>
@@ -37,7 +14,7 @@
             </tr>
             <p id="a"></p>
             <div id="playlist">
-                @foreach($songs as $key=>$song)
+                @foreach($data as $key=>$song)
                     <tr style="font-size: 20px">
                         <td>{{++$key}}</td>
                         <td><a href="{{route("songs.play",$song->id)}}"
@@ -65,8 +42,6 @@
 
             @endif
         </table>
-        </div>
-
         <script>
             var playList = `<?php echo json_encode($arr); ?>`;
             var playList1 = JSON.parse(playList);
