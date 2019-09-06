@@ -94,9 +94,9 @@ class PlaylistController extends Controller
         $isAdded = $this->playlistService->addSong($playlistId, $songId);
 
         if ($isAdded) {
-            Session::flash('done', "Thêm bài hát vào playlist thành công");
+            Session::flash('success', "Thêm bài hát vào playlist thành công");
         } else {
-            Session::flash('failed', "Bài hát đã có trong playlist");
+            Session::flash('errors', "Bài hát đã có trong playlist");
         }
 
         return redirect()->route('playlists.getSong',$playlistId);
@@ -107,7 +107,7 @@ class PlaylistController extends Controller
         return view('playlists.detailPlaylist',compact('songs','playlist'));
     }
     public function deleteSongsInPlaylist($playlistId, $songId){
-    
+
         $this->playlistService->deleteSongInPlaylist($playlistId,$songId);
         Session::flash("success","Đã xóa bài hát khỏi playlist");
         return redirect()->route('playlists.detail',$playlistId);

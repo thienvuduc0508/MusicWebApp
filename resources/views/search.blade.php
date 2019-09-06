@@ -36,7 +36,7 @@
             <p class="alert alert-warning">Không tìm thấy playlist nào trên hệ thống phù hợp với từ khóa: <span
                     style="color:red">{{$keyword}}</span></p>
         @else
-            <p style="font-weight: bold;color: blue;font-size: 20px">Tìm được {{count($playlists)}} bài hát với từ khóa: <span
+            <p style="font-weight: bold;color: blue;font-size: 20px">Tìm được {{count($playlists)}} playlist với từ khóa: <span
                     style="color:red">{{$keyword}}</span></p>
             <p class="text-hide">
                 {{$i = 1}}
