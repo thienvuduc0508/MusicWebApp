@@ -495,6 +495,7 @@
 
     </head>
     <body>
+
     <div class="player paused mt-5">
         <div class="album">
             <div class="cover">
@@ -534,6 +535,15 @@
         </div>
         <audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>
     </div>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @elseif(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="mt-2">
         <a href="{{route('playlists.showAddSong',$song->id)}}">
             <button type="button" class="btn btn-success">Thêm vào playlist</button>

@@ -11,6 +11,7 @@ use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use phpDocumentor\Reflection\Types\This;
 
 class PlaylistController extends Controller
 {
@@ -52,7 +53,15 @@ class PlaylistController extends Controller
     {
         $playlist = $this->playlistService->findById($id);
         $songs = $this->songService->getSongsInPlaylist($playlist);
-        return view('playlists.detailPlaylist', compact('playlist','songs'));
+        $data = $playlist->songs;
+
+
+        $arr = [];
+        foreach ($data as $song) {
+            array_push($arr, $song->audio);
+        }
+
+        return view('playlists.detailPlaylist', compact('playlist','songs', 'arr'));
       }
 
 
@@ -94,12 +103,12 @@ class PlaylistController extends Controller
         $isAdded = $this->playlistService->addSong($playlistId, $songId);
 
         if ($isAdded) {
-            Session::flash('done', "Thêm bài hát vào playlist thành công");
+            Session::flash('success', "Thêm bài hát vào playlist thành công");
         } else {
-            Session::flash('failed', "Bài hát đã có trong playlist");
+            Session::flash('error', "Bài hát đã có trong playlist");
         }
 
-        return redirect()->route('playlists.getSong',$playlistId);
+        return redirect()->route('songs.play',$songId);
     }
     public function getSongsInPlaylist($playlistId){
         $playlist = $this->playlistService->findById($playlistId);

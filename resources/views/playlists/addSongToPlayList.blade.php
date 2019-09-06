@@ -24,7 +24,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>
-                                <a href="{{route('playlists.detail',$playlist->id)}}" style="text-decoration: none">
+                                <a href="{{route('playlists.addSong',[$playlist->id,$songId])}}" style="text-decoration: none">
                                     {{$playlist->name}}
                                 </a>
                             </td>
