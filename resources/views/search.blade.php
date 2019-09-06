@@ -53,7 +53,7 @@
                         <tr>
                             <td>{{$i++}}</td>
                             <td>
-                                <a href="{{route('playlists.detail',$playlist->id)}}" style="text-decoration: none">
+                                <a href="{{route('playlist.guestPlaylists',$playlist->id)}}" style="text-decoration: none">
                                     {{$playlist->name}}
                                 </a>
                             </td>

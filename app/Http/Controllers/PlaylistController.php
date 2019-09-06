@@ -112,6 +112,10 @@ class PlaylistController extends Controller
         Session::flash("success","Đã xóa bài hát khỏi playlist");
         return redirect()->route('playlists.detail',$playlistId);
     }
-
+    public function getSongsInPlaylistForGuest($playlistId){
+        $playlist = $this->playlistService->findById($playlistId);
+        $songs = $playlist->songs;
+        return view('playlists.guestPlaylist',compact('songs','playlist'));
+    }
 }
 
