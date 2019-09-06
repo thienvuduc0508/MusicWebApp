@@ -55,7 +55,6 @@ class PlaylistController extends Controller
         $songs = $this->songService->getSongsInPlaylist($playlist);
         $data = $playlist->songs;
 
-
         $arr = [];
         foreach ($data as $song) {
             array_push($arr, $song->audio);
@@ -123,8 +122,21 @@ class PlaylistController extends Controller
     }
     public function getSongsInPlaylistForGuest($playlistId){
         $playlist = $this->playlistService->findById($playlistId);
-        $songs = $playlist->songs;
-        return view('playlists.guestPlaylist',compact('songs','playlist'));
+        $data = $playlist->songs;
+        $arr = [];
+        $arrNameSong = [];
+        $arrViewSong = [];
+        $arrImageSong = [];
+
+
+        foreach ($data as $song) {
+            array_push($arr, $song->audio);
+            array_push($arrNameSong, $song->name);
+            array_push($arrViewSong, $song->view);
+            array_push($arrImageSong, $song->image);
+        }
+
+        return view('playlists.guestPlaylist',compact('data','arr','arrNameSong','arrViewSong','arrImageSong'));
     }
 }
 

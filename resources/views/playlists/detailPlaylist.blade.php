@@ -4,25 +4,6 @@
     @if(count($songs)==0)
         <p class="alert alert-warning">Chưa có bài hát nào</p>
     @else
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @elseif(session('errors'))
-            <div class="alert alert-danger">
-                {{ session('errors') }}
-            </div>
-        @endif
-        @if (session('done'))
-            <div class="alert alert-success">
-                {{ session('done') }}
-            </div>
-        @endif
-        @if (session('failed'))
-            <div class="alert alert-success">
-                {{ session('failed') }}
-            </div>
-        @endif
         <audio controls id="playmusicPlay" autoplay>
             <source id="audioSource" src="" type="audio/ogg">
 
