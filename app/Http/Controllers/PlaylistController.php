@@ -53,13 +53,22 @@ class PlaylistController extends Controller
     {
         $playlist = $this->playlistService->findById($id);
         $data = $playlist->songs;
+
         $arr = [];
+        $arrNameSong = [];
+        $arrViewSong = [];
+        $arrImageSong = [];
+
+
         foreach ($data as $song) {
             array_push($arr, $song->audio);
+            array_push($arrNameSong, $song->name);
+            array_push($arrViewSong, $song->view);
+            array_push($arrImageSong, $song->image);
         }
 
-        return view('playlists.detailPlaylist', compact('playlist','data', 'arr'));
-      }
+        return view('playlists.detailPlaylist',compact('playlist','data','arr','arrNameSong','arrViewSong','arrImageSong'));
+    }
 
 
     public function edit($playlistId)
@@ -120,8 +129,21 @@ class PlaylistController extends Controller
     }
     public function getSongsInPlaylistForGuest($playlistId){
         $playlist = $this->playlistService->findById($playlistId);
-        $songs = $playlist->songs;
-        return view('playlists.guestPlaylist',compact('songs','playlist'));
+        $data = $playlist->songs;
+        $arr = [];
+        $arrNameSong = [];
+        $arrViewSong = [];
+        $arrImageSong = [];
+
+
+        foreach ($data as $song) {
+            array_push($arr, $song->audio);
+            array_push($arrNameSong, $song->name);
+            array_push($arrViewSong, $song->view);
+            array_push($arrImageSong, $song->image);
+        }
+
+        return view('playlists.guestPlaylist',compact('data','arr','arrNameSong','arrViewSong','arrImageSong'));
     }
 }
 
