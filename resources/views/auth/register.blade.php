@@ -66,6 +66,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Đăng Ký
                                 </button>
+                                <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" type="button"> Facebook</a>
                             </div>
                         </div>
                     </form>

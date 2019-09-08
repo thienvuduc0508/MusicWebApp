@@ -56,6 +56,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Đăng Nhập
                                 </button>
+                                <a href="{{ url('/login/facebook') }}" type="button" class="btn btn-facebook">facebook</a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
