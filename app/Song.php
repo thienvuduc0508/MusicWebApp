@@ -12,4 +12,7 @@ class Song extends Model
     public function playlists(){
         return $this->belongsToMany('App\Playlist');
     }
+    public function singer(){
+        return $this->belongsToMany(Singer::class);
+    }
 }

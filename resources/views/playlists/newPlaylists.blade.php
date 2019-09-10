@@ -14,6 +14,7 @@
                         <th>#</th>
                         <th>Tên</th>
                         <th>Mô tả</th>
+                        <th>Người đăng</th>
                     </tr>
 
                     @foreach($newPlaylists as $key=>$newPlaylist)
@@ -27,6 +28,9 @@
                                 </td>
                                 <td>
                                     {{$newPlaylist->description}}
+                                </td>
+                                <td>
+                                    {{$newPlaylist->user->name}}
                                 </td>
 
                             </tr>
