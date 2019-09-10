@@ -36,7 +36,6 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
     {
         $playlist = $this->model->findOrFail($playlistId);
         $playlist->songs()->detach($songId);
-//        $playlist->detach() ;
     }
     public function getSongIdsInPlaylist($playlistId, $songId)
     {
@@ -46,7 +45,6 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
     public function deletePlaylist($playlistId, $songId){
         $playlist = $this->model->findOrFail($playlistId);
         $playlist->songs()->detach($songId);
-        $playlist->detach() ;
     }
 
-}
+      }

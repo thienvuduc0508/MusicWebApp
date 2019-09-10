@@ -47,6 +47,11 @@
                 <source id="audioSource" src="" type="audio/ogg">
             </audio>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
@@ -82,7 +87,6 @@
                     </tr>
                 @endforeach
             </div>
-
             @endif
         </table>
         <script>
