@@ -83,4 +83,8 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
         $this->repository->deleteSongInPlaylist($playlistId, $songId);
 
     }
+    public function deleteSongOfPlaylist($playlistId, $songId)
+    {
+        $this->repository->deleteSongOfPlaylist($playlistId,$songId);
+    }
 }

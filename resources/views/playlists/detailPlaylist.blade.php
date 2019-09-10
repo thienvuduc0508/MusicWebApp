@@ -47,6 +47,11 @@
                 <source id="audioSource" src="" type="audio/ogg">
             </audio>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
@@ -72,7 +77,7 @@
                             <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
                         </td>
                         <td>
-                            <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
+                            <a href="{{route('playlists.deleteSongOfPlaylist',[$playlist->id,$song->id])}}">
                                 <button class="btn btn-outline-danger"
                                         onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
                                     <i class="fa fa-btn fa-ban"></i>
@@ -82,7 +87,6 @@
                     </tr>
                 @endforeach
             </div>
-
             @endif
         </table>
         <script>

@@ -57,6 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('add-song/{id}/song/{songId}', 'PlaylistController@addSong')->name('playlists.addSong');
         Route::get('/{id}/songs', 'PlaylistController@getSongsInPlaylist')->name('playlists.getSong');
         Route::get('{playlistId}/{id}/song/delete-song', 'PlaylistController@deleteSongsInPlaylist')->name('playlists.deleteSong');
+        Route::get('{playlistId}/{id}/song/delete-song', 'PlaylistController@deleteSongOfPlaylist')->name('playlists.deleteSongOfPlaylist');
 
     });
 });
