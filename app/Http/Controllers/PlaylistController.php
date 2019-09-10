@@ -84,13 +84,22 @@ class PlaylistController extends Controller
         Session::flash('success', "Cập nhật thành công playlist");
         return redirect()->route('playlists.showPlaylists');
     }
-
-
-    public function destroy($id)
-    {
-        $this->playlistService->destroy($id);
+    public function destroy($playlistId){
+        $this->playlistService->destroy($playlistId);
         Session::flash('success', 'Xóa playlist thành công');
         return redirect()->route('playlists.showPlaylists');
+    }
+
+    public function deletePlaylist($playlistId,$songId){
+        $this->playlistService->deletePlaylist($playlistId,$songId);
+        Session::flash('success', 'Xóa playlist thành công');
+        return redirect()->route('playlists.showPlaylists');
+    }
+    public function deleteSongsInPlaylist($playlistId, $songId)
+    {
+        $this->playlistService->deleteSongInPlaylist($playlistId, $songId);
+        Session::flash("success", "Đã xóa bài hát khỏi playlist");
+        return redirect()->route('playlists.detail', $playlistId);
     }
 
     public function getAllNewPlaylists()
@@ -128,22 +137,7 @@ class PlaylistController extends Controller
         return view('playlists.detailPlaylist', compact('songs', 'playlist'));
     }
 
-    public function deleteSongsInPlaylist($playlistId, $songId)
-    {
-
-        $this->playlistService->deleteSongInPlaylist($playlistId, $songId);
-        Session::flash("success", "Đã xóa bài hát khỏi playlist");
-        return redirect()->route('playlists.detail', $playlistId);
-    }
-
-    public function deleteSongOfPlaylist($playlistId, $songId)
-    {
-        $this->playlistService->deleteSongOfPlaylist($playlistId,$songId);
-        Session::flash("success", "Đã xóa bài hát này !");
-        return redirect()->route('playlists.detail',$playlistId);
-    }
-
-    public function getSongsInPlaylistForGuest($playlistId)
+     public function getSongsInPlaylistForGuest($playlistId)
     {
         $playlist = $this->playlistService->findById($playlistId);
         $data = $playlist->songs;

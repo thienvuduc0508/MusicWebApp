@@ -78,7 +78,7 @@
                             <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
                         </td>
                         <td>
-                            <a href="{{route('playlists.deleteSongOfPlaylist',[$playlist->id,$song->id])}}">
+                            <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
                                 <button class="btn btn-outline-danger"
                                         onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
                                     <i class="fa fa-btn fa-ban"></i>

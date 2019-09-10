@@ -81,6 +81,8 @@
                                     <a class="dropdown-item" href="{{ route('user.index') }}"><i style="margin-right: 5px" class="fa fa-btn fa-user"></i>Hồ Sơ</a>
                                     <a class="dropdown-item" href="{{ route('songs.index') }}"><i style="margin-right: 5px" class="fa fa-btn fa-music"></i>Nhạc Cá Nhân</a>
                                     <a class="dropdown-item" href="{{ route('playlists.showPlaylists') }}"><i style="margin-right: 5px" class="fa fa-toggle-right"></i>Playlist Cá Nhân</a>
+                                    <a class="dropdown-item" href="{{ route('singer.index') }}"><i style="margin-right: 5px" class="fa fa-toggle-right"></i>Ca Sỹ Của Tôi</a>
+
                                     <a href="{{route('change.password')}}" class="dropdown-item"><i class="fa fa-lock" style="margin-right: 5px"></i>Đổi Mật Khẩu</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick=" event.preventDefault();

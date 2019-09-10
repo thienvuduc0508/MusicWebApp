@@ -10,7 +10,6 @@ interface PlaylistServiceInterface extends ServiceInterface
     public function playlists($userId);
     public function getAllNewPlaylists();
     public function deleteSongInPlaylist($playlistId,$songId);
-    public function deleteSongOfPlaylist($playlistId,$songId);
     public function getSongIdsPlaylist($playlistId,$songId);
-
+    public function deletePlaylist($playlistId,$songId);
 }
