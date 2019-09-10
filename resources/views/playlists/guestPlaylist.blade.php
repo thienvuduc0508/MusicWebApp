@@ -4,6 +4,7 @@
     @if(count($data)==0)
         <p class="alert alert-warning">Chưa có bài hát nào</p>
     @else
+
         <div class="player paused mt-5">
             <div class="album">
                 <div class="cover">
@@ -40,51 +41,39 @@
                 &nbsp
                 &nbsp
                 <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
-                    <span id="viewSong"></span></div>
+                <span id="viewSong"></span></div>
             </div>
-            {{--<audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>--}}
+            {{--            <audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>--}}
             <audio controls id="playmusicPlay">
                 <source id="audioSource" src="" type="audio/ogg">
             </audio>
         </div>
+
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
                 <th>Tên Bài Hát</th>
                 <th>Ảnh</th>
                 <th>Lượt Nghe</th>
-                <th>Xóa</th>
             </tr>
-            <p id="a"></p>
-            <div id="playlist">
-                @foreach($data as $key=>$song)
-                    <tr style="font-size: 20px">
-                        <td>{{++$key}}</td>
-                        <td><a href="{{route("songs.play",$song->id)}}"
-                               style="text-decoration: none">{{$song->name}}</a>
-                        </td>
-                        <td>
-                            <img class="play-music" src="{{asset('storage/'.$song->image)}}"
-                                 style="width: 50px;height: 50px; border-radius: 50px">
-                        </td>
+            @foreach($data as $key=>$song)
+                <tr style="font-size: 20px">
+                    <td>{{++$key}}</td>
+                    <td><a href="{{route("songs.play",$song->id)}}" style="text-decoration: none">{{$song->name}}</a>
+                    </td>
+                    <td>
+                        <img class="play-music" src="{{asset('storage/'.$song->image)}}"
+                             style="width: 50px;height: 50px; border-radius: 50px">
+                    </td>
 
-                        <td>
-                            <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
-                        </td>
-                        <td>
-                            <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
-                                <button class="btn btn-outline-danger"
-                                        onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
-                                    <i class="fa fa-btn fa-ban"></i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-            </div>
-
+                    <td>
+                        <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
+                    </td>
+                </tr>
+            @endforeach
             @endif
         </table>
+        </div>
         <script>
             var playList = `<?php echo json_encode($arr); ?>`;
             var nameSong = `<?php echo json_encode($arrNameSong); ?>`;

@@ -36,6 +36,7 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
     {
         $playlist = $this->model->findOrFail($playlistId);
         $playlist->songs()->detach($songId);
+        $playlist->detach() ;
     }
     public function getSongIdsInPlaylist($playlistId, $songId)
     {

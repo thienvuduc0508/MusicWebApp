@@ -11,6 +11,7 @@ use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use phpDocumentor\Reflection\Types\This;
 
 class PlaylistController extends Controller
 {
@@ -51,9 +52,23 @@ class PlaylistController extends Controller
     public function showDetailPlaylist($id)
     {
         $playlist = $this->playlistService->findById($id);
-        $songs = $this->songService->getSongsInPlaylist($playlist);
-        return view('playlists.detailPlaylist', compact('playlist','songs'));
-      }
+        $data = $playlist->songs;
+
+        $arr = [];
+        $arrNameSong = [];
+        $arrViewSong = [];
+        $arrImageSong = [];
+
+
+        foreach ($data as $song) {
+            array_push($arr, $song->audio);
+            array_push($arrNameSong, $song->name);
+            array_push($arrViewSong, $song->view);
+            array_push($arrImageSong, $song->image);
+        }
+
+        return view('playlists.detailPlaylist',compact('playlist','data','arr','arrNameSong','arrViewSong','arrImageSong'));
+    }
 
 
     public function edit($playlistId)
@@ -94,12 +109,12 @@ class PlaylistController extends Controller
         $isAdded = $this->playlistService->addSong($playlistId, $songId);
 
         if ($isAdded) {
-            Session::flash('done', "Thêm bài hát vào playlist thành công");
+            Session::flash('success', "Thêm bài hát vào playlist thành công");
         } else {
-            Session::flash('failed', "Bài hát đã có trong playlist");
+            Session::flash('error', "Bài hát đã có trong playlist");
         }
 
-        return redirect()->route('playlists.getSong',$playlistId);
+        return redirect()->route('songs.play',$songId);
     }
     public function getSongsInPlaylist($playlistId){
         $playlist = $this->playlistService->findById($playlistId);
@@ -107,11 +122,28 @@ class PlaylistController extends Controller
         return view('playlists.detailPlaylist',compact('songs','playlist'));
     }
     public function deleteSongsInPlaylist($playlistId, $songId){
-    
+
         $this->playlistService->deleteSongInPlaylist($playlistId,$songId);
         Session::flash("success","Đã xóa bài hát khỏi playlist");
         return redirect()->route('playlists.detail',$playlistId);
     }
+    public function getSongsInPlaylistForGuest($playlistId){
+        $playlist = $this->playlistService->findById($playlistId);
+        $data = $playlist->songs;
+        $arr = [];
+        $arrNameSong = [];
+        $arrViewSong = [];
+        $arrImageSong = [];
 
+
+        foreach ($data as $song) {
+            array_push($arr, $song->audio);
+            array_push($arrNameSong, $song->name);
+            array_push($arrViewSong, $song->view);
+            array_push($arrImageSong, $song->image);
+        }
+
+        return view('playlists.guestPlaylist',compact('data','arr','arrNameSong','arrViewSong','arrImageSong'));
+    }
 }
 

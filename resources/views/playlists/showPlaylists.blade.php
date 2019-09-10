@@ -45,7 +45,7 @@
                                 </a>
                                 <a href="{{route('playlists.destroy',$playlist->id)}}">
                                     <button class="btn btn-outline-danger"
-                                            onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
+                                            onclick="return confirm('Bạn chắc chắn muốn xóa Playlist {{$playlist->name}} này?');">
                                         <i class="fa fa-btn fa-ban" ></i>
                                     </button>
                                 </a>
