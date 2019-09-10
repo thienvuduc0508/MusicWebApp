@@ -58,7 +58,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('add-song/{id}/song/{songId}', 'PlaylistController@addSong')->name('playlists.addSong');
         Route::get('/{id}/songs', 'PlaylistController@getSongsInPlaylist')->name('playlists.getSong');
         Route::get('{playlistId}/{id}/song/delete-song', 'PlaylistController@deleteSongsInPlaylist')->name('playlists.deleteSong');
-
-
+    });
+    Route::group(['prefix' => 'singers'], function () {
+        Route::get('/', 'SingerController@index')->name('singer.index');
+        Route::get('create', 'SingerController@create')->name('singer.create');
+        Route::post('create', 'SingerController@store')->name('singer.store');
     });
 });
