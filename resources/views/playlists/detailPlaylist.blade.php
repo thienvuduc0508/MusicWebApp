@@ -50,9 +50,7 @@
                     </td>
                 </tr>
             @endforeach
-            @endif
         </table>
-        </div>
-
+    @endif
 @endsection
 
