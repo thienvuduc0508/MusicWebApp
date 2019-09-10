@@ -67,14 +67,14 @@ class PlaylistController extends Controller
             array_push($arrImageSong, $song->image);
         }
 
-        return view('playlists.detailPlaylist',compact('playlist','data','arr','arrNameSong','arrViewSong','arrImageSong'));
+        return view('playlists.detailPlaylist', compact('playlist', 'data', 'arr', 'arrNameSong', 'arrViewSong', 'arrImageSong'));
     }
 
 
     public function edit($playlistId)
     {
         $playlist = $this->playlistService->findById($playlistId);
-        return view('playlists.updatePlaylist',compact('playlist'));
+        return view('playlists.updatePlaylist', compact('playlist'));
     }
 
 
@@ -92,20 +92,24 @@ class PlaylistController extends Controller
         Session::flash('success', 'Xóa playlist thành công');
         return redirect()->route('playlists.showPlaylists');
     }
+
     public function getAllNewPlaylists()
     {
         $newPlaylists = $this->playlistService->getAllNewPlaylists();
         return view('playlists.newPlaylists', compact('newPlaylists'));
     }
 
-    public function showAddSongToPlaylist($songId){
+    public function showAddSongToPlaylist($songId)
+    {
 
         $userId = Auth::id();
         $songId = $this->songService->findById($songId);
         $playlists = $this->playlistService->playlists($userId);
-        return view('playlists.addSongToPlayList',compact('playlists','songId'));
+        return view('playlists.addSongToPlayList', compact('playlists', 'songId'));
     }
-    public function addSong($playlistId, $songId){
+
+    public function addSong($playlistId, $songId)
+    {
         $isAdded = $this->playlistService->addSong($playlistId, $songId);
 
         if ($isAdded) {
@@ -114,20 +118,33 @@ class PlaylistController extends Controller
             Session::flash('error', "Bài hát đã có trong playlist");
         }
 
-        return redirect()->route('songs.play',$songId);
+        return redirect()->route('songs.play', $songId);
     }
-    public function getSongsInPlaylist($playlistId){
+
+    public function getSongsInPlaylist($playlistId)
+    {
         $playlist = $this->playlistService->findById($playlistId);
         $songs = $playlist->songs;
-        return view('playlists.detailPlaylist',compact('songs','playlist'));
+        return view('playlists.detailPlaylist', compact('songs', 'playlist'));
     }
-    public function deleteSongsInPlaylist($playlistId, $songId){
 
-        $this->playlistService->deleteSongInPlaylist($playlistId,$songId);
-        Session::flash("success","Đã xóa bài hát khỏi playlist");
+    public function deleteSongsInPlaylist($playlistId, $songId)
+    {
+
+        $this->playlistService->deleteSongInPlaylist($playlistId, $songId);
+        Session::flash("success", "Đã xóa bài hát khỏi playlist");
+        return redirect()->route('playlists.detail', $playlistId);
+    }
+
+    public function deleteSongOfPlaylist($playlistId, $songId)
+    {
+        $this->playlistService->deleteSongOfPlaylist($playlistId,$songId);
+        Session::flash("success", "Đã xóa bài hát này !");
         return redirect()->route('playlists.detail',$playlistId);
     }
-    public function getSongsInPlaylistForGuest($playlistId){
+
+    public function getSongsInPlaylistForGuest($playlistId)
+    {
         $playlist = $this->playlistService->findById($playlistId);
         $data = $playlist->songs;
         $arr = [];
@@ -143,7 +160,7 @@ class PlaylistController extends Controller
             array_push($arrImageSong, $song->image);
         }
 
-        return view('playlists.guestPlaylist',compact('data','arr','arrNameSong','arrViewSong','arrImageSong'));
+        return view('playlists.guestPlaylist', compact('data', 'arr', 'arrNameSong', 'arrViewSong', 'arrImageSong'));
     }
 }
 
