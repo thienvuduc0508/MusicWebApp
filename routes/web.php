@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
         Route::get('{id}/edit/', 'PlaylistController@edit')->name('playlists.edit');
         Route::post('{id}/update/', 'PlaylistController@update')->name('playlists.update');
-        Route::get('{id}/delete/', 'PlaylistController@destroy')->name('playlists.destroy');
+        Route::get('{playlistId}/{id}/playlist/delete/', 'PlaylistController@deletePlaylist')->name('playlists.destroy');
         Route::get('/{id}/add-song', 'PlaylistController@showAddSongToPlaylist')->name('playlists.showAddSong');
         Route::get('add-song/{id}/song/{songId}', 'PlaylistController@addSong')->name('playlists.addSong');
         Route::get('/{id}/songs', 'PlaylistController@getSongsInPlaylist')->name('playlists.getSong');

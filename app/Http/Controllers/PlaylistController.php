@@ -29,6 +29,7 @@ class PlaylistController extends Controller
     {
         $userId = Auth::id();
         $playlists = $this->playlistService->playlists($userId);
+
         return view('playlists.showPlaylists', compact('playlists'));
 
     }
@@ -89,6 +90,11 @@ class PlaylistController extends Controller
     public function destroy($id)
     {
         $this->playlistService->destroy($id);
+        Session::flash('success', 'Xóa playlist thành công');
+        return redirect()->route('playlists.showPlaylists');
+    }
+    public function deletePlaylist($playlistId,$songId){
+        $this->playlistService->deletePlaylist($playlistId,$songId);
         Session::flash('success', 'Xóa playlist thành công');
         return redirect()->route('playlists.showPlaylists');
     }
