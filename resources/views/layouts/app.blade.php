@@ -51,6 +51,13 @@
 {{--                        <a href="#" style="text-decoration: none" class="dropdown-item">Playlist Được Nghe Nhiều Nhất</a>--}}
                     </div>
                 </div>
+                <div class="dropdown" >
+                    <a class="dropdown navbar-brand" style="color: white">Ca sĩ</a>
+                    <div class="dropdown-content dropdown-menu dropdown-menu-lg-left">
+                        <a href="{{route('Guest.getAllNewSongs')}}" style="text-decoration: none" class="dropdown-item">Bài Hát Mới Nhất</a>
+                        <a href="{{route('Guest.getAllMostListenSongs')}}" style="text-decoration: none" class="dropdown-item">Bài Hát Được Nghe Nhiều Nhất</a>
+                    </div>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -59,6 +66,11 @@
                     <ul class="navbar-nav ml-auto">
                         <form class="form-inline" style="margin-right: 20px"  action="{{route('search')}} ">
                             @csrf
+                            <select title="select" class="custom-select" name="table" style="color: black">
+                                <option class="dropdown-item" value="song">Bài hát</option>
+                                <option class="dropdown-item" value="playlist">Playlist</option>
+                                <option class="dropdown-item" value="singer">Ca sĩ</option>
+                            </select>
                             <input class="form-control mr-sm-2" type="search" placeholder="Tìm Kiếm " aria-label="Search" name="keyword">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                         </form>
@@ -83,7 +95,7 @@
                                     <a class="dropdown-item" href="{{ route('user.index') }}"><i style="margin-right: 5px" class="fa fa-btn fa-user"></i>Hồ Sơ</a>
                                     <a class="dropdown-item" href="{{ route('songs.index') }}"><i style="margin-right: 5px" class="fa fa-btn fa-music"></i>Nhạc Cá Nhân</a>
                                     <a class="dropdown-item" href="{{ route('playlists.showPlaylists') }}"><i style="margin-right: 5px" class="fa fa-toggle-right"></i>Playlist Cá Nhân</a>
-                                    <a class="dropdown-item" href="{{ route('singer.index') }}"><i style="margin-right: 5px" class="fa fa-toggle-right"></i>Ca Sỹ Của Tôi</a>
+                                    <a class="dropdown-item" href="{{ route('singer.index') }}"><i style="margin-right: 5px" class="fa fa-microphone"></i>Ca Sỹ Của Tôi</a>
 
                                     <a href="{{route('change.password')}}" class="dropdown-item"><i class="fa fa-lock" style="margin-right: 5px"></i>Đổi Mật Khẩu</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
