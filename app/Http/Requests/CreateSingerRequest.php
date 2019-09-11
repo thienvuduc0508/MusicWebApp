@@ -24,7 +24,7 @@ class CreateSingerRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required",
+            "name" => "required|unique:singers,name",
             'image' => 'mimes:jpeg,jpg,png,gif|max:10000'
         ];
     }
@@ -32,6 +32,7 @@ class CreateSingerRequest extends FormRequest
     {
         $messages = [
             'name.required' => 'Vui lòng nhập tên ca sỹ',
+            'name.unique' => 'Ca sỹ đã tồn tại',
             'image.mimes' => 'Định dạng ảnh không đúng',
             'image.max' => 'Kích thước ảnh không vượt quá 10Mb'
         ];
