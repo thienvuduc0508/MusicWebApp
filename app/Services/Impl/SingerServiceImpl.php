@@ -50,8 +50,10 @@ protected $songRepository;
         $singer->name = $request->name;
         $singer->information = $request->information;
         if ($request->hasfile('image')){
-          $currentImage = $singer->image;
-        Storage::delete('/public/'. $currentImage);
+            $currentImage = $singer->image;
+            if ($currentImage !== 'images/default.jpg') {
+                Storage::delete('/public/' . $currentImage);
+            }
         $image = $request->file('image');
         $path = $image->store('images','public');
         $singer->image = $path;
