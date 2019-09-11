@@ -6,6 +6,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Music</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('images/default.jpg')}}">
+
     <!-- Scripts -->
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
