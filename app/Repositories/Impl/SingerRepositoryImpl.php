@@ -20,4 +20,5 @@ public function listSingers($userId)
     $singers = $this->model->where('user_id','=',$userId)->get();
     return $singers;
 }
+
 }

@@ -63,5 +63,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'SingerController@index')->name('singer.index');
         Route::get('create', 'SingerController@create')->name('singer.create');
         Route::post('create', 'SingerController@store')->name('singer.store');
+        Route::get('{id}/edit', 'SingerController@edit')->name('singer.edit');
+        Route::post('{id}/update', 'SingerController@update')->name('singer.update');
+        Route::get('{id}/delete', 'SingerController@destroy')->name('singer.destroy');
+
     });
 });
