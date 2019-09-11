@@ -21,6 +21,7 @@
                         <th>Tên ca sỹ</th>
                         <th>Thông tin</th>
                         <th>Ảnh</th>
+                        <th>Chức năng</th>
                     </tr>
                     @foreach($singers as $key=>$singer)
                         <tr style="font-size: 20px">
@@ -30,6 +31,17 @@
                             <td>
                                 <img src="{{asset('storage/'.$singer->image)}}"
                                      style="width: 50px;height: 50px; border-radius: 50px">
+                            </td>
+                            <td>
+                                <a href="{{route('singer.edit',$singer->id)}}"><button class="btn btn-outline-primary">
+                                        <i class="fa fa-btn fa-edit"></i>
+                                    </button>
+                                </a>
+                                <a href="{{route("singer.destroy",$singer->id)}}"><button class="btn btn-outline-danger"
+                                                                                      onclick="return confirm('Bạn chắc chắn muốn xóa ca sỹ này?');">
+                                        <i class="fa fa-btn fa-ban" ></i>
+                                    </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

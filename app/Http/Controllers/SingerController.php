@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSingerRequest;
+use App\Http\Requests\UpdateSingerRequest;
 use App\Services\SingerServiceInterface;
 use App\Services\SongServiceInterface;
 use Illuminate\Http\Request;
@@ -28,9 +30,23 @@ SongServiceInterface $songService)
         $userId = Auth::id();
         return view('singers.create', compact('userId'));
     }
-    public function store(Request $request){
+    public function store(CreateSingerRequest $request){
         $this->singerService->create($request);
         Session::flash('success','Tạo mới ca sỹ thành công');
+        return redirect()->route('singer.index');
+    }
+    public function edit($id){
+        $singer = $this->singerService->findById($id);
+        return view('singers.edit',compact('singer'));
+    }
+    public function update(UpdateSingerRequest $request,$id){
+        $this->singerService->update($request,$id);
+        Session::flash('success', 'Cập nhật thông tin thành công');
+        return redirect()->route('singer.index');
+    }
+    public function destroy($id){
+        $this->singerService->destroy($id);
+        Session::flash('success', 'Xoá ca sỹ thành công');
         return redirect()->route('singer.index');
     }
 }
