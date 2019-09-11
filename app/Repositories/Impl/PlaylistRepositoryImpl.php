@@ -47,10 +47,4 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
         return $playlist->songs->pluck('id')->toArray();
     }
 
-    public function deletePlaylist($playlistId, $songId)
-    {
-        $playlist = $this->model->findOrFail($playlistId);
-        $playlist->songs()->detach($songId);
-    }
-
 }

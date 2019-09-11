@@ -90,11 +90,6 @@ class PlaylistController extends Controller
         return redirect()->route('playlists.showPlaylists');
     }
 
-//    public function deletePlaylist($playlistId,$songId){
-//        $this->playlistService->deletePlaylist($playlistId,$songId);
-//        Session::flash('success', 'Xóa playlist thành công');
-//        return redirect()->route('playlists.showPlaylists');
-//    }
     public function deleteSongsInPlaylist($playlistId, $songId)
     {
         $this->playlistService->deleteSongInPlaylist($playlistId, $songId);
