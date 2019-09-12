@@ -62,16 +62,4 @@ class SongController extends Controller
         Session::flash('success', 'Cập nhật thông tin thành công');
         return redirect()->route('songs.index');
     }
-    public function searchByName(Request $request)
-    {
-        $keyword = $request->keyword;
-        if (!$keyword) {
-            //Session::flash('message', 'Bạn phải nhập từ khóa!');
-            return redirect()->back();
-        }
-        $songs = $this->songService->findByName($keyword);
-        return view('songs.search', compact('songs','keyword'));
-    }
-
-
 }

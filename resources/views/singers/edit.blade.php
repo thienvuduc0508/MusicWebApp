@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row container mt-5 row justify-content-center">
+    <div class=" container mt-5 col-12">
         <form action="{{route('singer.update',$singer->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <h1 class="text-center">Chỉnh Sửa Ca Sỹ</h1>
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label class="form-group">Thông tin ca sỹ</label>
-                <textarea  rows="4" cols="50" name="information" class="form-control" >{{$singer->information}}</textarea>
+                <textarea  id="ckeditor" rows="4" cols="50" name="information" class="form-control" >{{$singer->information}}</textarea>
             </div>
             <div class="form-group">
                 <label class="form-group">Ảnh</label>

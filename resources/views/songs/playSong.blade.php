@@ -48,27 +48,31 @@
             {{ session('error') }}
         </div>
     @endif
-<div class="mt-2">Ca sĩ thực hiện:
-    @foreach($song->singers as $singer)
-        <a href="{{route("singer.detailSinger",$singer->id)}}">{{$singer->name}}</a>
-        ;
-    @endforeach
-</div>
+    <div class="mt-2">Ca sĩ thực hiện:
+        @if(count($song->singers)==0)
+            <span>Chưa rõ</span>
+        @else
+            @foreach($song->singers as $singer)
+                <a href="{{route("singer.detailSinger",$singer->id)}}">{{$singer->name}}</a>
+                ;
+            @endforeach
+        @endif
+    </div>
     <div class="mt-2">
         @if(Auth::user())
-        <a href="{{route('playlists.showAddSong',$song->id)}}">
-            <button type="button" class="btn btn-info" style="font-size: 20px">
-                <img src="{{asset('https://image.flaticon.com/icons/svg/865/865922.svg')}}" alt="" height="25px">
-                Thêm vào playlist
-            </button>
-        </a>
+            <a href="{{route('playlists.showAddSong',$song->id)}}">
+                <button type="button" class="btn btn-info" style="font-size: 20px">
+                    <img src="{{asset('https://image.flaticon.com/icons/svg/865/865922.svg')}}" alt="" height="25px">
+                    Thêm vào playlist
+                </button>
+            </a>
             @if(Auth::id() == $song->user->id)
-        <a href="{{route('singer.showAddSingerToSong',$song->id)}}">
-            <button type="button" class="btn btn-info" style="font-size: 20px">
-                Thêm ca sĩ thực hiện
-            </button>
-        </a>
-        @endif
+                <a href="{{route('singer.showAddSingerToSong',$song->id)}}">
+                    <button type="button" class="btn btn-info" style="font-size: 20px">
+                        Thêm ca sĩ thực hiện
+                    </button>
+                </a>
+            @endif
         @endif
     </div>
     <div style="font-size: 20px" class="mt-3">
@@ -76,30 +80,35 @@
         <br>
         {!!$song->description!!}
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row">
+            <div class="col-12">
                 <div class="card">
-                    <h4>Display Comments</h4>
-                    @foreach($song->comments as $comment)
-                        <div class="display-comment">
-                            <strong>{{ $comment->user->name }}</strong>
-                            <p>{{ $comment->comment }}</p>
+                    <h3 style="text-align: center">Bình luận</h3>
+                    @if(count($song->comments) == 0)
+                        <h4>Chưa có bình luận nào!</h4>
+                    @else
+                        @foreach($song->comments as $comment)
+                            <div class="display-comment m-lg-2">
+                                <span><img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
+                                           style="border-radius: 50%" alt=""></span>
+                                <strong>{{ $comment->user->name }}</strong>
+                                <span>  ({{$comment->created_at}})</span>
+                                <p>{!! $comment->comment !!}</p>
+                                <hr>
+                            </div>
+                        @endforeach
+                    @endif
+
+                    <hr>
+                    <h4 style="text-align: center">viết bình luận</h4>
+                    <form method="post" action="{{route('comment.createCommentInSong',$song->id)}}">
+                        @csrf
+                        <div class="form-group">
+                            <textarea type="text" name="comment" class="form-control"></textarea>
+                            <input type="hidden" name="song_id" value="{{ $song->id }}">
                         </div>
-                    @endforeach
-                    <hr />
-                         <h4>Add comment</h4>
-                        <form method="post" action="{{route('comment.createCommentInSong',$song->id)}}">
-                            @csrf
-                            <div class="form-group">
-                                <input type="text" name="comment" class="form-control">
-                                <input type="hidden" name="song_id" value="{{ $song->id }}">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-warning" value="Add Comment" />
-                            </div>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Gửi</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -135,11 +144,13 @@
                 cancelAnimationFrame(showCurrentTime);
             }
         }
-        function autoplay(){
+
+        function autoplay() {
             player.removeClass('paused').addClass('playing');
             audio[0].play();
             getCurrentTime();
         }
+
         autoplay();
         audio.on('loadedmetadata', function () {
             var durationFormatted = secsToMins(audio[0].duration);
