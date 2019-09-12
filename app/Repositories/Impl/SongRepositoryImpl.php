@@ -10,21 +10,18 @@ use App\Song;
 
 class SongRepositoryImpl extends EloquentRepository implements SongRepositoryInterface
 {
-public function getModel()
-{
-    $model = Song::class;
-    return $model;
-}
-public function listSong($userId)
-{
-    $list = $this->model->where('user_id', '=', $userId)->get();
-    return $list;
-}
-public function searchSongByName($keyword)
-{
-    $songs = $this->model->where('name','like','%'.$keyword.'%')->get();
-    return $songs;
-}
+    public function getModel()
+    {
+        $model = Song::class;
+        return $model;
+    }
+
+    public function listSong($userId)
+    {
+        $list = $this->model->where('user_id', '=', $userId)->get();
+        return $list;
+    }
+
     public function getSongsInPlaylist($playlist)
     {
         return $playlist->songs()->paginate(4);

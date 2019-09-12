@@ -22,29 +22,29 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
         $playlist = $this->model->findOrFail($playlistId);
         $playlist->songs()->attach($songId);
     }
+
     public function playlists($userId)
     {
-        $playlists = $this->model->where('user_id','=',$userId)->get();
+        $playlists = $this->model->where('user_id', '=', $userId)->get();
         return $playlists;
     }
+
     public function getAllNewPlaylists()
     {
         $newPlaylits = $this->model->orderby('created_at', 'desc')->get();
         return $newPlaylits;
     }
-    public function deleteSongInPlaylist($playlistId,$songId)
+
+    public function deleteSongInPlaylist($playlistId, $songId)
     {
         $playlist = $this->model->findOrFail($playlistId);
         $playlist->songs()->detach($songId);
     }
+
     public function getSongIdsInPlaylist($playlistId, $songId)
     {
         $playlist = $this->model->findOrFail($playlistId);
         return $playlist->songs->pluck('id')->toArray();
     }
-    public function deletePlaylist($playlistId, $songId){
-        $playlist = $this->model->findOrFail($playlistId);
-        $playlist->songs()->detach($songId);
-    }
 
-      }
+}

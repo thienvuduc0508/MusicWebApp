@@ -48,13 +48,27 @@
             {{ session('error') }}
         </div>
     @endif
+<div class="mt-2">Ca sĩ thực hiện:
+    @foreach($song->singers as $singer)
+        {{$singer->name}};
+    @endforeach
+</div>
     <div class="mt-2">
+        @if(Auth::user())
         <a href="{{route('playlists.showAddSong',$song->id)}}">
             <button type="button" class="btn btn-info" style="font-size: 20px">
                 <img src="{{asset('https://image.flaticon.com/icons/svg/865/865922.svg')}}" alt="" height="25px">
                 Thêm vào playlist
             </button>
         </a>
+            @if(Auth::id() == $song->user->id)
+        <a href="{{route('singer.showAddSingerToSong',$song->id)}}">
+            <button type="button" class="btn btn-info" style="font-size: 20px">
+                Thêm ca sĩ thực hiện
+            </button>
+        </a>
+        @endif
+        @endif
     </div>
     <div style="font-size: 20px" class="mt-3">
         <label style="font-weight: bold">Lời Bài Hát</label>
