@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
         Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
         Route::post('comment/{id}', 'CommentController@createCommentInSong')->name('comment.createCommentInSong');
+        Route::get('{id}/like', 'LikeController@createLike')->name('like.create');
+        Route::get('{id}/dislike', 'LikeController@dislike')->name('like.delete');
 
     });
     Route::group(['prefix' => 'me/playlists'], function () {

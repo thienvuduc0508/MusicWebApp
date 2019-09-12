@@ -36,6 +36,9 @@
             &nbsp
             &nbsp
             <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i> {{$song->view}}</div>
+            &nbsp
+            &nbsp
+            <div id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($song->likes)}}</div>
         </div>
         <audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>
     </div>
@@ -60,12 +63,22 @@
     </div>
     <div class="mt-2">
         @if(Auth::user())
+            @if(!$checkstatus )
+                <a href="{{route('like.create',$song->id)}}">
+                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                </a>
+            @else
+                <a href="{{route('like.delete',$song->id)}}">
+                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-down"></i> Unlike</button>
+                </a>
+            @endif
             <a href="{{route('playlists.showAddSong',$song->id)}}">
                 <button type="button" class="btn btn-info" style="font-size: 20px">
                     <img src="{{asset('https://image.flaticon.com/icons/svg/865/865922.svg')}}" alt="" height="25px">
                     Thêm vào playlist
                 </button>
             </a>
+
             @if(Auth::id() == $song->user->id)
                 <a href="{{route('singer.showAddSingerToSong',$song->id)}}">
                     <button type="button" class="btn btn-info" style="font-size: 20px">
@@ -80,7 +93,7 @@
         <br>
         {!!$song->description!!}
     </div>
-        <div class="row">
+<div class="row">
             <div class="col-12">
                 <div class="card">
                     <h3 style="text-align: center">Bình luận</h3>
@@ -91,27 +104,27 @@
                             <div class="display-comment m-lg-2">
                                 <span><img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
                                            style="border-radius: 50%" alt=""></span>
-                                <strong>{{ $comment->user->name }}</strong>
-                                <span>  ({{$comment->created_at}})</span>
-                                <p>{!! $comment->comment !!}</p>
-                                <hr>
-                            </div>
-                        @endforeach
-                    @endif
-
-                    <hr>
-                    <h4 style="text-align: center">viết bình luận</h4>
-                    <form method="post" action="{{route('comment.createCommentInSong',$song->id)}}">
-                        @csrf
-                        <div class="form-group">
-                            <textarea type="text" name="comment" class="form-control"></textarea>
-                            <input type="hidden" name="song_id" value="{{ $song->id }}">
+                            <strong>{{ $comment->user->name }}</strong>
+                            <span>  ({{$comment->created_at}})</span>
+                            <p>{!! $comment->comment !!}</p>
+                            <hr>
                         </div>
-                        <button type="submit" class="btn btn-primary">Gửi</button>
-                    </form>
-                </div>
+                    @endforeach
+                @endif
+
+                <hr>
+                <h4 style="text-align: center">viết bình luận</h4>
+                <form method="post" action="{{route('comment.createCommentInSong',$song->id)}}">
+                    @csrf
+                    <div class="form-group">
+                        <textarea type="text" name="comment" class="form-control"></textarea>
+{{--                        <input type="hidden" name="song_id" value="{{ $song->id }}">--}}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                </form>
             </div>
         </div>
+    </div>
     </div>
     <script>
         var player = $('.player'),
