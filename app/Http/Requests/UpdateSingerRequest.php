@@ -24,7 +24,7 @@ class UpdateSingerRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|unique",
+            "name" => "required|unique:singers,name, ".$this->id,
             'image' => 'mimes:jpeg,jpg,png,gif|max:10000',
          ];
     }

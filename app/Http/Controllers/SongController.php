@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateSongRequest;
 use App\Http\Requests\UpdateSongRequest;
 use App\Playlist;
+use App\Services\SingerServiceInterface;
 use App\Services\SongServiceInterface;
 use App\Song;
 use App\User;
@@ -15,9 +16,12 @@ use Illuminate\Support\Facades\Session;
 class SongController extends Controller
 {
     protected $songService;
-    public function __construct(SongServiceInterface $songService)
+    protected $singerService;
+    public function __construct(SongServiceInterface $songService,
+                                SingerServiceInterface $singerService)
     {
         $this->songService = $songService;
+        $this->singerService = $singerService;
     }
     public function index(){
         $userId = Auth::id();
@@ -26,7 +30,8 @@ class SongController extends Controller
     }
     public function create(){
         $userId = Auth::id();
-        return view('songs.create', compact('userId'));
+        $singers = $this->singerService->listSingers($userId);
+        return view('songs.create', compact('userId','singers'));
     }
     public function store(CreateSongRequest $request){
 

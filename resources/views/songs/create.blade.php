@@ -61,6 +61,16 @@
                 <div>
                     <audio src="" controls="controls" id="audio"></audio>
                 </div>
+                <div class="form-group">
+                    <label class="form-group">Ca sỹ</label>
+                </div>
+                <div>
+                    <select class="selectpicker" multiple title="Chọn một hoặc nhiều ca sỹ" data-max-options="2">
+                        @foreach($singers as $key => $singer)
+                        <option>{{$singer->name}}</option>
+                       @endforeach
+                    </select>
+                </div>
             </div>
             <div>
                 <input type="submit" class="btn btn-success" value="Tạo Mới">
@@ -70,9 +80,4 @@
             </div>
         </form>
     </div>
-
-
-
-
-
 @endsection
