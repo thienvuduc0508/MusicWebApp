@@ -107,6 +107,7 @@
     </div>
     <script>
         var playList = `<?php echo json_encode($arrAudio); ?>`;
+        console.log(playList);
         var nameSong = `<?php echo json_encode($arrNameSong); ?>`;
         var viewSong = `<?php echo json_encode($arrViewSong); ?>`;
         var imageSong = `<?php echo json_encode($arrImageSong); ?>`;
