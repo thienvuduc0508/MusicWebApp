@@ -46,4 +46,7 @@ class User extends Authenticatable
     public function singers(){
         return $this->hasMany(Singer::class);
     }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

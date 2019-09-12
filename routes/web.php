@@ -22,6 +22,8 @@ Route::get('/new-playlists','PlaylistController@getAllNewPlaylists')->name('play
 Route::get('/search','GuestController@search')->name('search');
 Route::get('{id}/playlist','PlaylistController@getSongsInPlaylistForGuest')->name('playlist.guestPlaylists');
 
+Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
+
 
 
 Auth::routes();
@@ -47,6 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
 
         Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
+        Route::post('comment/{id}', 'CommentController@createCommentInSong')->name('comment.createCommentInSong');
 
 
     });
@@ -54,7 +57,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', 'PlaylistController@index')->name('playlists.showPlaylists');
         Route::get('create/', 'PlaylistController@create')->name('playlists.create');
         Route::post('create/', 'PlaylistController@store')->name('playlists.store');
-        Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
         Route::get('{id}/edit/', 'PlaylistController@edit')->name('playlists.edit');
         Route::post('{id}/update/', 'PlaylistController@update')->name('playlists.update');
         Route::get('{id}/delete', 'PlaylistController@destroy')->name('playlists.destroy');
@@ -62,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('add-song/{id}/song/{songId}', 'PlaylistController@addSong')->name('playlists.addSong');
         Route::get('/{id}/songs', 'PlaylistController@getSongsInPlaylist')->name('playlists.getSong');
         Route::get('{playlistId}/{id}/song/delete-song', 'PlaylistController@deleteSongsInPlaylist')->name('playlists.deleteSong');
+        Route::post('comment/{id}', 'CommentController@createCommentInPlaylist')->name('comment.createCommentInPlaylist');
+
     });
     Route::group(['prefix' => 'singers'], function () {
         Route::get('/', 'SingerController@index')->name('singer.index');

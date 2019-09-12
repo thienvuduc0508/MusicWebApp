@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\CommentRepositoryInterface;
 use App\Repositories\GuestRepositoryInterface;
+use App\Repositories\Impl\CommentRepositoryImpl;
 use App\Repositories\Impl\GuestRepositoryImpl;
 use App\Repositories\Impl\PlaylistRepositoryImpl;
 use App\Repositories\Impl\SingerRepositoryImpl;
@@ -12,7 +14,9 @@ use App\Repositories\PlaylistRepositoryInterface;
 use App\Repositories\SingerRepositoryInterface;
 use App\Repositories\SongRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
+use App\Services\CommentServiceInterface;
 use App\Services\GuestServiceInterface;
+use App\Services\Impl\CommentServiceImpl;
 use App\Services\Impl\GuestServiceImpl;
 use App\Services\Impl\PlaylistServiceImpl;
 use App\Services\Impl\SingerServiceImpl;
@@ -43,6 +47,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(PlaylistServiceInterface::class, PlaylistServiceImpl::class);
         $this->app->singleton(SingerRepositoryInterface::class, SingerRepositoryImpl::class);
         $this->app->singleton(SingerServiceInterface::class, SingerServiceImpl::class);
+        $this->app->singleton(CommentRepositoryInterface::class, CommentRepositoryImpl::class);
+        $this->app->singleton(CommentServiceInterface::class, CommentServiceImpl::class);
     }
 
     /**
