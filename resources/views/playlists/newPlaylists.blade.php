@@ -24,8 +24,8 @@
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>
-                                    <a href="{{route('playlists.detail',$newPlaylist->id)}}"
-                                       style="text-decoration: none">
+                                    <a href="{{route('playlist.guestPlaylists',$newPlaylist->id)}}" style="text-decoration: none">
+
                                         {{$newPlaylist->name}}
                                     </a>
                                 </td>

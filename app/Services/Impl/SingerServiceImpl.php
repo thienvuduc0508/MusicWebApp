@@ -10,6 +10,7 @@ use App\Repositories\UserRepositoryInterface;
 use App\Services\SingerServiceInterface;
 use App\Singer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SingerServiceImpl extends ServiceImpl implements SingerServiceInterface
 {
@@ -42,6 +43,22 @@ protected $songRepository;
         $userId = Auth::id();
         $singers = $this->repository->listSingers($userId);
         return $singers;
+    }
+    public function update($request, $id)
+    {
+        $singer = $this->repository->findById($id);
+        $singer->name = $request->name;
+        $singer->information = $request->information;
+        if ($request->hasfile('image')){
+            $currentImage = $singer->image;
+            if ($currentImage !== 'images/default.jpg') {
+                Storage::delete('/public/' . $currentImage);
+            }
+        $image = $request->file('image');
+        $path = $image->store('images','public');
+        $singer->image = $path;
+        }
+        $this->repository->update($singer);
     }
 
 }
