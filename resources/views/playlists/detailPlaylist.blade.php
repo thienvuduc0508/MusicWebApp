@@ -111,7 +111,7 @@
                             @csrf
                             <div class="form-group">
                                 <input type="text" name="comment" class="form-control">
-                                <input type="hidden" name="song_id" value="{{ $playlist->id }}">
+                                <input type="hidden" name="playlist_id" value="{{ $playlist->id }}">
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-warning" value="Add Comment" />
