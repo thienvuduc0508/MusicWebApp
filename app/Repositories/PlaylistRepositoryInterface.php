@@ -10,5 +10,4 @@ public function addSong($playlistId, $songId);
 public function playlists($userId);
 public function deleteSongInPlaylist($playlistId,$songId);
 public function getSongIdsInPlaylist($playlistId,$songId);
-public function deletePlaylist($playlistId,$songId);
 }
