@@ -20,6 +20,7 @@ class CreateSongsTable extends Migration
             $table->string('image')->default('images/logomusic.jpg');;
             $table->string('audio');
             $table->integer('view')->default(0);
+            $table->string('singer')->nullable();
             $table->timestamps();
         });
     }

@@ -24,6 +24,8 @@ Route::get('singer/', 'SingerController@showListSinger')->name('singer.listSinge
 Route::get('singer/{id}', 'SingerController@showDetailSinger')->name('singer.detailSinger');
 
 
+Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
+
 
 
 Auth::routes();
@@ -46,13 +48,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/update', 'SongController@edit')->name('songs.edit');
         Route::post('{id}/update/', 'SongController@update')->name('songs.update');
         Route::get('{id}/delete/', 'SongController@delete')->name('songs.delete');
+        Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
+        Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
+        Route::post('comment/{id}', 'CommentController@createCommentInSong')->name('comment.createCommentInSong');
 
     });
     Route::group(['prefix' => 'me/playlists'], function () {
         Route::get('/', 'PlaylistController@index')->name('playlists.showPlaylists');
         Route::get('create/', 'PlaylistController@create')->name('playlists.create');
         Route::post('create/', 'PlaylistController@store')->name('playlists.store');
-        Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
         Route::get('{id}/edit/', 'PlaylistController@edit')->name('playlists.edit');
         Route::post('{id}/update/', 'PlaylistController@update')->name('playlists.update');
         Route::get('{id}/delete', 'PlaylistController@destroy')->name('playlists.destroy');
@@ -60,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('add-song/{id}/song/{songId}', 'PlaylistController@addSong')->name('playlists.addSong');
         Route::get('/{id}/songs', 'PlaylistController@getSongsInPlaylist')->name('playlists.getSong');
         Route::get('{playlistId}/{id}/song/delete-song', 'PlaylistController@deleteSongsInPlaylist')->name('playlists.deleteSong');
+        Route::post('comment/{id}', 'CommentController@createCommentInPlaylist')->name('comment.createCommentInPlaylist');
+
     });
     Route::group(['prefix' => 'singers'], function () {
         Route::get('/', 'SingerController@index')->name('singer.index');

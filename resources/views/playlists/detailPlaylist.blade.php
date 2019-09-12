@@ -58,7 +58,9 @@
                 <th>Tên Bài Hát</th>
                 <th>Ảnh</th>
                 <th>Lượt Nghe</th>
+                @if(Auth::id() == $playlist->user->id)
                 <th>Xóa</th>
+                    @endif
             </tr>
             <p id="a"></p>
             <div id="playlist">
@@ -77,6 +79,7 @@
                         <td>
                             <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
                         </td>
+                        @if(Auth::id() == $playlist->user->id)
                         <td>
                             <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
                                 <button class="btn btn-outline-danger"
@@ -85,11 +88,40 @@
                                 </button>
                             </a>
                         </td>
+                            @endif
                     </tr>
                 @endforeach
             </div>
             @endif
         </table>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <h4>Display Comments</h4>
+                        @foreach($playlist->comments as $comment)
+                            <div class="display-comment">
+                                <strong>{{ $comment->user->name }}</strong>
+                                <p>{{ $comment->comment }}</p>
+                            </div>
+                        @endforeach
+                        <hr />
+                        <h4>Add comment</h4>
+                        <form method="post" action="{{route('comment.createCommentInPlaylist',$playlist->id)}}">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" name="comment" class="form-control">
+                                <input type="hidden" name="song_id" value="{{ $playlist->id }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-warning" value="Add Comment" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
         <script>
             var playList = `<?php echo json_encode($arr); ?>`;
             var nameSong = `<?php echo json_encode($arrNameSong); ?>`;
