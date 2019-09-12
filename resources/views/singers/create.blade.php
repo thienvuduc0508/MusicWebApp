@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 @section('content')
     <div class="container justify-content-center col-md-10">
         <form action="{{route('singer.store')}}" method="post" enctype="multipart/form-data">
