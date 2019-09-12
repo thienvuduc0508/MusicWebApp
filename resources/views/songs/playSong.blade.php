@@ -65,11 +65,13 @@
         @if(Auth::user())
             @if(!$checkstatus )
                 <a href="{{route('like.create',$song->id)}}">
-                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-up"></i> Like
+                    </button>
                 </a>
             @else
                 <a href="{{route('like.delete',$song->id)}}">
-                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-down"></i> Unlike</button>
+                    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-down"></i> Unlike
+                    </button>
                 </a>
             @endif
             <a href="{{route('playlists.showAddSong',$song->id)}}">
@@ -93,35 +95,40 @@
         <br>
         {!!$song->description!!}
     </div>
-<div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <h3 style="text-align: center">Bình luận</h3>
-                    @if(count($song->comments) == 0)
-                        <h4  class="text-danger">Chưa có bình luận nào!</h4>
-                    @else
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h3 style="text-align: center">Bình luận</h3>
+                <hr>
+                @if(count($song->comments) == 0)
+                    <h4 class="text-danger">Chưa có bình luận nào!</h4>
+                @else
+                    <div class="ml-2">
                         @foreach($song->comments as $comment)
-                            <div class="display-comment m-lg-2">
-                                <span><img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
-                                           style="border-radius: 50%" alt=""></span>
-                            <strong>{{ $comment->user->name }}</strong>
-                            <span>  ({{$comment->created_at}})</span>
-                            <p>{!! $comment->comment !!}</p>
-                            <hr>
-                        </div>
-                    @endforeach
+                            <div class="display-comment">
+                                <div>
+                                    <img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
+                                         style="border-radius: 50%" alt="">
+                                    <strong>{{ $comment->user->name }}: </strong>
+                                    <span>{!! $comment->comment !!}</span>
+                                </div>
+                                <p> ({{$comment->created_at}})</p>
+                                <hr>
+                            </div>
+                        @endforeach
+                    </div>
                 @endif
 
-                <hr>
                 <h4 style="text-align: center">viết bình luận</h4>
-                <form method="post" action="{{route('comment.createCommentInSong',$song->id)}}">
-                    @csrf
-                    <div class="form-group">
-                        <textarea type="text" name="comment" class="form-control"></textarea>
-{{--                        <input type="hidden" name="song_id" value="{{ $song->id }}">--}}
-                    </div>
-                    <button type="submit" class="btn btn-primary">Gửi</button>
-                </form>
+                <div class="ml-5 mr-5 mb-3">
+                    <form method="post" action="{{route('comment.createCommentInSong',$song->id)}}">
+                        @csrf
+                        <div class="form-group">
+                            <textarea type="text" name="comment" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

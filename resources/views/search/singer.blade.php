@@ -17,7 +17,7 @@
             @foreach($singers as $key=>$singer)
                 <tr style="font-size: 20px">
                     <td>{{++$key}}</td>
-                    <td><a href="#" style="text-decoration: none">{{$singer->name}}</a>
+                    <td><a href="{{route('singer.detailSinger',$singer->id)}}" style="text-decoration: none">{{$singer->name}}</a>
                     </td>
                     <td>
                         <img class="play-music" src="{{asset('storage/'.$singer->image)}}"
