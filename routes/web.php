@@ -46,10 +46,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/update', 'SongController@edit')->name('songs.edit');
         Route::post('{id}/update/', 'SongController@update')->name('songs.update');
         Route::get('{id}/delete/', 'SongController@delete')->name('songs.delete');
-        Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
-
-        Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
-
 
     });
     Route::group(['prefix' => 'me/playlists'], function () {
@@ -72,6 +68,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/edit', 'SingerController@edit')->name('singer.edit');
         Route::post('{id}/update', 'SingerController@update')->name('singer.update');
         Route::get('{id}/delete/', 'SingerController@destroy')->name('singer.destroy');
+        Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
+        Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSingerToSongs')->name('singer.addSingerToSongs');
+        Route::get('{singerId}/{id}/song/delete-song', 'SingerController@deleteSongInSinger')->name('singer.deleteSongInSinger');
 
     });
 });

@@ -34,4 +34,9 @@ class SingerRepositoryImpl extends EloquentRepository implements SingerRepositor
         $singer = $this->model->findOrFail($singerId);
         return $singer->songs->pluck('id')->toArray();
     }
+    public function deleteSongInSinger($songId, $singerId)
+    {
+        $singer = $this->model->findOrFail($singerId);
+        $singer->songs()->detach($songId);
+    }
 }

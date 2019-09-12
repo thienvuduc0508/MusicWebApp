@@ -78,6 +78,11 @@ class SingerServiceImpl extends ServiceImpl implements SingerServiceInterface
         }
         return false;
     }
+    public function deleteSongInSinger($songId, $singerId)
+    {
+        $song = $this->repository->deleteSongInSinger($songId,$singerId);
+        return $song;
+    }
 
 
 }
