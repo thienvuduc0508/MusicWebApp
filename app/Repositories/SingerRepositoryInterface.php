@@ -12,4 +12,5 @@ interface SingerRepositoryInterface extends RepositoryInterface
 
     public function getSingerIdInSong($songId, $singerId);
 
+
 }

@@ -77,8 +77,8 @@ class SingerServiceImpl extends ServiceImpl implements SingerServiceInterface
             $this->repository->addSinger($songId, $singerId);
             return true;
         }
-
         return false;
     }
+
 
 }

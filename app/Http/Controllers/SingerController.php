@@ -69,7 +69,7 @@ class SingerController extends Controller
         return view('singers.addSingerToSong', compact('singers', 'song'));
     }
 
-    public function addSinger($songId, $singerId)
+    public function addSingerToSongs($songId, $singerId)
     {
         $isAdded = $this->singerService->addSinger($songId, $singerId);
 

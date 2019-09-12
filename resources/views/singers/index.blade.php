@@ -19,15 +19,13 @@
                     <tr>
                         <th>#</th>
                         <th>Tên ca sỹ</th>
-                        <th>Thông tin</th>
                         <th>Ảnh</th>
                         <th>Chức năng</th>
                     </tr>
                     @foreach($singers as $key=>$singer)
                         <tr style="font-size: 20px">
                             <td>{{++$key}}</td>
-                            <td>{{$singer->name}}</td>
-                            <td>{{$singer->information}}</td>
+                            <td><a href="{{route('singer.showDetailSinger',$singer->id)}}">{{$singer->name}}</a></td>
                             <td>
                                 <img src="{{asset('storage/'.$singer->image)}}"
                                      style="width: 50px;height: 50px; border-radius: 50px">
