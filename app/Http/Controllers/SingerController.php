@@ -21,6 +21,28 @@ class SingerController extends Controller
         $this->singerService = $singerService;
         $this->songService = $songService;
     }
+    public function showListSinger(){
+        $singers = $this->singerService->getAll();
+        return view('singers.showListSinger',compact('singers'));
+    }
+    public function showDetailSinger($id){
+        $singer = $this->singerService->findById($id);
+        $data = $singer->songs;
+        $arrAudio = [];
+        $arrNameSong = [];
+        $arrViewSong = [];
+        $arrImageSong = [];
+
+
+        foreach ($data as $song) {
+            array_push($arrAudio, $song->audio);
+            array_push($arrNameSong, $song->name);
+            array_push($arrViewSong, $song->view);
+            array_push($arrImageSong, $song->image);
+        }
+
+        return view('singers.showDetailSinger', compact('singer','data', 'arrAudio', 'arrNameSong', 'arrViewSong', 'arrImageSong'));
+    }
 
     public function index()
     {

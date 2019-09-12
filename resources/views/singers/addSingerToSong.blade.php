@@ -16,7 +16,6 @@
                         <th>#</th>
                         <th>Tên</th>
                         <th>Ảnh</th>
-                        <th>Thông tin</th>
                         <th>Thêm</th>
                     </tr>
 
@@ -30,9 +29,6 @@
                             </td>
                             <td>
                                 <img src="{{asset('storage/'.$singer->image)}}" alt="" height="50px" width="50px" style="border-radius: 50%">
-                            </td>
-                            <td>
-                                {{$singer->information}}
                             </td>
                             <td>
                                 <a href="{{route('singer.addSinger',[$song->id, $singer->id])}}">

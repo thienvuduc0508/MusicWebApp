@@ -50,7 +50,8 @@
     @endif
 <div class="mt-2">Ca sĩ thực hiện:
     @foreach($song->singers as $singer)
-        {{$singer->name}};
+        <a href="{{route("singer.detailSinger",$singer->id)}}">{{$singer->name}}</a>
+        ;
     @endforeach
 </div>
     <div class="mt-2">

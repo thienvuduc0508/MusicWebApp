@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'GuestController@index')->name('index');
 Route::get('/new-song','GuestController@getAllNewSongs')->name('Guest.getAllNewSongs');
 Route::get('/most-listen-song','GuestController@getAllMostListenSongs')->name('Guest.getAllMostListenSongs');
-//Route::get('/search', 'SongController@searchByName')->name('songs.searchByName');
 Route::get('/{id}/playsong', 'SongController@showSong')->name('songs.play');
 Route::get('/new-playlists','PlaylistController@getAllNewPlaylists')->name('playlist.getAllNewPlaylists');
 Route::get('/search','GuestController@search')->name('search');
 Route::get('{id}/playlist','PlaylistController@getSongsInPlaylistForGuest')->name('playlist.guestPlaylists');
+Route::get('singer/', 'SingerController@showListSinger')->name('singer.listSinger');
+Route::get('singer/{id}', 'SingerController@showDetailSinger')->name('singer.detailSinger');
+
 
 Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
 
@@ -47,10 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('{id}/update/', 'SongController@update')->name('songs.update');
         Route::get('{id}/delete/', 'SongController@delete')->name('songs.delete');
         Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
-
         Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
         Route::post('comment/{id}', 'CommentController@createCommentInSong')->name('comment.createCommentInSong');
-
 
     });
     Route::group(['prefix' => 'me/playlists'], function () {
@@ -74,6 +74,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/edit', 'SingerController@edit')->name('singer.edit');
         Route::post('{id}/update', 'SingerController@update')->name('singer.update');
         Route::get('{id}/delete/', 'SingerController@destroy')->name('singer.destroy');
+        Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
+        Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
 
     });
 });

@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label class="form-group">Thông tin ca sỹ</label>
-                <textarea rows="4" cols="50" name="information" class="form-control"></textarea>
+                <textarea id="ckeditor" rows="4" cols="50" name="information" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label class="form-group">Ảnh</label>
