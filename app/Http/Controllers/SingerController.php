@@ -21,6 +21,15 @@ class SingerController extends Controller
         $this->singerService = $singerService;
         $this->songService = $songService;
     }
+    public function showListSinger(){
+        $singers = $this->singerService->getAll();
+        return view('singers.showListSinger',compact('singers'));
+    }
+    public function showDetailSinger($id){
+        $singer = $this->singerService->findById($id);
+        $songs = $singer->songs;
+        return view('singers.showDetailSinger',compact('singer','songs'));
+    }
 
     public function index()
     {
@@ -81,5 +90,4 @@ class SingerController extends Controller
 
         return redirect()->route('songs.play', $songId);
     }
-
 }

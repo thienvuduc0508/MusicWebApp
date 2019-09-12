@@ -26,6 +26,7 @@
                         <tr style="font-size: 20px">
                             <td>{{++$key}}</td>
                             <td><a href="{{route('singer.showDetailSinger',$singer->id)}}">{{$singer->name}}</a></td>
+
                             <td>
                                 <img src="{{asset('storage/'.$singer->image)}}"
                                      style="width: 50px;height: 50px; border-radius: 50px">
