@@ -23,7 +23,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>
-                                <a href="{{route('singer.addSinger',[$song->id, $singer->id])}}" style="text-decoration: none">
+                                <a href="{{route('singer.addSingerToSongs',[$song->id, $singer->id])}}" style="text-decoration: none">
                                     {{$singer->name}}
                                 </a>
                             </td>
@@ -31,7 +31,7 @@
                                 <img src="{{asset('storage/'.$singer->image)}}" alt="" height="50px" width="50px" style="border-radius: 50%">
                             </td>
                             <td>
-                                <a href="{{route('singer.addSinger',[$song->id, $singer->id])}}">
+                                <a href="{{route('singer.addSingerToSongs',[$song->id, $singer->id])}}">
                                     <button class="btn btn-outline-success"> <i class="fa fa-plus-square"></i></button>
                                 </a>
                             </td>

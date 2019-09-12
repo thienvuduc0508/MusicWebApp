@@ -69,7 +69,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('{id}/update', 'SingerController@update')->name('singer.update');
         Route::get('{id}/delete/', 'SingerController@destroy')->name('singer.destroy');
         Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
-        Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
+        Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSingerToSongs')->name('singer.addSingerToSongs');
+        Route::get('{singerId}/{id}/song/delete-song', 'SingerController@deleteSongInSinger')->name('singer.deleteSongInSinger');
 
     });
 });

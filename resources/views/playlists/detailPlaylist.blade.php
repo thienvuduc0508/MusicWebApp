@@ -65,7 +65,8 @@
                 @foreach($data as $key=>$song)
                     <tr style="font-size: 20px">
                         <td>{{++$key}}</td>
-                        <td><a href="{{route("songs.play",$song->id)}}"
+                        <td>
+                            <a href="{{route("songs.play",$song->id)}}"
                                style="text-decoration: none">{{$song->name}}</a>
                         </td>
                         <td>
@@ -168,11 +169,12 @@
                 }
             }
 
-            function autoplay(){
+            function autoplay() {
                 player.removeClass('paused').addClass('playing');
                 audio1[0].play();
                 getCurrentTime();
             }
+
             autoplay();
             audio1.on('loadedmetadata', function () {
                 var durationFormatted = secsToMins(audio1[0].duration);
@@ -198,7 +200,6 @@
                     player.removeClass('playing').addClass('paused');
                     audio1[0].pause();
                 }
-
 
                 if (self.hasClass('shuffle') || self.hasClass('repeat')) {
                     self.toggleClass('active');
