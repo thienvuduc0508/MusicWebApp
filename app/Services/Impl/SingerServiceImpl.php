@@ -63,7 +63,6 @@ class SingerServiceImpl extends ServiceImpl implements SingerServiceInterface
         }
         $this->repository->update($singer);
     }
-
     public function getSingerIdInSong($songId, $singerId)
     {
         $singerIdInSong = $this->repository->getSingerIdInSong($songId, $singerId);
