@@ -93,15 +93,15 @@
         <br>
         {!!$song->description!!}
     </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <h3 style="text-align: center">Bình luận</h3>
-                @if(count($song->comments) == 0)
-                    <h4>Chưa có bình luận nào!</h4>
-                @else
-                    @foreach($song->comments as $comment)
-                        <div class="display-comment m-lg-2">
+<div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h3 style="text-align: center">Bình luận</h3>
+                    @if(count($song->comments) == 0)
+                        <h4  class="text-danger">Chưa có bình luận nào!</h4>
+                    @else
+                        @foreach($song->comments as $comment)
+                            <div class="display-comment m-lg-2">
                                 <span><img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
                                            style="border-radius: 50%" alt=""></span>
                             <strong>{{ $comment->user->name }}</strong>
