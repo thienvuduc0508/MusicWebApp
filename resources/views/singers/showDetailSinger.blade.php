@@ -23,7 +23,7 @@
                     <th>Ảnh</th>
                     <th>Lượt Nghe</th>
                     @if(Auth::id() == $singer->user->id)
-                        <th>Lượt Nghe</th>
+                        <th>Action</th>
                     @endif
                 </tr>
                 @foreach($songs as $key=>$song)
@@ -42,7 +42,12 @@
                         </td>
                         @if(Auth::id() == $singer->user->id)
                             <td>
-                                <button>Delete</button>
+                                <a href="#">
+                                    <button class="btn btn-outline-danger"
+                                            onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
+                                        <i class="fa fa-btn fa-ban"></i>
+                                    </button>
+                                </a>
                             </td>
                         @endif
                     </tr>
