@@ -25,6 +25,7 @@
                     @foreach($singers as $key=>$singer)
                         <tr style="font-size: 20px">
                             <td>{{++$key}}</td>
+
                             <td><a href="{{route('singer.detailSinger',$singer->id)}}" style="text-decoration: none">
                                     {{$singer->name}}
                                 </a>

@@ -91,7 +91,7 @@ class SingerController extends Controller
         return view('singers.addSingerToSong', compact('singers', 'song'));
     }
 
-    public function addSinger($songId, $singerId)
+    public function addSingerToSongs($songId, $singerId)
     {
         $isAdded = $this->singerService->addSinger($songId, $singerId);
 
@@ -103,5 +103,9 @@ class SingerController extends Controller
 
         return redirect()->route('songs.play', $songId);
     }
-
+    public function deleteSongInSinger($songId,$singerId){
+        $this->singerService->deleteSongInSinger($songId,$singerId);
+        Session::flash("success", "Đã xóa bài hát khỏi Ca si");
+        return redirect()->route('singer.detailSinger', $singerId);
+    }
 }

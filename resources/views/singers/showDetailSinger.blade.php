@@ -92,7 +92,7 @@
                         </td>
                         @if(Auth::id() == $singer->user->id)
                             <td>
-                                <a href="#">
+                                <a href="{{route('singer.deleteSongInSinger',[$song->id,$singer->id])}}">
                                     <button class="btn btn-outline-danger"
                                             onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
                                         <i class="fa fa-btn fa-ban"></i>
@@ -107,6 +107,7 @@
     </div>
     <script>
         var playList = `<?php echo json_encode($arrAudio); ?>`;
+        console.log(playList);
         var nameSong = `<?php echo json_encode($arrNameSong); ?>`;
         var viewSong = `<?php echo json_encode($arrViewSong); ?>`;
         var imageSong = `<?php echo json_encode($arrImageSong); ?>`;

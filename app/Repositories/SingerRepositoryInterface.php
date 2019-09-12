@@ -12,4 +12,6 @@ interface SingerRepositoryInterface extends RepositoryInterface
 
     public function getSingerIdInSong($songId, $singerId);
 
+    public function deleteSongInSinger($songId,$singerId);
+
 }
