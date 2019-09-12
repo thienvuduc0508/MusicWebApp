@@ -77,6 +77,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
         Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSingerToSongs')->name('singer.addSingerToSongs');
         Route::get('{singerId}/{id}/song/delete-song', 'SingerController@deleteSongInSinger')->name('singer.deleteSongInSinger');
+        Route::post('comment/{id}', 'CommentController@createCommentInSinger')->name('comment.createCommentInSinger');
+
 
     });
 });
