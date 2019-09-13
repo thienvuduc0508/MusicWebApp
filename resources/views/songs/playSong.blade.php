@@ -112,7 +112,8 @@
                                     <strong>{{ $comment->user->name }}: </strong>
                                     <span>{!! $comment->comment !!}</span>
                                 </div>
-{{--                                <p>lúc {{ $comment['created_at']->hour }}:{{ $comment['created_at']->minute}}</p>--}}
+                                <p> {{ $comment['created_at']->hour }}h:{{ $comment['created_at']->minute}}m |
+                                    {{ $comment['created_at']->day}}/{{ $comment['created_at']->month }}/{{ $comment['created_at']->year }}</p>
                                 <hr>
                             </div>
                         @endforeach

@@ -41,11 +41,6 @@
                 &nbsp
                 <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
                     <span id="viewSong"></span></div>
-                &nbsp
-                &nbsp
-                <div id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</div>
-
-
             </div>
             {{--<audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>--}}
             <audio controls id="playmusicPlay">
@@ -75,9 +70,10 @@
                 @endif
             </div>
         @endif
-        <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
-            {{$playlist->view}}</div>
-        </div>
+        <span id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
+            {{$playlist->view}}</span>
+        <span id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</span>
+
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
@@ -139,7 +135,8 @@
                                         <strong>{{ $comment->user->name }}: </strong>
                                         <span>{!! $comment->comment !!}</span>
                                     </div>
-{{--                                    <p>lúc {{ $comment['created_at']->hour }}:{{ $comment['created_at']->minute}}</p>--}}
+                                    <p> {{ $comment['created_at']->hour }}h:{{ $comment['created_at']->minute}}m |
+                                        {{ $comment['created_at']->day}}/{{ $comment['created_at']->month }}/{{ $comment['created_at']->year }}</p>
                                     <hr>
                                 </div>
                             @endforeach
