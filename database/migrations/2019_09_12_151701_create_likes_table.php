@@ -17,11 +17,11 @@ class CreateLikesTable extends Migration
             $table->bigIncrements('id');
             $table->integer("status")->default(0);
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('song_id')->unsigned()->nullable();
-            $table->foreign('song_id')->references('id')->on('songs');
+            $table->foreign('song_id')->references('id')->on('songs')->onDelete('cascade');
             $table->bigInteger('playlist_id')->unsigned()->nullable();
-            $table->foreign('playlist_id')->references('id')->on('playlists');
+            $table->foreign('playlist_id')->references('id')->on('playlists')->onDelete('cascade');
             $table->timestamps();
         });
     }
