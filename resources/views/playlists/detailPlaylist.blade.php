@@ -59,8 +59,8 @@
                 <th>Ảnh</th>
                 <th>Lượt Nghe</th>
                 @if(Auth::id() == $playlist->user->id)
-                <th>Xóa</th>
-                    @endif
+                    <th>Xóa</th>
+                @endif
             </tr>
             <p id="a"></p>
             <div id="playlist">
@@ -80,51 +80,59 @@
                             <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
                         </td>
                         @if(Auth::id() == $playlist->user->id)
-                        <td>
-                            <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
-                                <button class="btn btn-outline-danger"
-                                        onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
-                                    <i class="fa fa-btn fa-ban"></i>
-                                </button>
-                            </a>
-                        </td>
-                            @endif
+                            <td>
+                                <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
+                                    <button class="btn btn-outline-danger"
+                                            onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
+                                        <i class="fa fa-btn fa-ban"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </div>
             @endif
         </table>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <h3 style="text-align: center">Bình luận</h3>
-                        @if(count($playlist->comments) == 0)
-                            <h4  class="text-danger">Chưa có bình luận nào!</h4>
-                        @else
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h3 style="text-align: center">Bình luận</h3>
+                    <hr>
+                    @if(count($playlist->comments) == 0)
+                        <h4 class="text-danger">Chưa có bình luận nào!</h4>
+                    @else
+                        <div class="ml-2">
                             @foreach($playlist->comments as $comment)
-                                <div class="display-comment m-lg-2">
-                                <span><img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
-                                           style="border-radius: 50%" alt=""></span>
-                                    <strong>{{ $comment->user->name }}</strong>
-                                    <span>  ({{$comment->created_at}})</span>
-                                    <p>{!! $comment->comment !!}</p>
+                                <div class="display-comment">
+                                    <div>
+                                        <img src="{{asset("storage/".$comment->user->image)}}" width="50px"
+                                             height="50px"
+                                             style="border-radius: 50%" alt="">
+                                        <strong>{{ $comment->user->name }}: </strong>
+                                        <span>{!! $comment->comment !!}</span>
+                                    </div>
+                                    <p> {{ $comment['created_at']->hour }}:{{ $comment['created_at']->minute}}</p>
                                     <hr>
                                 </div>
                             @endforeach
-                        @endif
-
-                        <hr>
+                        </div>
+                    @endif
+                    @if(Auth::user())
                         <h4 style="text-align: center">viết bình luận</h4>
-                        <form method="post" action="{{route('comment.createCommentInPlaylist',$playlist->id)}}">
-                            @csrf
-                            <div class="form-group">
-                                <textarea type="text" name="comment" class="form-control"></textarea>
-                                <input type="hidden" name="playlist_id" value="{{ $playlist->id }}">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Gửi</button>
-                        </form>
-                    </div>
+                        <div class="ml-5 mr-5 mb-3">
+                            <form method="post" action="{{route('comment.createCommentInPlaylist',$playlist->id)}}">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Gửi</button>
+                            </form>
+                        </div>
+                    @else
+                        <p class="text-danger">Bạn cần đăng nhập để bình luận</p>
+                    @endif
+
                 </div>
             </div>
         </div>

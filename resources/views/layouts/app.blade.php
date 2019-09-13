@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Music</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::asset('images/default.jpg')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href='https://i1.sndcdn.com/artworks-000242801280-hpp38r-t500x500.jpg'>
 
     <!-- Scripts -->
     <!-- Fonts -->
@@ -34,7 +34,7 @@
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top" >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src='https://i1.sndcdn.com/artworks-000242801280-hpp38r-t500x500.jpg')}} height="50px" width="50px">
+                    <img src='https://i1.sndcdn.com/artworks-000242801280-hpp38r-t500x500.jpg' height="50px" width="50px">
                 </a>
 
                 <div class="dropdown" >

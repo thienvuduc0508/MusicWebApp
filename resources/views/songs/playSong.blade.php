@@ -112,23 +112,26 @@
                                     <strong>{{ $comment->user->name }}: </strong>
                                     <span>{!! $comment->comment !!}</span>
                                 </div>
-                                <p> ({{$comment->created_at}})</p>
+                                <p> {{ $comment['created_at']->hour }}:{{ $comment['created_at']->minute}}</p>
                                 <hr>
                             </div>
                         @endforeach
                     </div>
                 @endif
-
+                @if(Auth::user())
                 <h4 style="text-align: center">viết bình luận</h4>
                 <div class="ml-5 mr-5 mb-3">
                     <form method="post" action="{{route('comment.createCommentInSong',$song->id)}}">
                         @csrf
                         <div class="form-group">
-                            <textarea type="text" name="comment" class="form-control"></textarea>
+                            <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Gửi</button>
                     </form>
                 </div>
+                @else
+                    <p class="text-danger">Bạn cần đăng nhập để bình luận</p>
+                @endif
             </div>
         </div>
     </div>

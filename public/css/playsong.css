@@ -477,3 +477,6 @@ button {
         transform: rotate(360deg) translate(-50%, -50%);
     }
 }
+#comment:hover{
+    background-color: #f3f3f3;
+}
