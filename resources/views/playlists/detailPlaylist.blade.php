@@ -41,6 +41,10 @@
                 &nbsp
                 <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
                     <span id="viewSong"></span></div>
+                &nbsp
+                &nbsp
+                <div id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</div>
+
             </div>
             {{--<audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>--}}
             <audio controls id="playmusicPlay">
@@ -52,6 +56,21 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if(Auth::user())
+            <div class="mt-2">
+                @if(!$checkstatus )
+                    <a href="{{route('like.playlist',$playlist->id)}}">
+                        <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-up"></i> Like
+                        </button>
+                    </a>
+                @else
+                    <a href="{{route('dislike.playlist',$playlist->id)}}">
+                        <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-down"></i> Unlike
+                        </button>
+                    </a>
+                @endif
+            </div>
+        @endif
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>
@@ -59,8 +78,8 @@
                 <th>Ảnh</th>
                 <th>Lượt Nghe</th>
                 @if(Auth::id() == $playlist->user->id)
-                <th>Xóa</th>
-                    @endif
+                    <th>Xóa</th>
+                @endif
             </tr>
             <p id="a"></p>
             <div id="playlist">
@@ -80,19 +99,20 @@
                             <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
                         </td>
                         @if(Auth::id() == $playlist->user->id)
-                        <td>
-                            <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
-                                <button class="btn btn-outline-danger"
-                                        onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
-                                    <i class="fa fa-btn fa-ban"></i>
-                                </button>
-                            </a>
-                        </td>
-                            @endif
+                            <td>
+                                <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
+                                    <button class="btn btn-outline-danger"
+                                            onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
+                                        <i class="fa fa-btn fa-ban"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </div>
             @endif
+
         </table>
         <div class="container">
             <div class="row">
@@ -100,7 +120,7 @@
                     <div class="card">
                         <h3 style="text-align: center">Bình luận</h3>
                         @if(count($playlist->comments) == 0)
-                            <h4  class="text-danger">Chưa có bình luận nào!</h4>
+                            <h4 class="text-danger">Chưa có bình luận nào!</h4>
                         @else
                             @foreach($playlist->comments as $comment)
                                 <div class="display-comment m-lg-2">

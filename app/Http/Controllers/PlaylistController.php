@@ -53,6 +53,7 @@ class PlaylistController extends Controller
     {
         $playlist = $this->playlistService->findById($id);
         $data = $playlist->songs;
+        $checkstatus = $this->checkStatus($id);
 
         $arr = [];
         $arrNameSong = [];
@@ -67,7 +68,7 @@ class PlaylistController extends Controller
             array_push($arrImageSong, $song->image);
         }
 
-        return view('playlists.detailPlaylist', compact('playlist', 'data', 'arr', 'arrNameSong', 'arrViewSong', 'arrImageSong'));
+        return view('playlists.detailPlaylist', compact('playlist', 'data', 'arr', 'arrNameSong', 'arrViewSong', 'arrImageSong','checkstatus'));
     }
 
 
@@ -132,24 +133,21 @@ class PlaylistController extends Controller
         return view('playlists.detailPlaylist', compact('songs', 'playlist'));
     }
 
-     public function getSongsInPlaylistForGuest($playlistId)
+    public function checkStatus($playlistId)
     {
         $playlist = $this->playlistService->findById($playlistId);
-        $data = $playlist->songs;
-        $arr = [];
-        $arrNameSong = [];
-        $arrViewSong = [];
-        $arrImageSong = [];
-
-
-        foreach ($data as $song) {
-            array_push($arr, $song->audio);
-            array_push($arrNameSong, $song->name);
-            array_push($arrViewSong, $song->view);
-            array_push($arrImageSong, $song->image);
+        $likesInplaylist = $playlist->likes;
+//        dd($likesInplaylist);
+        if (count($likesInplaylist) == 0) {
+            return false;
+        } else {
+            foreach ($likesInplaylist as $like) {
+                if ($like->user->id === Auth::id()){
+                    return true;
+                }
+            }
+            return false;
         }
-
-        return view('playlists.guestPlaylist', compact('data', 'arr', 'arrNameSong', 'arrViewSong', 'arrImageSong'));
     }
 }
 

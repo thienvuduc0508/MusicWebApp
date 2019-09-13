@@ -6,10 +6,12 @@ use App\Repositories\CommentRepositoryInterface;
 use App\Repositories\GuestRepositoryInterface;
 use App\Repositories\Impl\CommentRepositoryImpl;
 use App\Repositories\Impl\GuestRepositoryImpl;
+use App\Repositories\Impl\LikeRepositoryImpl;
 use App\Repositories\Impl\PlaylistRepositoryImpl;
 use App\Repositories\Impl\SingerRepositoryImpl;
 use App\Repositories\Impl\SongRepositoryImpl;
 use App\Repositories\Impl\UserRepositoryImpl;
+use App\Repositories\LikeRepositoryInterface;
 use App\Repositories\PlaylistRepositoryInterface;
 use App\Repositories\SingerRepositoryInterface;
 use App\Repositories\SongRepositoryInterface;
@@ -18,10 +20,12 @@ use App\Services\CommentServiceInterface;
 use App\Services\GuestServiceInterface;
 use App\Services\Impl\CommentServiceImpl;
 use App\Services\Impl\GuestServiceImpl;
+use App\Services\Impl\LikeServiceImpl;
 use App\Services\Impl\PlaylistServiceImpl;
 use App\Services\Impl\SingerServiceImpl;
 use App\Services\Impl\SongServiceImpl;
 use App\Services\Impl\UserServiceImpl;
+use App\Services\LikeServiceInterface;
 use App\Services\PlaylistServiceInterface;
 use App\Services\SingerServiceInterface;
 use App\Services\SongServiceInterface;
@@ -49,6 +53,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(SingerServiceInterface::class, SingerServiceImpl::class);
         $this->app->singleton(CommentRepositoryInterface::class, CommentRepositoryImpl::class);
         $this->app->singleton(CommentServiceInterface::class, CommentServiceImpl::class);
+        $this->app->singleton(LikeRepositoryInterface::class, LikeRepositoryImpl::class);
+        $this->app->singleton(LikeServiceInterface::class, LikeServiceImpl::class);
     }
 
     /**

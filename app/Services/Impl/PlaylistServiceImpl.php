@@ -49,7 +49,7 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
 
     public function addSong($playlistId, $songId)
     {
-        $playlistSongIds = $this->getSongIdsPlaylist($playlistId,$songId);
+        $playlistSongIds = $this->getSongIdsPlaylist($playlistId, $songId);
         if (!in_array($songId, $playlistSongIds)) {
             $this->repository->addSong($playlistId, $songId);
 
@@ -59,10 +59,10 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
         return false;
     }
 
-    public function getSongIdsPlaylist($playlistId,$songId)
+    public function getSongIdsPlaylist($playlistId, $songId)
     {
 
-        $playlistIds = $this->repository->getSongIdsInPlaylist($playlistId,$songId);
+        $playlistIds = $this->repository->getSongIdsInPlaylist($playlistId, $songId);
         return $playlistIds;
     }
 

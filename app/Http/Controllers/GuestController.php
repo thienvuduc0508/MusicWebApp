@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Playlist;
 use App\Services\GuestServiceInterface;
-use App\Services\SongServiceInterface;
 use App\Singer;
 use App\Song;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class GuestController extends Controller
 {

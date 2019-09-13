@@ -51,8 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('{id}/add-singer', 'SingerController@showAddSingerToSong')->name('singer.showAddSingerToSong');
         Route::get('{id}/add-singer/{singer_id}', 'SingerController@addSinger')->name('singer.addSinger');
         Route::post('comment/{id}', 'CommentController@createCommentInSong')->name('comment.createCommentInSong');
-        Route::get('{id}/like', 'LikeController@createLike')->name('like.create');
-        Route::get('{id}/dislike', 'LikeController@dislike')->name('like.delete');
+        Route::get('{id}/like', 'LikeController@likeSong')->name('like.create');
+        Route::get('{id}/dislike', 'LikeController@dislikeSong')->name('like.delete');
 
     });
     Route::group(['prefix' => 'me/playlists'], function () {
@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{id}/songs', 'PlaylistController@getSongsInPlaylist')->name('playlists.getSong');
         Route::get('{playlistId}/{id}/song/delete-song', 'PlaylistController@deleteSongsInPlaylist')->name('playlists.deleteSong');
         Route::post('comment/{id}', 'CommentController@createCommentInPlaylist')->name('comment.createCommentInPlaylist');
+        Route::get('{id}/like', 'LikeController@likePlaylist')->name('like.playlist');
+        Route::get('{id}/dislike', 'LikeController@dislikePlaylist')->name('dislike.playlist');
 
     });
     Route::group(['prefix' => 'singers'], function () {
