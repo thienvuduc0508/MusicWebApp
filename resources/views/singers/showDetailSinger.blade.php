@@ -16,52 +16,52 @@
         @if(count($data) == 0)
             <p class="alert alert-warning">Ca sĩ này chưa có bài hát nào</p>
         @else
-{{--        playsong--}}
-        <div class="player paused mt-2">
-            <div class="album">
-                <div class="cover">
-                    <div><img src="" alt="3q music" id="imageSong"/></div>
+            {{--        playsong--}}
+            <div class="player paused mt-2">
+                <div class="album">
+                    <div class="cover">
+                        <div><img src="" alt="3q music" id="imageSong"/></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="info">
-                <div class="time">
-                    <span class="current-time">0:00</span>
-                    <span class="progress" style="height: 0.125em"><span></span></span>
-                    <span class="duration">0:00</span>
+                <div class="info">
+                    <div class="time">
+                        <span class="current-time">0:00</span>
+                        <span class="progress" style="height: 0.125em"><span></span></span>
+                        <span class="duration">0:00</span>
+                    </div>
+                    <h2 id="nameSong"></h2>
                 </div>
-                <h2 id="nameSong"></h2>
-            </div>
 
-            <div class="actions">
-                <button class="shuffle">
-                    <div class="arrow"></div>
-                    <div class="arrow"></div>
-                </button>
-                <button class="button rw">
-                    <div class="arrow"></div>
-                    <div class="arrow"></div>
-                </button>
-                <button class="button play-pause">
-                    <div class="arrow"></div>
-                </button>
-                <button class="button ff">
-                    <div class="arrow"></div>
-                    <div class="arrow"></div>
-                </button>
-                <button class="repeat"></button>
-                &nbsp
-                &nbsp
-                <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
-                    <span id="viewSong"></span></div>
+                <div class="actions">
+                    <button class="shuffle">
+                        <div class="arrow"></div>
+                        <div class="arrow"></div>
+                    </button>
+                    <button class="button rw" onclick="prev()">
+                        <div class="arrow"></div>
+                        <div class="arrow"></div>
+                    </button>
+                    <button class="button play-pause">
+                        <div class="arrow"></div>
+                    </button>
+                    <button class="button ff" onclick="next()">
+                        <div class="arrow"></div>
+                        <div class="arrow"></div>
+                    </button>
+                    <button class="repeat"></button>
+                    &nbsp
+                    &nbsp
+                    <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
+                        <span id="viewSong"></span></div>
+                </div>
+                {{--<audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>--}}
+                <audio controls id="playmusicPlay">
+                    <source id="audioSource" src="" type="audio/ogg">
+                </audio>
             </div>
-            {{--<audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>--}}
-            <audio controls id="playmusicPlay">
-                <source id="audioSource" src="" type="audio/ogg">
-            </audio>
-        </div>
             {{--        end playsong--}}
-        @if (session('success'))
+            @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
@@ -123,23 +123,24 @@
                                     <span>{!! $comment->comment !!}</span>
                                 </div>
                                 <p> {{ $comment['created_at']->hour }}h:{{ $comment['created_at']->minute}}m |
-                                    {{ $comment['created_at']->day}}/{{ $comment['created_at']->month }}/{{ $comment['created_at']->year }}</p>
+                                    {{ $comment['created_at']->day}}/{{ $comment['created_at']->month
+                                    }}/{{ $comment['created_at']->year }}</p>
                                 <hr>
                             </div>
                         @endforeach
                     </div>
                 @endif
                 @if(Auth::user())
-                <h4 style="text-align: center">viết bình luận</h4>
-                <div class="ml-5 mr-5 mb-3">
-                    <form method="post" action="{{route('comment.createCommentInSinger',$singer->id)}}">
-                        @csrf
-                        <div class="form-group">
-                            <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Gửi</button>
-                    </form>
-                </div>
+                    <h4 style="text-align: center">viết bình luận</h4>
+                    <div class="ml-5 mr-5 mb-3">
+                        <form method="post" action="{{route('comment.createCommentInSinger',$singer->id)}}">
+                            @csrf
+                            <div class="form-group">
+                                <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gửi</button>
+                        </form>
+                    </div>
                 @else
                     <p class="text-danger">Bạn cần đăng nhập để bình luận</p>
                 @endif
@@ -173,28 +174,28 @@
         let j = 0;
         let k = 0;
         let l = 0;
+        if ($('.repeat').hasClass('disabled')) {
+            audio.addEventListener('ended', function () {
+                i = ++i < playList1.length ? i : 0;
+                let src = 'http://localhost:8000/storage/' + playList1[i];
 
-        audio.addEventListener('ended', function () {
-            i = ++i < playList1.length ? i : 0;
-            let src = 'http://localhost:8000/storage/' + playList1[i];
+                j = ++j < nameSong1.length ? j : 0;
+                let name = nameSong1[j];
 
-            j = ++j < nameSong1.length ? j : 0;
-            let name = nameSong1[j];
+                k = ++k < viewSong1.length ? k : 0;
+                let view = viewSong1[k];
 
-            k = ++k < viewSong1.length ? k : 0;
-            let view = viewSong1[k];
+                l = ++l < imageSong1.length ? l : 0;
+                let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
 
-            l = ++l < imageSong1.length ? l : 0;
-            let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
-
-            source.src = src;
-            img.src = imageSrc;
-            document.getElementById('nameSong').innerHTML = name;
-            document.getElementById('viewSong').innerHTML = view;
-            audio.load();
-            audio.play();
-        });
-
+                source.src = src;
+                img.src = imageSrc;
+                document.getElementById('nameSong').innerHTML = name;
+                document.getElementById('viewSong').innerHTML = view;
+                audio.load();
+                audio.play();
+            });
+        }
 
         var player = $('.player'),
             audio1 = player.find('audio'),
@@ -227,11 +228,57 @@
             }
         }
 
-        function autoplay(){
+        function next() {
+
+            i = ++i < playList1.length ? i : 0;
+            let src = 'http://localhost:8000/storage/' + playList1[i];
+
+            j = ++j < nameSong1.length ? j : 0;
+            let name = nameSong1[j];
+
+            k = ++k < viewSong1.length ? k : 0;
+            let view = viewSong1[k];
+
+            l = ++l < imageSong1.length ? l : 0;
+            let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
+
+            source.src = src;
+            img.src = imageSrc;
+            document.getElementById('nameSong').innerHTML = name;
+            document.getElementById('viewSong').innerHTML = view;
+            audio.load();
+            audio.play();
+        }
+
+        function prev() {
+            if (i > 0) {
+                i = --i < playList1.length ? i : 0;
+                let src = 'http://localhost:8000/storage/' + playList1[i];
+
+                j = --j < nameSong1.length ? j : 0;
+                let name = nameSong1[j];
+
+                k = --k < viewSong1.length ? k : 0;
+                let view = viewSong1[k];
+
+                l = --l < imageSong1.length ? l : 0;
+                let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
+
+                source.src = src;
+                img.src = imageSrc;
+                document.getElementById('nameSong').innerHTML = name;
+                document.getElementById('viewSong').innerHTML = view;
+                audio.load();
+                audio.play();
+            }
+        }
+
+        function autoplay() {
             player.removeClass('paused').addClass('playing');
             audio1[0].play();
             getCurrentTime();
         }
+
         autoplay();
         audio1.on('loadedmetadata', function () {
             var durationFormatted = secsToMins(audio1[0].duration);

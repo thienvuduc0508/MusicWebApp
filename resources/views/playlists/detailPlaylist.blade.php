@@ -25,14 +25,14 @@
                     <div class="arrow"></div>
                     <div class="arrow"></div>
                 </button>
-                <button class="button rw">
+                <button class="button rw" onclick="prev()">
                     <div class="arrow"></div>
                     <div class="arrow"></div>
                 </button>
                 <button class="button play-pause">
                     <div class="arrow"></div>
                 </button>
-                <button class="button ff">
+                <button class="button ff" onclick="next()">
                     <div class="arrow"></div>
                     <div class="arrow"></div>
                 </button>
@@ -55,111 +55,116 @@
         <div>
 
 
-        @if(Auth::user())
-            <div class="mt-2">
-                @if(!$checkstatus )
-                    <a href="{{route('like.playlist',$playlist->id)}}">
-                        <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-up"></i> Like
-                        </button>
-                    </a>
-                @else
-                    <a href="{{route('dislike.playlist',$playlist->id)}}">
-                        <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-down"></i> Unlike
-                        </button>
-                    </a>
-                @endif
-            </div>
-        @endif
-        <span id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
-            {{$playlist->view}}</span>
-        <span id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</span>
-
-        <table class="table table-striped text-center mt-2  ">
-            <tr>
-                <th>#</th>
-                <th>Tên Bài Hát</th>
-                <th>Ảnh</th>
-                <th>Lượt Nghe</th>
-                @if(Auth::id() == $playlist->user->id)
-                    <th>Xóa</th>
-                @endif
-            </tr>
-            <p id="a"></p>
-            <div id="playlist">
-                @foreach($data as $key=>$song)
-                    <tr style="font-size: 20px">
-                        <td>{{++$key}}</td>
-                        <td>
-                            <a href="{{route("songs.play",$song->id)}}"
-                               style="text-decoration: none">{{$song->name}}</a>
-                        </td>
-                        <td>
-                            <img class="play-music" src="{{asset('storage/'.$song->image)}}"
-                                 style="width: 50px;height: 50px; border-radius: 50px">
-                        </td>
-
-                        <td>
-                            <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
-                        </td>
-                        @if(Auth::id() == $playlist->user->id)
-                            <td>
-                                <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
-                                    <button class="btn btn-outline-danger"
-                                            onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
-                                        <i class="fa fa-btn fa-ban"></i>
-                                    </button>
-                                </a>
-                            </td>
+            @if(Auth::user())
+                <div class="mt-2">
+                    <span style="margin-left: auto">
+                        @if(!$checkstatus )
+                            <a href="{{route('like.playlist',$playlist->id)}}">
+                                <button type="submit" class="btn btn-outline-primary"><i class="fa fa-thumbs-o-up"></i>
+                                    Like
+                                </button>
+                            </a>
+                        @else
+                            <a href="{{route('dislike.playlist',$playlist->id)}}">
+                                <button type="submit" class="btn btn-outline-primary"><i
+                                        class="fa fa-thumbs-o-down"></i>
+                                    Unlike
+                                </button>
+                            </a>
                         @endif
-                    </tr>
-                @endforeach
-            </div>
+                    </span>
+                    <span id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>{{$playlist->view}}</span>
+                    <span id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</span>
+                </div>
             @endif
 
-        </table>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <h3 style="text-align: center">Bình luận</h3>
-                    <hr>
-                    @if(count($playlist->comments) == 0)
-                        <h4 class="text-danger">Chưa có bình luận nào!</h4>
-                    @else
-                        <div class="ml-2">
-                            @foreach($playlist->comments as $comment)
-                                <div class="display-comment">
-                                    <div>
-                                        <img src="{{asset("storage/".$comment->user->image)}}" width="50px"
-                                             height="50px"
-                                             style="border-radius: 50%" alt="">
-                                        <strong>{{ $comment->user->name }}: </strong>
-                                        <span>{!! $comment->comment !!}</span>
-                                    </div>
-                                    <p> {{ $comment['created_at']->hour }}h:{{ $comment['created_at']->minute}}m |
-                                        {{ $comment['created_at']->day}}/{{ $comment['created_at']->month }}/{{ $comment['created_at']->year }}</p>
-                                    <hr>
-                                </div>
-                            @endforeach
-                        </div>
+            <table class="table table-striped text-center mt-2  ">
+                <tr>
+                    <th>#</th>
+                    <th>Tên Bài Hát</th>
+                    <th>Ảnh</th>
+                    <th>Lượt Nghe</th>
+                    @if(Auth::id() == $playlist->user->id)
+                        <th>Xóa</th>
                     @endif
-                    @if(Auth::user())
-                        <h4 style="text-align: center">viết bình luận</h4>
-                        <div class="ml-5 mr-5 mb-3">
-                            <form method="post" action="{{route('comment.createCommentInPlaylist',$playlist->id)}}">
-                                @csrf
-                                <div class="form-group">
-                                    <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Gửi</button>
-                            </form>
-                        </div>
-                    @else
-                        <p class="text-danger">Bạn cần đăng nhập để bình luận</p>
-                    @endif
+                </tr>
+                <p id="a"></p>
+                <div id="playlist">
+                    @foreach($data as $key=>$song)
+                        <tr style="font-size: 20px">
+                            <td>{{++$key}}</td>
+                            <td>
+                                <a href="{{route("songs.play",$song->id)}}"
+                                   style="text-decoration: none">{{$song->name}}</a>
+                            </td>
+                            <td>
+                                <img class="play-music" src="{{asset('storage/'.$song->image)}}"
+                                     style="width: 50px;height: 50px; border-radius: 50px">
+                            </td>
 
+                            <td>
+                                <i class="fa fa-btn fa-headphones"> {{$song->view}}</i>
+                            </td>
+                            @if(Auth::id() == $playlist->user->id)
+                                <td>
+                                    <a href="{{route('playlists.deleteSong',[$playlist->id,$song->id])}}">
+                                        <button class="btn btn-outline-danger"
+                                                onclick="return confirm('Bạn chắc chắn muốn xóa bài hát này?');">
+                                            <i class="fa fa-btn fa-ban"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                            @endif
+                        </tr>
+                    @endforeach
+                </div>
+                @endif
+            </table>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <h3 style="text-align: center">Bình luận</h3>
+                        <hr>
+                        @if(count($playlist->comments) == 0)
+                            <h4 class="text-danger">Chưa có bình luận nào!</h4>
+                        @else
+                            <div class="ml-2">
+                                @foreach($playlist->comments as $comment)
+                                    <div class="display-comment">
+                                        <div>
+                                            <img src="{{asset("storage/".$comment->user->image)}}" width="50px"
+                                                 height="50px"
+                                                 style="border-radius: 50%" alt="">
+                                            <strong>{{ $comment->user->name }}: </strong>
+                                            <span>{!! $comment->comment !!}</span>
+                                        </div>
+                                        <p> {{ $comment['created_at']->hour }}h:{{ $comment['created_at']->minute}}m |
+                                            {{ $comment['created_at']->day}}/{{ $comment['created_at']->month
+                                            }}/{{ $comment['created_at']->year }}</p>
+                                        <hr>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                        @if(Auth::user())
+                            <h4 style="text-align: center">viết bình luận</h4>
+                            <div class="ml-5 mr-5 mb-3">
+                                <form method="post" action="{{route('comment.createCommentInPlaylist',$playlist->id)}}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <textarea type="text" name="comment" id="comment"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                </form>
+                            </div>
+                        @else
+                            <p class="text-danger">Bạn cần đăng nhập để bình luận</p>
+                        @endif
+
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
         <script>
             var playList = `<?php echo json_encode($arr); ?>`;
@@ -186,27 +191,28 @@
             let j = 0;
             let k = 0;
             let l = 0;
+            if ($('.repeat').hasClass('disabled')) {
+                audio.addEventListener('ended', function () {
+                    i = ++i < playList1.length ? i : 0;
+                    let src = 'http://localhost:8000/storage/' + playList1[i];
 
-            audio.addEventListener('ended', function () {
-                i = ++i < playList1.length ? i : 0;
-                let src = 'http://localhost:8000/storage/' + playList1[i];
+                    j = ++j < nameSong1.length ? j : 0;
+                    let name = nameSong1[j];
 
-                j = ++j < nameSong1.length ? j : 0;
-                let name = nameSong1[j];
+                    k = ++k < viewSong1.length ? k : 0;
+                    let view = viewSong1[k];
 
-                k = ++k < viewSong1.length ? k : 0;
-                let view = viewSong1[k];
+                    l = ++l < imageSong1.length ? l : 0;
+                    let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
 
-                l = ++l < imageSong1.length ? l : 0;
-                let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
-
-                source.src = src;
-                img.src = imageSrc;
-                document.getElementById('nameSong').innerHTML = name;
-                document.getElementById('viewSong').innerHTML = view;
-                audio.load();
-                audio.play();
-            });
+                    source.src = src;
+                    img.src = imageSrc;
+                    document.getElementById('nameSong').innerHTML = name;
+                    document.getElementById('viewSong').innerHTML = view;
+                    audio.load();
+                    audio.play();
+                });
+            }
 
 
             var player = $('.player'),
@@ -216,6 +222,50 @@
                 progressBar = $('.progress span'),
                 mouseDown = false,
                 rewind, showCurrentTime;
+
+            function next() {
+
+                    i = ++i < playList1.length ? i : 0;
+                    let src = 'http://localhost:8000/storage/' + playList1[i];
+
+                    j = ++j < nameSong1.length ? j : 0;
+                    let name = nameSong1[j];
+
+                    k = ++k < viewSong1.length ? k : 0;
+                    let view = viewSong1[k];
+
+                    l = ++l < imageSong1.length ? l : 0;
+                    let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
+
+                    source.src = src;
+                    img.src = imageSrc;
+                    document.getElementById('nameSong').innerHTML = name;
+                    document.getElementById('viewSong').innerHTML = view;
+                    audio.load();
+                    audio.play();
+                }
+            function prev() {
+                if(i>0){
+                    i = --i < playList1.length ? i : 0;
+                    let src = 'http://localhost:8000/storage/' + playList1[i];
+
+                    j = --j < nameSong1.length ? j : 0;
+                    let name = nameSong1[j];
+
+                    k = --k < viewSong1.length ? k : 0;
+                    let view = viewSong1[k];
+
+                    l = --l < imageSong1.length ? l : 0;
+                    let imageSrc = 'http://localhost:8000/storage/' + imageSong1[l];
+
+                    source.src = src;
+                    img.src = imageSrc;
+                    document.getElementById('nameSong').innerHTML = name;
+                    document.getElementById('viewSong').innerHTML = view;
+                    audio.load();
+                    audio.play();
+                }
+            }
 
             function secsToMins(time) {
                 var int = Math.floor(time),
