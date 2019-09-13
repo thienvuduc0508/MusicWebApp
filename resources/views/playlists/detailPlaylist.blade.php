@@ -45,6 +45,7 @@
                 &nbsp
                 <div id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</div>
 
+
             </div>
             {{--<audio autoplay preload src="{{asset('storage/'.$song->audio)}}"></audio>--}}
             <audio controls id="playmusicPlay">
@@ -56,6 +57,9 @@
                 {{ session('success') }}
             </div>
         @endif
+        <div>
+
+
         @if(Auth::user())
             <div class="mt-2">
                 @if(!$checkstatus )
@@ -71,6 +75,9 @@
                 @endif
             </div>
         @endif
+        <div id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>
+            {{$playlist->view}}</div>
+        </div>
         <table class="table table-striped text-center mt-2  ">
             <tr>
                 <th>#</th>

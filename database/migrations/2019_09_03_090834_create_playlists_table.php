@@ -17,6 +17,7 @@ class CreatePlaylistsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->integer('view')->default(0);
             $table->timestamps();
         });
     }

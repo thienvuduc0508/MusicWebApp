@@ -25,6 +25,8 @@ Route::get('singer/{id}', 'SingerController@showDetailSinger')->name('singer.det
 
 
 Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');
+Route::get('/most-listen-playlist','PlaylistController@getAllMostListenPlaylists')->name('playlist.getAllMostListenPlaylist');
+
 
 
 

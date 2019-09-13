@@ -48,7 +48,7 @@
                     <a class="dropdown navbar-brand" style="color: white">Playlist</a>
                     <div class="dropdown-content dropdown-menu dropdown-menu-lg-left">
                         <a href="{{route('playlist.getAllNewPlaylists')}}" style="text-decoration: none" class="dropdown-item">Playlist Mới Nhất</a>
-{{--                        <a href="#" style="text-decoration: none" class="dropdown-item">Playlist Được Nghe Nhiều Nhất</a>--}}
+                        <a href="{{route('playlist.getAllMostListenPlaylist')}}" style="text-decoration: none" class="dropdown-item">Playlist Được Nghe Nhiều Nhất</a>
                     </div>
                 </div>
                 <div class="dropdown" >

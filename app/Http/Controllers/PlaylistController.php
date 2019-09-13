@@ -51,6 +51,13 @@ class PlaylistController extends Controller
 
     public function showDetailPlaylist($id)
     {
+        $playlistKey = 'post_' . $id;
+
+        if (!Session::has($playlistKey)) {
+            Playlist::where('id', $id)->increment('view');
+            Session::put($playlistKey, 1);
+        }
+
         $playlist = $this->playlistService->findById($id);
         $data = $playlist->songs;
         $checkstatus = $this->checkStatus($id);
@@ -69,6 +76,11 @@ class PlaylistController extends Controller
         }
 
         return view('playlists.detailPlaylist', compact('playlist', 'data', 'arr', 'arrNameSong', 'arrViewSong', 'arrImageSong','checkstatus'));
+    }
+    public function getAllMostListenPlaylists()
+    {
+        $mostListenPlaylists = $this->playlistService->getAllMostListenPlaylist();
+        return view('playlists.mostListenPlaylist', compact('mostListenPlaylists'));
     }
 
 
