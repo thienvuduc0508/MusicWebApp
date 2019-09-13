@@ -105,37 +105,43 @@
                 @endif
             </table>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <h3 style="text-align: center">Bình luận</h3>
-                    @if(count($singer->comments) == 0)
-                        <h4  class="text-danger">Chưa có bình luận nào!</h4>
-                    @else
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h3 style="text-align: center">Bình luận</h3>
+                <hr>
+                @if(count($singer->comments) == 0)
+                    <h4 class="text-danger">Chưa có bình luận nào!</h4>
+                @else
+                    <div class="ml-2">
                         @foreach($singer->comments as $comment)
-                            <div class="display-comment m-lg-2">
-                                <span><img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
-                                           style="border-radius: 50%" alt=""></span>
-                                <strong>{{ $comment->user->name }}</strong>
-                                <span>  ({{$comment->created_at}})</span>
-                                <p>{!! $comment->comment !!}</p>
+                            <div class="display-comment">
+                                <div>
+                                    <img src="{{asset("storage/".$comment->user->image)}}" width="50px" height="50px"
+                                         style="border-radius: 50%" alt="">
+                                    <strong>{{ $comment->user->name }}: </strong>
+                                    <span>{!! $comment->comment !!}</span>
+                                </div>
+                                <p> {{ $comment['created_at']->hour }}:{{ $comment['created_at']->minute}}</p>
                                 <hr>
                             </div>
                         @endforeach
-                    @endif
-
-                    <hr>
-                    <h4 style="text-align: center">viết bình luận</h4>
+                    </div>
+                @endif
+                @if(Auth::user())
+                <h4 style="text-align: center">viết bình luận</h4>
+                <div class="ml-5 mr-5 mb-3">
                     <form method="post" action="{{route('comment.createCommentInSinger',$singer->id)}}">
                         @csrf
                         <div class="form-group">
-                            <textarea type="text" name="comment" class="form-control"></textarea>
-                            <input type="hidden" name="singer_id" value="{{ $singer->id }}">
+                            <textarea type="text" name="comment" id="comment" class="form-control"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Gửi</button>
                     </form>
                 </div>
+                @else
+                    <p class="text-danger">Bạn cần đăng nhập để bình luận</p>
+                @endif
             </div>
         </div>
     </div>
@@ -261,7 +267,6 @@
                 player.addClass('ffing');
                 audio1[0].playbackRate = 16;
             }
-
             if (self.hasClass('rw')) {
                 player.addClass('rwing');
                 rewind = setInterval(function () {
