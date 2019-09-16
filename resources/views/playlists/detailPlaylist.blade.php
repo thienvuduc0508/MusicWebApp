@@ -73,7 +73,7 @@
                             </a>
                         @endif
                     </span>
-                    <span id="headphones" style="font-size: 20px"><i class="fa fa-headphones"></i>{{$playlist->view}}</span>
+                    <span id="headphones" style="font-size: 20px"><i class="fa fa-eye"></i>{{$playlist->view}}</span>
                     <span id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</span>
                 </div>
             @endif

@@ -27,4 +27,9 @@ class SongRepositoryImpl extends EloquentRepository implements SongRepositoryInt
         return $playlist->songs()->paginate(4);
     }
 
+    public function getMostLikeSongs()
+    {
+        $mostLikeSongs = $this->model->orderby('like', 'desc')->get();
+        return $mostLikeSongs;
+    }
 }

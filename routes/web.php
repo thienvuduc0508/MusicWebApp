@@ -22,6 +22,8 @@ Route::get('/search','GuestController@search')->name('search');
 Route::get('{id}/playlist','PlaylistController@getSongsInPlaylistForGuest')->name('playlist.guestPlaylists');
 Route::get('singer/', 'SingerController@showListSinger')->name('singer.listSinger');
 Route::get('singer/{id}', 'SingerController@showDetailSinger')->name('singer.detailSinger');
+Route::get('most-like-song', 'SongController@getMostLikeSongs')->name('songs.mostLike');
+Route::get('most-like-playlist', 'PlaylistController@getMostLikePlaylists')->name('playlist.mostLike');
 
 
 Route::get('{id}/detail/', 'PlaylistController@showDetailPlaylist')->name('playlists.detail');

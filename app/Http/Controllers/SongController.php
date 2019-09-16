@@ -94,4 +94,8 @@ class SongController extends Controller
             return false;
         }
     }
+    public function getMostLikeSongs(){
+        $songs = $this->songService->getMostLikeSongs();
+        return view('songs.mostLikeSong',compact('songs'));
+    }
 }

@@ -161,5 +161,9 @@ class PlaylistController extends Controller
             return false;
         }
     }
+    public function getMostLikePlaylists(){
+        $playlists = $this->playlistService->getMostLikePlaylists();
+        return view('playlists.mostLikePlaylist',compact('playlists'));
+    }
 }
 

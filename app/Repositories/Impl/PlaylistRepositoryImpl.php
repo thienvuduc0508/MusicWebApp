@@ -46,12 +46,22 @@ class PlaylistRepositoryImpl extends EloquentRepository implements PlaylistRepos
         $playlist = $this->model->findOrFail($playlistId);
         return $playlist->songs->pluck('id')->toArray();
     }
-    public function get4MostListenPlaylist(){
-        $most4ListenPlaylist = $this->model->orderby('view','desc')->paginate(4);
+
+    public function get4MostListenPlaylist()
+    {
+        $most4ListenPlaylist = $this->model->orderby('view', 'desc')->paginate(4);
         return $most4ListenPlaylist;
     }
-    public function getAllMostListenPlaylist(){
-        $mostListenPlaylist = $this->model->orderby('view','desc')->get();
+
+    public function getAllMostListenPlaylist()
+    {
+        $mostListenPlaylist = $this->model->orderby('view', 'desc')->get();
         return $mostListenPlaylist;
+    }
+
+    public function getMostLikePlaylists()
+    {
+        $mostLikePlaylist = $this->model->orderby('like', 'desc')->get();
+        return $mostLikePlaylist;
     }
 }
