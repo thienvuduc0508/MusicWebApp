@@ -73,12 +73,12 @@
                             </a>
                         @endif
                     </span>
-                    <span id="headphones" style="font-size: 20px"><i class="fa fa-eye"></i>{{$playlist->view}}</span>
-                    <span id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</span>
-                </div>
+                    </div>
             @endif
+                <span id="headphones" style="font-size: 20px"><i class="fa fa-eye"></i>{{$playlist->view}}</span>
+                <span id="headphones" style="font-size: 20px"><i class="fa fa-thumbs-o-up"></i> {{count($playlist->likes)}}</span>
 
-            <table class="table table-striped text-center mt-2  ">
+                <table class="table table-striped text-center mt-2  ">
                 <tr>
                     <th>#</th>
                     <th>Tên Bài Hát</th>
