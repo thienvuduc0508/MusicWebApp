@@ -13,5 +13,6 @@ interface PlaylistServiceInterface extends ServiceInterface
     public function getSongIdsPlaylist($playlistId,$songId);
     public function get4MostListenPlaylist();
     public function getAllMostListenPlaylist();
+    public function getMostLikePlaylists();
 
 }

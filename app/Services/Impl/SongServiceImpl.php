@@ -77,4 +77,9 @@ class SongServiceImpl extends ServiceImpl implements SongServiceInterface
         return $this->repository->getSongsInPlaylist($playlist);
     }
 
+    public function getMostLikeSongs()
+    {
+        return $this->repository->getMostLikeSongs();
+
+    }
 }

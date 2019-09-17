@@ -91,4 +91,9 @@ class PlaylistServiceImpl extends ServiceImpl implements PlaylistServiceInterfac
         return $this->repository->getAllMostListenPlaylist();
     }
 
+    public function getMostLikePlaylists()
+    {
+        return $this->repository->getMostLikePlaylists();
+
+    }
 }
